@@ -1,0 +1,15 @@
+.DS_Store
+**/.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
