@@ -44,11 +44,11 @@ Every individual decision problem has exactly three ingredients:
 
 ```
 ┌───────────────────────────────────────────────────────────┐
-│  INDIVIDUAL DECISION PROBLEM                               │
+│  INDIVIDUAL DECISION PROBLEM                              │
 ├───────────────────────────────────────────────────────────┤
-│  A  =  Actions      "what I can CHOOSE"                    │
-│  X  =  Outcomes     "what actually HAPPENS"                │
-│  ≿  =  Preferences  "how I RANK what happens"  (also: R)   │
+│  A  =  Actions      "what I can CHOOSE"                   │
+│  X  =  Outcomes     "what actually HAPPENS"               │
+│  ≿  =  Preferences  "how I RANK what happens"  (also: R)  │
 └───────────────────────────────────────────────────────────┘
 ```
 
@@ -102,11 +102,11 @@ x ∼ y   ⟺   x ≿ y   AND   y ≿ x
 Read: *"x is at least as good as y, AND y is at least as good as x"* → they must be **exactly tied**.
 
 ```
-┌─────────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────┐
 │   x ≿ y   "x is at least as good as y"    (weak)         │
 │   x ≻ y   "x is strictly better than y"   (strict win)   │
 │   x ∼ y   "x and y are tied"              (indifference) │
-└─────────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────────┘
 ```
 
 > 🍼 **Kid version:** `≿` is "I wouldn't say no to x over y." `≻` is "I'd fight for x over y." `∼` is "flip a coin, I really don't care which one."
@@ -236,14 +236,14 @@ For the individual to be able to act rationally, they must know:
 4. **Their own rational preference (payoff function) over `X`** — i.e., they know `u`.
 
 ```
-┌─────────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────┐
 │  RATIONAL CHOICE ASSUMPTION — the 4 "must-knows"         │
-├─────────────────────────────────────────────────────────┤
+├──────────────────────────────────────────────────────────┤
 │  1. Know A          (the menu)                           │
 │  2. Know X           (what can happen)                   │
 │  3. Know x*: A → X   (which action → which outcome)      │
-│  4. Know u over X    (own ranking/payoff of outcomes)     │
-└─────────────────────────────────────────────────────────┘
+│  4. Know u over X    (own ranking/payoff of outcomes)    │
+└──────────────────────────────────────────────────────────┘
 ```
 
 ### Payoff From Actions
@@ -284,23 +284,23 @@ Everything so far assumes each action leads to exactly ONE guaranteed outcome �
 ## 6. Cheat Sheet & Exam Hacks
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
+╔═══════════════════════════════════════════════════════════════════╗
 ║  ADVANCED AI — LEC 01 ONE-LINERS                                  ║
-╠══════════════════════════════════════════════════════════════════╣
+╠═══════════════════════════════════════════════════════════════════╣
 ║  Decision problem = (A, X, ≿)                                     ║
-║    A = actions, X = outcomes, ≿ = preferences over X               ║
-║                                                                    ║
-║  ≿ weak | ≻ strict = ≿ AND NOT(reverse ≿) | ∼ tie = ≿ both ways    ║
-║                                                                    ║
-║  RATIONAL ≿  =  COMPLETE (no skips) + TRANSITIVE (no loops)        ║
-║                                                                    ║
-║  u: X → ℝ represents ≿   ⟺   u(x) ≥ u(y) ⟺ x ≿ y                  ║
-║  THEOREM: ≿ rational + X finite  ⟹  representing u EXISTS          ║
+║    A = actions, X = outcomes, ≿ = preferences over X              ║
+║                                                                   ║
+║  ≿ weak | ≻ strict = ≿ AND NOT(reverse ≿) | ∼ tie = ≿ both ways   ║
+║                                                                   ║
+║  RATIONAL ≿  =  COMPLETE (no skips) + TRANSITIVE (no loops)       ║
+║                                                                   ║
+║  u: X → ℝ represents ≿   ⟺   u(x) ≥ u(y) ⟺ x ≿ y                 ║
+║  THEOREM: ≿ rational + X finite  ⟹  representing u EXISTS         ║
 ║                                                                    ║
 ║  Rational Choice Assumption: know A, know X, know x*:A→X, know u   ║
 ║  v(a) = u(x*(a))     — payoff of an ACTION, not just an outcome    ║
 ║  Rational choice: pick a* with v(a*) ≥ v(a) for all a ∈ A          ║
-╚══════════════════════════════════════════════════════════════════╝
+╚════════════════════════════════════════════════════════════════════╝
 ```
 
 ### ⚡ Exam Red Flags
