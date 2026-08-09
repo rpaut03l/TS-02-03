@@ -350,28 +350,28 @@ u(pizza)   = 3
 
 ```
 ╔══════════════════════════════════════════════════════════════════╗
-║  FORMULAS — COPY THESE DOWN BEFORE THE EXAM                       ║
+║  FORMULAS — COPY THESE DOWN BEFORE THE EXAM                      ║
 ╠══════════════════════════════════════════════════════════════════╣
-║  Representation:      u(x) ≥ u(y)  ⟺  x ≿ y                       ║
-║  Value of an action:  v(a) = u(x*(a))                              ║
-║  Rational choice:     choose a* with v(a*) ≥ v(a)  ∀ a ∈ A         ║
-║                                                                    ║
-║  Discrete lottery validity:                                       ║
-║      0 ≤ p(xᵢ|a) ≤ 1     and     Σᵢ p(xᵢ|a) = 1                   ║
-║                                                                    ║
-║  Continuous lottery (CDF) validity:                                ║
-║      Fₐ(−∞)=0,  Fₐ(+∞)=1,  non-decreasing,  right-continuous      ║
-║                                                                    ║
-║  Expected utility (discrete):                                     ║
-║      E[u(X)|p|ₐ] = Σᵢ₌₁ⁿ u(xᵢ) · p(xᵢ|a)                          ║
-║                                                                    ║
-║  Expected utility (continuous):                                   ║
-║      E[u(X)|Fₐ] = ∫₋∞^∞ u(x) dFₐ(x)                               ║
-║                                                                    ║
-║  Compound lottery path probability = PRODUCT along the path        ║
-║  Same-outcome paths → ADD their probabilities together             ║
-║                                                                    ║
-║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                               ║
+║  Representation:      u(x) ≥ u(y)  ⟺  x ≿ y                     ║
+║  Value of an action:  v(a) = u(x*(a))                            ║
+║  Rational choice:     choose a* with v(a*) ≥ v(a)  ∀ a ∈ A       ║
+║                                                                  ║
+║  Discrete lottery validity:                                      ║
+║      0 ≤ p(xᵢ|a) ≤ 1     and     Σᵢ p(xᵢ|a) = 1                  ║
+║                                                                  ║
+║  Continuous lottery (CDF) validity:                              ║
+║      Fₐ(−∞)=0,  Fₐ(+∞)=1,  non-decreasing,  right-continuous     ║
+║                                                                  ║
+║  Expected utility (discrete):                                    ║
+║      E[u(X)|p|ₐ] = Σᵢ₌₁ⁿ u(xᵢ) · p(xᵢ|a)                         ║
+║                                                                  ║
+║  Expected utility (continuous):                                  ║
+║      E[u(X)|Fₐ] = ∫₋∞^∞ u(x) dFₐ(x)                              ║
+║                                                                  ║
+║  Compound lottery path probability = PRODUCT along the path      ║
+║  Same-outcome paths → ADD their probabilities together           ║
+║                                                                  ║
+║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                            ║
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 
