@@ -306,26 +306,26 @@ E[u|s] = (10 × 0.50) + (0 × 0.50) = 5.0
 ## 5. Formula Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
+╔═══════════════════════════════════════════════════════════════════╗
 ║  FORMULAS — COPY THESE DOWN BEFORE THE EXAM                       ║
-╠══════════════════════════════════════════════════════════════════╣
+╠═══════════════════════════════════════════════════════════════════╣
 ║  Discrete lottery validity:                                       ║
 ║      0 ≤ p(xᵢ|a) ≤ 1     and     Σᵢ p(xᵢ|a) = 1                   ║
-║                                                                    ║
-║  Continuous lottery (CDF) validity:                                ║
+║                                                                   ║
+║  Continuous lottery (CDF) validity:                               ║
 ║      Fₐ(−∞)=0,  Fₐ(+∞)=1,  non-decreasing,  right-continuous      ║
-║                                                                    ║
+║                                                                   ║
 ║  Expected utility (discrete):                                     ║
 ║      E[u(X)|p|ₐ] = Σᵢ₌₁ⁿ u(xᵢ) · p(xᵢ|a)                          ║
-║                                                                    ║
+║                                                                   ║
 ║  Expected utility (continuous):                                   ║
 ║      E[u(X)|Fₐ] = ∫₋∞^∞ u(x) dFₐ(x)                               ║
-║                                                                    ║
-║  Compound lottery path probability = PRODUCT along the path        ║
-║  Same-outcome paths → ADD their probabilities together             ║
-║                                                                    ║
-║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                               ║
-╚══════════════════════════════════════════════════════════════════╝
+║                                                                   ║
+║  Compound lottery path probability = PRODUCT along the path       ║
+║  Same-outcome paths → ADD their probabilities together            ║
+║                                                                   ║
+║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                             ║
+╚═══════════════════════════════════════════════════════════════════╝
 ```
 
 [↑ Back to Top](#-advanced-ai--lec-02-decision-trees-risk--lotteries--numerical)
