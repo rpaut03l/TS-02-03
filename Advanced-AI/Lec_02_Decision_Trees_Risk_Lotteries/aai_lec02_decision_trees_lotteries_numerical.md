@@ -1,8 +1,8 @@
-# 🧮 Advanced AI — Lec 01: Rational Choice, Preferences & Risk — NUMERICAL
+# 🧮 Advanced AI — Lec 02: Decision Trees, Risk & Lotteries — NUMERICAL
 
 ### *Every worked example, every number, every step shown*
 
-> **Nav:** [← Lec 01 README](README.md) | [📖 THEORY](aai_lec01_rational_choice_theory.md) | **NUMERICAL** | [🎯 PRACTICE](aai_lec01_rational_choice_practice.md)
+> **Nav:** [⬅️ Prev: Lec 01](../Lec_01_Individual_Decision_Problem/README.md) | [← Lec 02 README](README.md) | [📖 THEORY](aai_lec02_decision_trees_lotteries_theory.md) | **NUMERICAL** | [🎯 PRACTICE](aai_lec02_decision_trees_lotteries_practice.md)
 
 ---
 
@@ -16,8 +16,7 @@
 | 2 | Expected Utility — Worked Examples (g vs s) | [§2](#2-expected-utility-worked-examples) |
 | 3 | The Preference Flip — Why the Exact Numbers Matter | [§3](#3-the-preference-flip--why-the-exact-numbers-matter) |
 | 4 | Compound Lottery Reduction | [§4](#4-compound-lottery-reduction) |
-| 5 | Utility Representation — Mini Worked Proof | [§5](#5-utility-representation--mini-worked-proof) |
-| 6 | Formula Cheat Sheet | [§6](#6-formula-cheat-sheet) |
+| 5 | Formula Cheat Sheet | [§5](#5-formula-cheat-sheet) |
 
 ---
 
@@ -123,7 +122,7 @@ max(3, 1, 2, −2, 2, 3) = 3  →  TWO leaves tie at 3:
 
 > 🍼 **Kid version:** Aliens is your favourite movie, but it's a longer walk. Casablanca is not your favourite, but it's much closer. Once you count the walk as "tiredness cost," the two plans end up feeling exactly equally good.
 
-[↑ Back to Top](#-advanced-ai--lec-01-rational-choice-preferences--risk--numerical)
+[↑ Back to Top](#-advanced-ai--lec-02-decision-trees-risk--lotteries--numerical)
 
 ---
 
@@ -181,7 +180,7 @@ E[u|g] = 6.5   >   E[u|s] = 5.0
 ```
 ✅ **Still prefer g.** Even after lowering the top prize (9 instead of 10) and adding a small downside (−1), the higher-probability gamble still wins.
 
-[↑ Back to Top](#-advanced-ai--lec-01-rational-choice-preferences--risk--numerical)
+[↑ Back to Top](#-advanced-ai--lec-02-decision-trees-risk--lotteries--numerical)
 
 ---
 
@@ -226,7 +225,7 @@ E[u|g] = 4.75   <   E[u|s] = 5.0
 ### 🧠 Mnemonic: **"Odds don't flip you — Outcomes do."**
 If two lotteries have the exact same probabilities but you change what's actually AT STAKE in even one branch, the expected-utility comparison can flip. Always plug in the actual numbers — never eyeball probabilities alone.
 
-[↑ Back to Top](#-advanced-ai--lec-01-rational-choice-preferences--risk--numerical)
+[↑ Back to Top](#-advanced-ai--lec-02-decision-trees-risk--lotteries--numerical)
 
 ---
 
@@ -300,85 +299,39 @@ E[u|s] = (10 × 0.50) + (0 × 0.50) = 5.0
 ```
 ✅ **Prefer g** — same answer, whether you evaluate the compound tree directly (by reducing it first) or the pre-reduced simple lottery. This is exactly why the theory lets you always "flatten" a compound lottery before evaluating it.
 
-[↑ Back to Top](#-advanced-ai--lec-01-rational-choice-preferences--risk--numerical)
+[↑ Back to Top](#-advanced-ai--lec-02-decision-trees-risk--lotteries--numerical)
 
 ---
 
-## 5. Utility Representation — Mini Worked Proof
-
-Let `X = {burger, pizza, noodles}` with the rational preference:
-```
-pizza ≻ burger ≻ noodles     (pizza is strictly best, noodles strictly worst)
-```
-
-**Step 1 — find best (`x̄`) and worst (`x`) outcomes.**
-```
-x̄ = pizza     (beats or ties everyone)
-x = noodles    (everyone beats or ties it)
-```
-
-**Step 2 — build indifference classes.**
-Since there are no ties stated, each outcome is its own class:
-```
-Class 1 (worst):  {noodles}
-Class 2 (middle): {burger}
-Class 3 (best):   {pizza}
-```
-
-**Step 3 — assign increasing numbers, worst to best.**
-```
-u(noodles) = 1
-u(burger)  = 2
-u(pizza)   = 3
-```
-
-**Step 4 — verify the representation condition `u(x) ≥ u(y) ⟺ x ≿ y`.**
-
-| Pair | u comparison | ≿ comparison | Match? |
-|---|---|---|---|
-| pizza vs burger | u(3) ≥ u(2) ✓ | pizza ≻ burger ✓ | ✅ |
-| burger vs noodles | u(2) ≥ u(1) ✓ | burger ≻ noodles ✓ | ✅ |
-| pizza vs noodles | u(3) ≥ u(1) ✓ | pizza ≻ noodles ✓ | ✅ |
-
-✅ Every pair matches — `u` correctly represents `≿`. And per the theorem's fine print: `u(noodles)=10, u(burger)=20, u(pizza)=30` would represent the **same** preference just as validly — only the *order* of the numbers matters, not their exact values or spacing.
-
-[↑ Back to Top](#-advanced-ai--lec-01-rational-choice-preferences--risk--numerical)
-
----
-
-## 6. Formula Cheat Sheet
+## 5. Formula Cheat Sheet
 
 ```
 ╔══════════════════════════════════════════════════════════════════╗
-║  FORMULAS — COPY THESE DOWN BEFORE THE EXAM                      ║
+║  FORMULAS — COPY THESE DOWN BEFORE THE EXAM                       ║
 ╠══════════════════════════════════════════════════════════════════╣
-║  Representation:      u(x) ≥ u(y)  ⟺  x ≿ y                     ║
-║  Value of an action:  v(a) = u(x*(a))                            ║
-║  Rational choice:     choose a* with v(a*) ≥ v(a)  ∀ a ∈ A       ║
-║                                                                  ║
-║  Discrete lottery validity:                                      ║
-║      0 ≤ p(xᵢ|a) ≤ 1     and     Σᵢ p(xᵢ|a) = 1                  ║
-║                                                                  ║
-║  Continuous lottery (CDF) validity:                              ║
-║      Fₐ(−∞)=0,  Fₐ(+∞)=1,  non-decreasing,  right-continuous     ║
-║                                                                  ║
-║  Expected utility (discrete):                                    ║
-║      E[u(X)|p|ₐ] = Σᵢ₌₁ⁿ u(xᵢ) · p(xᵢ|a)                         ║
-║                                                                  ║
-║  Expected utility (continuous):                                  ║
-║      E[u(X)|Fₐ] = ∫₋∞^∞ u(x) dFₐ(x)                              ║
-║                                                                  ║
-║  Compound lottery path probability = PRODUCT along the path      ║
-║  Same-outcome paths → ADD their probabilities together           ║
-║                                                                  ║
-║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                            ║
+║  Discrete lottery validity:                                       ║
+║      0 ≤ p(xᵢ|a) ≤ 1     and     Σᵢ p(xᵢ|a) = 1                   ║
+║                                                                    ║
+║  Continuous lottery (CDF) validity:                                ║
+║      Fₐ(−∞)=0,  Fₐ(+∞)=1,  non-decreasing,  right-continuous      ║
+║                                                                    ║
+║  Expected utility (discrete):                                     ║
+║      E[u(X)|p|ₐ] = Σᵢ₌₁ⁿ u(xᵢ) · p(xᵢ|a)                          ║
+║                                                                    ║
+║  Expected utility (continuous):                                   ║
+║      E[u(X)|Fₐ] = ∫₋∞^∞ u(x) dFₐ(x)                               ║
+║                                                                    ║
+║  Compound lottery path probability = PRODUCT along the path        ║
+║  Same-outcome paths → ADD their probabilities together             ║
+║                                                                    ║
+║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                               ║
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 
-[↑ Back to Top](#-advanced-ai--lec-01-rational-choice-preferences--risk--numerical)
+[↑ Back to Top](#-advanced-ai--lec-02-decision-trees-risk--lotteries--numerical)
 
 ---
 
-> **Next:** [🎯 PRACTICE →](aai_lec01_rational_choice_practice.md) · [← back to THEORY](aai_lec01_rational_choice_theory.md)
+> **Next:** [🎯 PRACTICE →](aai_lec02_decision_trees_lotteries_practice.md) · [← back to THEORY](aai_lec02_decision_trees_lotteries_theory.md)
 >
-> *Advanced AI · Lec 01 · github.com/rpaut03l/TS-02-03*
+> *Advanced AI · Lec 02 · github.com/rpaut03l/TS-02-03*

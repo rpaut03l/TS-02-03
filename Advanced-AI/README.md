@@ -29,7 +29,8 @@ Advanced AI    = one rational agent, precisely defined   (this folder's Lec 01)
 
 | # | Lecture | Folder |
 |---|---|---|
-| 1 | **Rational Choice, Preferences & Risk** — Individual Decision Problem, Preference Relations, Rationality, Utility Representation, Decision Trees, Simple & Compound Lotteries, Expected Utility | [Lec_01_Rational_Choice_Risk_Lotteries/](Lec_01_Rational_Choice_Risk_Lotteries/) |
+| 1 | **Individual Rational Decision Paradigm** — Individual Decision Problem, Preference Relations, Rationality (Completeness + Transitivity), Utility Representation Theorem, Rational Choice Assumption | [Lec_01_Individual_Decision_Problem/](Lec_01_Individual_Decision_Problem/) |
+| 2 | **Decision Trees, Risk & Lotteries** — Decision Trees, Nature & Random Outcomes, Simple Lotteries (discrete + continuous), Compound Lotteries, Expected Utility | [Lec_02_Decision_Trees_Risk_Lotteries/](Lec_02_Decision_Trees_Risk_Lotteries/) |
 
 Each lecture folder has the same **trio** of files:
 
@@ -54,7 +55,8 @@ Each lecture folder has the same **trio** of files:
 
 Planned topics in this track (more folders will be added as the course progresses):
 
-- ✅ **Lec 01** — Rational Choice, Preferences & Risk (individual decision theory foundations)
+- ✅ **Lec 01** — Individual Rational Decision Paradigm (decision problem, preferences, rationality, utility representation)
+- ✅ **Lec 02** — Decision Trees, Risk & Lotteries (Nature, simple & compound lotteries, expected utility)
 - 🔭 Strategic-form games & Nash Equilibrium
 - 🔭 Dominant strategies & iterated elimination
 - 🔭 Mixed strategies
