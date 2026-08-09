@@ -29,7 +29,7 @@
 ### Part (1) — Draw the tree, no payoffs yet
 
 ```
-                                YOU  (root node)
+                                    YOU  (root node)
                      ┌───────────────┴───────────────┐
                 Go to Inox                       Go to PVR
                 (action)                          (action)
@@ -63,7 +63,7 @@ Aliens, Blade Runner, Casablanca, Dr. Strangelove, Gone with the Wind, The Matri
 **Step 3: attach these payoffs to the leaves.**
 
 ```
-                                YOU
+                                    YOU
                      ┌───────────────┴───────────────┐
                 Go to Inox                       Go to PVR
           ┌─────────┼─────────┐            ┌──────────┼──────────┐
@@ -104,7 +104,7 @@ v(action) = u(movie) − distance_cost(theatre)
 **Step 3: updated tree.**
 
 ```
-                                YOU
+                                    YOU
                      ┌───────────────┴───────────────┐
                 Go to Inox (−1)                 Go to PVR (−3)
           ┌─────────┼─────────┐            ┌──────────┼──────────┐
