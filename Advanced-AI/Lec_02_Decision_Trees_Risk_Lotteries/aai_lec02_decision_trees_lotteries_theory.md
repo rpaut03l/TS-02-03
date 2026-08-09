@@ -36,13 +36,13 @@ A decision tree is just a **map of "if I go this way, then that way, I end up he
 ### Anatomy of a Decision Tree
 
 ```
-┌───────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────┐
 │  DECISION TREE PARTS                                       │
-├───────────────────────────────────────────────────────────┤
+├────────────────────────────────────────────────────────────┤
 │  Node    →  a point where the individual RESIDES / decides │
 │  Branch  →  an ACTION taken by the individual (an edge)    │
 │  Leaf    →  the PAYOFF of the full sequence of actions     │
-└───────────────────────────────────────────────────────────┘
+└────────────────────────────────────────────────────────────┘
 ```
 
 Textual (ASCII) skeleton:
@@ -259,12 +259,12 @@ E[u(X)| Fₐ] = ∫  u(x) dFₐ(x)
 This is the continuous cousin of the same idea: instead of summing over a finite list of outcomes, you integrate over the whole continuous range, weighted by the CDF.
 
 ```
-┌──────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────┐
 │  EXPECTED UTILITY — the ONE idea behind both formulas      │
-├──────────────────────────────────────────────────────────┤
-│  discrete:    Σ  (how good) × (how likely)                │
-│  continuous:  ∫  (how good) × (how likely, as a density)  │
-└──────────────────────────────────────────────────────────┘
+├────────────────────────────────────────────────────────────┤
+│  discrete:    Σ  (how good) × (how likely)                 │
+│  continuous:  ∫  (how good) × (how likely, as a density)   │
+└────────────────────────────────────────────────────────────┘
 ```
 
 > 🍼 **Kid version:** If a scratch card has a 75% chance of ₹10 and a 25% chance of ₹0, your "fair expectation" isn't ₹10 or ₹0 — it's `0.75×10 + 0.25×0 = ₹7.5`. Expected utility is exactly this idea, just with "how good" (`u`) instead of raw cash, so it also works when outcomes aren't money.
@@ -286,9 +286,9 @@ Full worked numeric comparisons (including a famous case where **changing just O
 ## 6. Cheat Sheet & Exam Hacks
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
-║  ADVANCED AI — LEC 02 ONE-LINERS                                  ║
-╠══════════════════════════════════════════════════════════════════╣
+╔════════════════════════════════════════════════════════════════════╗
+║  ADVANCED AI — LEC 02 ONE-LINERS                                   ║
+╠════════════════════════════════════════════════════════════════════╣
 ║  Decision tree: Node=decide | Branch=action | Leaf=payoff          ║
 ║                                                                    ║
 ║  Simple lottery (discrete): p|ₐ=(p(x₁|a),...,p(xₙ|a)) ∈ Δ(X)       ║
@@ -297,14 +297,14 @@ Full worked numeric comparisons (including a famous case where **changing just O
 ║  Simple lottery (continuous): Fₐ(x) = Pr(X ≤ x|a) ∈ Δ(X)           ║
 ║    rules: Fₐ(-∞)=0, Fₐ(+∞)=1, non-decreasing, right-continuous     ║
 ║                                                                    ║
-║  Compound lottery = a lottery whose PRIZES are lotteries            ║
+║  Compound lottery = a lottery whose PRIZES are lotteries           ║
 ║  (collapses to a simple lottery via chain rule + total probability)║
 ║                                                                    ║
 ║  EXPECTED UTILITY:                                                 ║
-║    discrete:    E[u(X)|p|ₐ] = Σᵢ u(xᵢ)·p(xᵢ|a)                    ║
-║    continuous:  E[u(X)|Fₐ]  = ∫ u(x) dFₐ(x)                       ║
-║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                               ║
-╚══════════════════════════════════════════════════════════════════╝
+║    discrete:    E[u(X)|p|ₐ] = Σᵢ u(xᵢ)·p(xᵢ|a)                     ║
+║    continuous:  E[u(X)|Fₐ]  = ∫ u(x) dFₐ(x)                        ║
+║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                              ║
+╚════════════════════════════════════════════════════════════════════╝
 ```
 
 ### ⚡ Exam Red Flags
