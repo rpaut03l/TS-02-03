@@ -49,11 +49,11 @@ Every individual decision problem has exactly three ingredients:
 
 ```
 ┌───────────────────────────────────────────────────────────┐
-│  INDIVIDUAL DECISION PROBLEM                               │
+│  INDIVIDUAL DECISION PROBLEM                              │
 ├───────────────────────────────────────────────────────────┤
-│  A  =  Actions      "what I can CHOOSE"                    │
-│  X  =  Outcomes     "what actually HAPPENS"                │
-│  ≿  =  Preferences  "how I RANK what happens"  (also: R)   │
+│  A  =  Actions      "what I can CHOOSE"                   │
+│  X  =  Outcomes     "what actually HAPPENS"               │
+│  ≿  =  Preferences  "how I RANK what happens"  (also: R)  │
 └───────────────────────────────────────────────────────────┘
 ```
 
@@ -242,12 +242,12 @@ For the individual to be able to act rationally, they must know:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  RATIONAL CHOICE ASSUMPTION — the 4 "must-knows"         │
+│  RATIONAL CHOICE ASSUMPTION — the 4 "must-knows"        │
 ├─────────────────────────────────────────────────────────┤
-│  1. Know A          (the menu)                           │
-│  2. Know X           (what can happen)                   │
-│  3. Know x*: A → X   (which action → which outcome)      │
-│  4. Know u over X    (own ranking/payoff of outcomes)     │
+│  1. Know A          (the menu)                          │
+│  2. Know X           (what can happen)                  │
+│  3. Know x*: A → X   (which action → which outcome)     │
+│  4. Know u over X    (own ranking/payoff of outcomes)   │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -291,13 +291,13 @@ A decision tree is just a **map of "if I go this way, then that way, I end up he
 ### Anatomy of a Decision Tree
 
 ```
-┌───────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────┐
 │  DECISION TREE PARTS                                       │
-├───────────────────────────────────────────────────────────┤
+├────────────────────────────────────────────────────────────┤
 │  Node    →  a point where the individual RESIDES / decides │
 │  Branch  →  an ACTION taken by the individual (an edge)    │
 │  Leaf    →  the PAYOFF of the full sequence of actions     │
-└───────────────────────────────────────────────────────────┘
+└────────────────────────────────────────────────────────────┘
 ```
 
 Textual (ASCII) skeleton:
@@ -320,7 +320,7 @@ Two movie theatres near your home: **Inox** (closer) and **PVR** (farther). Each
 
 ```
                           YOU (root)
-                 ┌──────────────┴──────────────┐
+                  ┌──────────────┴────────────┐
             Go to Inox                    Go to PVR
            ┌──────┼──────┐             ┌──────┼──────┐
       Casablanca  GWTW  Dr.S       Matrix  BladeRunner Aliens
@@ -512,12 +512,12 @@ E[u(X)| Fₐ] = ∫  u(x) dFₐ(x)
 This is the continuous cousin of the same idea: instead of summing over a finite list of outcomes, you integrate over the whole continuous range, weighted by the CDF.
 
 ```
-┌──────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────┐
 │  EXPECTED UTILITY — the ONE idea behind both formulas      │
-├──────────────────────────────────────────────────────────┤
-│  discrete:    Σ  (how good) × (how likely)                │
-│  continuous:  ∫  (how good) × (how likely, as a density)  │
-└──────────────────────────────────────────────────────────┘
+├────────────────────────────────────────────────────────────┤
+│  discrete:    Σ  (how good) × (how likely)                 │
+│  continuous:  ∫  (how good) × (how likely, as a density)   │
+└────────────────────────────────────────────────────────────┘
 ```
 
 > 🍼 **Kid version:** If a scratch card has a 75% chance of ₹10 and a 25% chance of ₹0, your "fair expectation" isn't ₹10 or ₹0 — it's `0.75×10 + 0.25×0 = ₹7.5`. Expected utility is exactly this idea, just with "how good" (`u`) instead of raw cash, so it also works when outcomes aren't money.
@@ -539,39 +539,39 @@ Full worked numeric comparisons (including a famous case where **changing just O
 ## 11. Cheat Sheet & Exam Hacks
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
-║  ADVANCED AI — LEC 01 ONE-LINERS                                  ║
-╠══════════════════════════════════════════════════════════════════╣
-║  Decision problem = (A, X, ≿)                                     ║
-║    A = actions, X = outcomes, ≿ = preferences over X               ║
-║                                                                    ║
-║  ≿ weak | ≻ strict = ≿ AND NOT(reverse ≿) | ∼ tie = ≿ both ways    ║
-║                                                                    ║
-║  RATIONAL ≿  =  COMPLETE (no skips) + TRANSITIVE (no loops)        ║
-║                                                                    ║
+╔═════════════════════════════════════════════════════════════════════╗
+║  ADVANCED AI — LEC 01 ONE-LINERS                                    ║
+╠═════════════════════════════════════════════════════════════════════╣
+║  Decision problem = (A, X, ≿)                                       ║
+║    A = actions, X = outcomes, ≿ = preferences over X                ║
+║                                                                     ║
+║  ≿ weak | ≻ strict = ≿ AND NOT(reverse ≿) | ∼ tie = ≿ both ways     ║
+║                                                                     ║
+║  RATIONAL ≿  =  COMPLETE (no skips) + TRANSITIVE (no loops)         ║
+║                                                                     ║
 ║  u: X → ℝ represents ≿   ⟺   u(x) ≥ u(y) ⟺ x ≿ y                  ║
 ║  THEOREM: ≿ rational + X finite  ⟹  representing u EXISTS          ║
-║                                                                    ║
-║  Rational Choice Assumption: know A, know X, know x*:A→X, know u   ║
-║  v(a) = u(x*(a))     — payoff of an ACTION, not just an outcome    ║
-║  Rational choice: pick a* with v(a*) ≥ v(a) for all a ∈ A          ║
-║                                                                    ║
-║  Decision tree: Node=decide | Branch=action | Leaf=payoff          ║
-║                                                                    ║
-║  Simple lottery (discrete): p|ₐ=(p(x₁|a),...,p(xₙ|a)) ∈ Δ(X)       ║
-║    rules: 0 ≤ p(xᵢ|a) ≤ 1   AND   Σ p(xᵢ|a) = 1                    ║
-║                                                                    ║
-║  Simple lottery (continuous): Fₐ(x) = Pr(X ≤ x|a) ∈ Δ(X)           ║
-║    rules: Fₐ(-∞)=0, Fₐ(+∞)=1, non-decreasing, right-continuous     ║
-║                                                                    ║
+║                                                                     ║
+║  Rational Choice Assumption: know A, know X, know x*:A→X, know u    ║
+║  v(a) = u(x*(a))     — payoff of an ACTION, not just an outcome     ║
+║  Rational choice: pick a* with v(a*) ≥ v(a) for all a ∈ A           ║
+║                                                                     ║
+║  Decision tree: Node=decide | Branch=action | Leaf=payoff           ║
+║                                                                     ║
+║  Simple lottery (discrete): p|ₐ=(p(x₁|a),...,p(xₙ|a)) ∈ Δ(X)        ║
+║    rules: 0 ≤ p(xᵢ|a) ≤ 1   AND   Σ p(xᵢ|a) = 1                     ║
+║                                                                     ║
+║  Simple lottery (continuous): Fₐ(x) = Pr(X ≤ x|a) ∈ Δ(X)            ║
+║    rules: Fₐ(-∞)=0, Fₐ(+∞)=1, non-decreasing, right-continuous      ║
+║                                                                     ║
 ║  Compound lottery = a lottery whose PRIZES are lotteries            ║
-║  (collapses to a simple lottery via chain rule + total probability)║
-║                                                                    ║
-║  EXPECTED UTILITY:                                                 ║
-║    discrete:    E[u(X)|p|ₐ] = Σᵢ u(xᵢ)·p(xᵢ|a)                    ║
-║    continuous:  E[u(X)|Fₐ]  = ∫ u(x) dFₐ(x)                       ║
+║  (collapses to a simple lottery via chain rule + total probability) ║
+║                                                                     ║
+║  EXPECTED UTILITY:                                                  ║
+║    discrete:    E[u(X)|p|ₐ] = Σᵢ u(xᵢ)·p(xᵢ|a)                      ║
+║    continuous:  E[u(X)|Fₐ]  = ∫ u(x) dFₐ(x)                         ║
 ║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                               ║
-╚══════════════════════════════════════════════════════════════════╝
+╚═════════════════════════════════════════════════════════════════════╝
 ```
 
 ### ⚡ Exam Red Flags
