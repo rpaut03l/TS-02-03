@@ -114,19 +114,19 @@ browser.
 
 ```
  ┌────────────────┐      ┌──────────────┐      ┌──────────────┐
- │  TF SavedModel │ ───► │  Converter    │ ───► │  .tflite     │
- │  (or Keras)    │      │  (+ optimize, │      │  flatbuffer  │
- │                │      │   quantize)   │      │  file        │
+ │  TF SavedModel │ ───► │  Converter   │ ───► │  .tflite     │
+ │  (or Keras)    │      │  (+ optimize,│      │  flatbuffer  │
+ │                │      │   quantize)  │      │  file        │
  └────────────────┘      └──────────────┘      └──────────────┘
                                                       │
                                                       ▼
                             ┌────────────────────────────────────────────┐
-                            │               TFLite Interpreter            │
-                            │  ┌──────┐ ┌──────┐ ┌──────┐ ┌───────────┐   │
-                            │  │ CPU  │ │ GPU  │ │NNAPI │ │ Hexagon / │   │
-                            │  │ XNNP │ │delg. │ │delg. │ │ Core ML / │   │
-                            │  │ ACK  │ │      │ │      │ │ Edge TPU  │   │
-                            │  └──────┘ └──────┘ └──────┘ └───────────┘   │
+                            │               TFLite Interpreter           │
+                            │  ┌──────┐ ┌──────┐ ┌──────┐ ┌───────────┐  │
+                            │  │ CPU  │ │ GPU  │ │NNAPI │ │ Hexagon / │  │
+                            │  │ XNNP │ │delg. │ │delg. │ │ Core ML / │  │
+                            │  │ ACK  │ │      │ │      │ │ Edge TPU  │  │
+                            │  └──────┘ └──────┘ └──────┘ └───────────┘  │
                             └────────────────────────────────────────────┘
 ```
 
@@ -183,10 +183,10 @@ file and tell it which chip to run on. It figures out the rest.
 
 ```
  ┌──────────────────────────────────────────────────────────────┐
- │                        ONNX Runtime                           │
- │                                                                │
+ │                        ONNX Runtime                          │
+ │                                                              │
  │  ┌────────────┐       ┌─────────────────────────────────┐    │
- │  │  Graph     │  ──►  │         Execution Providers      │    │
+ │  │  Graph     │  ──►  │         Execution Providers     │    │
  │  │  Optimizer │       ├──────────────┬──────────────────┤    │
  │  └────────────┘       │  CUDA EP     │ TensorRT EP      │    │
  │         ▲             │  OpenVINO EP │ CoreML EP        │    │
@@ -259,10 +259,10 @@ wrote it for their silicon.
  └─────────────┘                                         │
                                                          ▼
                                 ┌───────────────────────────────────────────┐
-                                │            OpenVINO Runtime                │
-                                │                                            │
-                                │  Devices: CPU · GPU · NPU · AUTO · MULTI · │
-                                │           HETERO                           │
+                                │            OpenVINO Runtime               │
+                                │                                           │
+                                │ Devices: CPU · GPU · NPU · AUTO · MULTI · │
+                                │           HETERO                          │
                                 └───────────────────────────────────────────┘
 ```
 
@@ -345,12 +345,12 @@ same ONNX. Devices download only the artifact they need.
 
 ```
                     ┌──────────────────┐
-                    │  Training code    │
-                    │  (PyTorch / TF)   │
+                    │  Training code   │
+                    │  (PyTorch / TF)  │
                     └────────┬─────────┘
                              ▼
                     ┌──────────────────┐
-                    │    model.onnx     │   ← single source of truth
+                    │    model.onnx    │   ← single source of truth
                     └──────┬──┬──┬─────┘
                            │  │  │
               ┌────────────┘  │  └────────────┐
