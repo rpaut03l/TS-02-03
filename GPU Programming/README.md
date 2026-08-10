@@ -2,7 +2,7 @@
 
 ### *How to make a computer do a million things at the same time — notes, code, and practice*
 
-> 🔗 **Repo:** [github.com/rpaut03l/TS-02](https://github.com/rpaut03l/TS-02) · GPU Programming track
+> 🔗 **Repo:** [github.com/rpaut03l/TS-02-03](https://github.com/rpaut03l/TS-02-03) · GPU Programming track
 >
 > **Style:** Every topic explained (easy story + picture), then deeper technical details, then real runnable code.
 
@@ -29,46 +29,132 @@ Each GPU core is much simpler than a CPU core — but a GPU has *thousands* of t
 
 ---
 
-## 📁 Contents of this folder
+## 🧭 Two tracks live in this folder — read this first
 
-| # | Lecture | Folder |
-|---|---|---|
-| 1 | **Introduction to GPUs** — The 6 processors powering modern AI (CPU / GPU / TPU / NPU / LPU / DPU) + FPGA, memory hierarchy, Amdahl's Law, why GPUs for AI | [Lec_01_Introduction/](Lec_01_Introduction/) |
-| 2 | **CPU Basics · CUDA Programming Model · GPU Architecture** — ISA, threads/blocks/grids, warps, SIMT vs SIMD, memory hierarchy, full workload flow | [Lec_02_CPU_CUDA_Basics/](Lec_02_CPU_CUDA_Basics/) |
-| ⭐ | **EdgeAI sub-track** *(self-study deep-dive, not a lecture)* — Fundamentals, every Edge GPU family (Jetson / discrete / iGPU / mobile SoC), non-GPU hardware (NPUs / MCUs / FPGAs) + Edge-vs-Cloud comparison, and CUDA for the edge (JetPack, TensorRT, unified memory) | [EdgeAI/](EdgeAI/) |
+This repo has **two parallel sets of lecture folders**, and telling them apart matters:
 
-Each lecture folder has the same **trio** of files:
+| Naming pattern | What it is | Source | Best for |
+|---|---|---|---|
+| **`Lecture_0N_...`** | Accurate transcription + deep-dive of the **actual course slides** (Prof. Binod Kumar) | Real uploaded lecture PDFs | Exam prep, assignments, anything graded |
+| **`Lec_0N_...`** | Earlier hands-on, Colab-runnable companion notes, written before the real slides were available | General CUDA knowledge, not slide-sourced | Building intuition, extra practice, running code for fun |
 
-| File | Purpose |
-|---|---|
-| `*_theory.md` | **5-year-old stories first**, then deeper technical depth. Mnemonic → TOC → numbered sections with boxed diagrams → cheat sheet → red-flag quick-reference |
-| `*_code.md` | **Runnable code** — CUDA C (compiled with `nvcc`) and Python equivalents (`numba.cuda`, `cupy`). Every concept from theory gets a snippet |
-| `*_practice.md` | **Google Colab ready** (free T4 GPU!) or Kaggle — paste cells, run, see the GPU actually work |
+**When in doubt, `Lecture_0N_...` is the one that matches what's actually being taught.** `Lec_0N_...` is kept because it's still useful supplementary material, not because it duplicates the same content.
 
 ---
 
-## 🧭 How to use this folder
+## 📁 Contents of this folder
 
-1. **Read `theory.md` first.** No code required. If the 5-year-old story makes sense, the technical part will too.
-2. **Go through `code.md`.** Short snippets, heavily commented. Type them out; don't just read.
-3. **Open `practice.md` in Google Colab.** On Colab, **Runtime → Change runtime type → T4 GPU** to get a free GPU. Paste cells one at a time.
+### 🎓 Course lectures — accurate, slide-sourced (`Lecture_0N`)
 
-> 💡 **No physical GPU needed.** Google Colab's free tier gives you a real NVIDIA T4 GPU with CUDA pre-installed. Kaggle also offers free GPU notebooks. Everything in this folder is designed to run on those free tiers.
+| # | Lecture | What's inside | Folder |
+|---|---|---|---|
+| 1 | **GPU Fundamentals & Hardware Accelerators** | Hardware platform landscape (CPU/GPU/TPU/NPU/FPGA/ASIC), CPU vs GPU design philosophy, memory hierarchy, Amdahl's Law derived + worked, real case studies (battery thermal sim, CNN inference benchmarks), the accelerator flexibility-vs-efficiency spectrum | [Lecture_01_GPU_Fundamentals_Hardware_Accelerators/](Lecture_01_GPU_Fundamentals_Hardware_Accelerators/) |
+| 2 | **CUDA Programming Model, SIMT & Fermi Architecture** | CUDA↔OpenCL terminology, SIMT vs SIMD, GPU microarchitecture, the Fermi Streaming Multiprocessor in full detail, warps, a fully worked occupancy calculation, latency×throughput scheduling math, memory hierarchy, kernel launch syntax | [Lecture_02_CUDA_Programming_Model_SIMT_Fermi/](Lecture_02_CUDA_Programming_Model_SIMT_Fermi/) |
+| 3 | **Thread Hierarchy, Memory & Your First Kernel** | The 9-step GPU programming recipe, `dim3`, a fully worked grid/block index problem, real Fermi hardware specs, Hello World with actual device code, hands-on runnable exercises | [Lecture_03_Thread_Hierarchy_Memory_HelloWorld/](Lecture_03_Thread_Hierarchy_Memory_HelloWorld/) |
+| 4 | **Vector/Matrix Kernels & Indexing** | Block-only → block+thread indexing, boundary-safe kernels for arbitrary sizes, host/device synchronization, JIT compilation (Numba/CuPy/PyCUDA), matrix multiplication as N² independent inner products, shared-memory reduction, hands-on runnable exercises | [Lecture_04_Vector_Matrix_Kernels_Indexing/](Lecture_04_Vector_Matrix_Kernels_Indexing/) |
+
+Each `Lecture_0N` folder follows the same four-file structure:
+
+| File | Purpose |
+|---|---|
+| `*_theory.md` | Baby-story opener → formal concepts → ASCII diagrams → cheat sheet → exam hacks |
+| `*_numerical.md` | Every worked example rebuilt from first principles, step by step, with multiple additional practice problems |
+| `*_code.md` *(Lec 3 & 4)* | Hands-on runnable exercises — paste into Colab/RunPod, see the real output, break things on purpose to see why guardrails matter |
+| `*_practice.md` | Self-test Q&A, rapid-fire true/false rounds, full multi-part sample exam questions with marks breakdowns |
+
+---
+
+### 🧩 Basic — the canonical code, every line explained
+
+| Folder | What's inside |
+|---|---|
+| [Basic/](Basic/) | The two textbook programs — **Vector Addition** and **Matrix Multiplication** — in CUDA C++ and three Python flavors (Numba, PyCUDA, CuPy), plus [`CODE_WALKTHROUGH.md`](Basic/CODE_WALKTHROUGH.md), which explains **every single line** of every file for someone who's never read CUDA before |
+
+```
+Basic/
+├── README.md
+├── CODE_WALKTHROUGH.md
+├── cpp/
+│   ├── 01_vector_add.cu
+│   └── 02_matrix_mul.cu
+└── python/
+    ├── 01_vector_add_numba.py
+    ├── 02_matrix_mul_pycuda.py
+    └── 03_matrix_mul_cupy.py
+```
+
+---
+
+### 🏭 Enterprise Ops — production GPU cluster administration
+
+*(Self-study, not from the course — real-world sysadmin/infra skills that build directly on everything above.)*
+
+| Folder | What's inside |
+|---|---|
+| [Enterprise_Ops/AX100_A100_Cluster_Admin/](Enterprise_Ops/AX100_A100_Cluster_Admin/) | A 290+ command deep-dive reference for managing AX100/A100 GPU clusters: `nvidia-smi` monitoring & MIG/ECC/power/clock management, `nvcc`/MPS, VRAM reclamation & node recovery, NVLink/fabric topology, kernel module & driver interrogation, NUMA/AVX-512 tuning, NCCL/UVM environment variables, Nsight Systems/Compute profiling, PyTorch assertion snippets, NVMe I/O monitoring, InfiniBand/RoCE diagnostics — **plus an appendix walking through a real, live-captured terminal session on an actual A100-SXM4-80GB node**, including a command that fails and exactly why |
+
+---
+
+### 🌐 EdgeAI — running GPUs at the edge
+
+*(Self-study deep-dive, not a lecture — the natural next step after learning desktop/datacenter GPU programming.)*
+
+| Topic | What's inside | Folder |
+|---|---|---|
+| **Fundamentals** | What Edge AI is, why it matters, where it fits (Cloud AI vs Edge AI trade-offs) | [EdgeAI/Fundamentals/](EdgeAI/Fundamentals/) |
+| **Hardware (beyond GPUs)** | The non-GPU chips — NPUs, MCUs, FPGAs — plus the Edge-vs-Cloud GPU comparison table | [EdgeAI/Hardware/](EdgeAI/Hardware/) |
+| **GPU Types** | Every variety of GPU that shows up on the edge — Jetson, discrete, integrated GPU, mobile SoC | [EdgeAI/GPU_Types/](EdgeAI/GPU_Types/) |
+| **CUDA for the Edge** | How CUDA changes moving from desktop to Jetson — JetPack, TensorRT, unified memory, DeepStream | [EdgeAI/CUDA_for_Edge/](EdgeAI/CUDA_for_Edge/) |
+| **Model Compression** | Shrink the model, speed it up, keep the accuracy — quantization, pruning, distillation | [EdgeAI/Model_Compression/](EdgeAI/Model_Compression/) |
+| **Deployment Frameworks** | TensorFlow Lite, ONNX Runtime, OpenVINO — the three runtimes that matter | [EdgeAI/Deployment_Frameworks/](EdgeAI/Deployment_Frameworks/) |
+| **TinyML** | AI that runs on a button-cell battery — microcontrollers, kilobytes, milliwatts | [EdgeAI/TinyML/](EdgeAI/TinyML/) |
+| **Federated Learning & On-Device Training** | Learn from everyone's data, without anyone's data ever leaving their device | [EdgeAI/Federated_Learning/](EdgeAI/Federated_Learning/) |
+| **Security & Privacy** | Secure boot, encrypted weights, adversarial attacks, side channels, regulations | [EdgeAI/Security_Privacy/](EdgeAI/Security_Privacy/) |
+| **Edge MLOps** | Ship, update, monitor, roll back — models that live in millions of devices | [EdgeAI/Edge_MLOps/](EdgeAI/Edge_MLOps/) |
+
+Start at [EdgeAI/README.md](EdgeAI/README.md) for the full orientation (the Cloud-vs-Edge homework analogy, and why Edge AI lives inside a GPU Programming repo at all), and see [EdgeAI/TODO_NEXT.md](EdgeAI/TODO_NEXT.md) for what's planned next in this sub-track.
+
+Every EdgeAI topic folder follows the same theory → code → practice trio as the main lectures (e.g. `edge_ai_fundamentals_theory.md`, `edge_ai_fundamentals_code.md`, `edge_ai_fundamentals_practice.md`).
+
+---
+
+### 🧑‍🏫 Hands-on companion lectures (`Lec_0N`, pre-slide-upload material)
+
+| # | Topic | Folder |
+|---|---|---|
+| 1 | **Introduction to GPUs** — hardware families overview, memory hierarchy, Amdahl's Law, why GPUs for AI (general, Colab-runnable companion — not slide-sourced) | [Lec_01_Introduction/](Lec_01_Introduction/) |
+| 2 | **CPU Basics · CUDA Programming Model · GPU Architecture** — ISA, threads/blocks/grids, warps, SIMT vs SIMD, memory hierarchy, full workload flow (general, Colab-runnable companion — not slide-sourced) | [Lec_02_CPU_CUDA_Basics/](Lec_02_CPU_CUDA_Basics/) |
+
+Each follows the theory → code → practice trio, with `practice.md` built as a paste-into-Colab notebook rather than a Q&A set — useful for building hands-on muscle memory alongside the accurate `Lecture_0N` material above.
+
+---
+
+## 🧭 How to use this repo
+
+1. **Following the course for a grade?** Go straight to `Lecture_01` → `Lecture_04`, in order. Each folder's `theory.md` and `numerical.md` are what you'd actually study from.
+2. **Want to just run code and see it work?** Start with [Basic/](Basic/) — copy any file, run it on Colab or RunPod, and read [CODE_WALKTHROUGH.md](Basic/CODE_WALKTHROUGH.md) alongside it.
+3. **New to GPUs entirely, want the gentlest possible on-ramp?** `Lec_01_Introduction` → `Lec_02_CPU_CUDA_Basics` first, then move into the `Lecture_0N` series once the basic shape feels familiar.
+4. **Curious about edge devices (Jetson, phones, microcontrollers)?** Start at [EdgeAI/README.md](EdgeAI/README.md).
+5. **Managing a real GPU cluster in production?** [Enterprise_Ops/AX100_A100_Cluster_Admin/](Enterprise_Ops/AX100_A100_Cluster_Admin/) is the reference to keep open in a second tab.
+
+> 💡 **No physical GPU needed for anything in this repo.** Google Colab's free tier gives you a real NVIDIA T4 GPU with CUDA pre-installed; RunPod.io gives you on-demand access to specific GPU models (including A100-class) by the hour. Everything here is designed to run on either.
 
 ---
 
 ## 📚 Topic roadmap
 
-Planned topics in this track (more folders will be added over time):
-
-- ✅ **Lec 1** — Introduction to GPU Programming (hardware families, parallelism, Amdahl's Law)
-- ✅ **Lec 2** — CPU basics, CUDA programming model, GPU architecture
-- ✅ **EdgeAI sub-track** — full deep-dive on running GPUs at the edge (see [EdgeAI/](EdgeAI/))
-- 🔭 Memory optimization (coalescing, shared memory tiling)
+- ✅ **Lecture 1** — GPU Fundamentals & Hardware Accelerators
+- ✅ **Lecture 2** — CUDA Programming Model, SIMT & Fermi Architecture
+- ✅ **Lecture 3** — Thread Hierarchy, Memory & Your First Kernel
+- ✅ **Lecture 4** — Vector/Matrix Kernels & Indexing
+- ✅ **Basic** — canonical Vector Add / Matrix Multiply code bundle, every line explained
+- ✅ **EdgeAI sub-track** — full deep-dive on running GPUs at the edge (10 topics)
+- ✅ **Enterprise_Ops sub-track** — AX100/A100 cluster administration reference
+- 🔭 Memory optimization (coalescing, shared memory tiling) in more depth
 - 🔭 Reductions, prefix sums, histograms
-- 🔭 Matrix multiplication deep dive
 - 🔭 Streams, concurrency, multi-GPU
-- 🔭 Profiling and optimization (nsys, ncu)
+- 🔭 Profiling and optimization (`nsys`, `ncu`) applied to a full training loop
+- 🔭 Case studies (following the course textbook's later chapters)
 
 ---
 
@@ -79,7 +165,8 @@ Planned topics in this track (more folders will be added over time):
 - [Numba CUDA documentation](https://numba.readthedocs.io/en/stable/cuda/index.html) — Python-first CUDA
 - [CuPy](https://docs.cupy.dev/) — NumPy API on the GPU
 - [Google Colab](https://colab.research.google.com) — free CUDA-capable GPU
+- [RunPod.io](https://www.runpod.io) — on-demand GPU rental, pick your exact GPU model
 
 ---
 
-> *github.com/rpaut03l/TS-02*
+> *github.com/rpaut03l/TS-02-03*
