@@ -102,19 +102,19 @@ GPU:  high-latency, high-throughput  -> moderate clock freq, small caches,
 ### The classic diagram
 ```
         CPU                                    GPU
-+------------+--------+--------+     +----+----+----+----+----+----+----+----+
-|            |  ALU   |  ALU   |     | c  |    |    |    |    |    |    |    |
-|  Control   +--------+--------+     +----+----+----+----+----+----+----+----+
-|            |  ALU   |  ALU   |     | c  |    |    |    |    |    |    |    |
-+------------+--------+--------+     +----+----+----+----+----+----+----+----+
-|                                |    | c  |    |    |    |    |    |    |    |
-|             Cache              |    +----+----+----+----+----+----+----+----+
-|                                |    | c  |    |          GPU               |
-+---------------------------------+    +----+----+----+----+----+----+----+----+
-|             DRAM                |    | c  |    |    |    |    |    |    |    |
-+---------------------------------+    +----+----+----+----+----+----+----+----+
-                                       |            DRAM                     |
-                                       +---------------------------------------+
++------------+--------+--------+    +----+----+----+----+----+----+----+----+
+|            |  ALU   |  ALU   |    | c  |    |    |    |    |    |    |    |
+|  Control   +--------+--------+    +----+----+----+----+----+----+----+----+
+|            |  ALU   |  ALU   |    | c  |    |    |    |    |    |    |    |
++------------+--------+--------+    +----+----+----+----+----+----+----+----+
+|                              |    | c  |    |    |    |    |    |    |    |
+|             Cache            |    +----+----+----+----+----+----+----+----+
+|                              |    | c  |    |          GPU                |
++------------------------------+    +----+----+----+----+----+----+----+----+
+|             DRAM             |    | c  |    |    |    |    |    |    |    |
++------------------------------+    +----+----+----+----+----+----+----+----+
+                                    |            DRAM                       |
+                                    +---------------------------------------+
 ```
 - CPU: a few big, complex, general-purpose ALUs, a large control unit, deep caches.
 - GPU: hundreds/thousands of small, simple ALUs — most of the chip area goes to compute lanes, not control logic or cache.
@@ -144,12 +144,12 @@ Neither chip is universally "better" — the right question is always "is this w
  |  Core   |Control ||  Core   |Control |   +--------------------------+
  |  L1     Cache    ||  L1     Cache    |   |         L2 Cache         |
  +---------+--------++---------+--------+   +--------------------------+
- |     L2 Cache      ||     L2 Cache      |  |          DRAM            |
- +--------------------+--------------------+ +--------------------------+
- |              L3 Cache                  |
- +-----------------------------------------+
- |               DRAM                      |
- +-----------------------------------------+
+ |     L2 Cache      ||     L2 Cache    |   |          DRAM            |
+ +--------------------+-----------------+   +--------------------------+
+ |              L3 Cache                |
+ +--------------------------------------+
+ |               DRAM                   |
+ +--------------------------------------+
 ```
 **The key contrast:** a CPU stacks up THREE cache levels (L1 per-core, L2 per-core, L3 shared) precisely because each of its few cores is doing complex, unpredictable work that benefits from big caches. A GPU has only ONE shared cache level (L2) above DRAM — with thousands of simple cores, the GPU instead hides memory latency by having so many threads in flight that some are always ready to compute while others wait on memory (more on this in [Lecture 02](../Lecture_02_CUDA_Programming_Model_SIMT_Fermi/gpu_lecture02_simt_fermi_theory.md)).
 
