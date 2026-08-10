@@ -73,7 +73,7 @@ Multiple parallel programming models exist for GPUs: **CUDA** (Compute Unified D
              |
              v
   +------------------+  +------------------+
-  |   Thread Block    |..|   Thread Block    |
+  |   Thread Block    |..|   Thread Block  |
   +------------------+  +------------------+
              |
              v
@@ -113,11 +113,11 @@ Multiple parallel programming models exist for GPUs: **CUDA** (Compute Unified D
 ```
   Data:          [1][8]   [3][6]   [7][4]   [7][6]
                     \  /     \  /     \  /     \  /
-  Instructions:      +         +         +         +
-                     |         |         |         |
-  Threads:          Th0       Th1       Th2       Th3
-                     |         |         |         |
-  SIMD Unit:      [busy]    [busy]    [busy]    [busy]
+  Instructions:      +         +        +        +
+                     |         |        |        |
+  Threads:          Th0       Th1      Th2      Th3
+                     |         |        |        |
+  SIMD Unit:      [busy]    [busy]    [busy]   [busy]
 ```
 One instruction is applied to MULTIPLE pieces of data at once — a single fixed-width vector operation.
 
@@ -130,23 +130,23 @@ One instruction is applied to MULTIPLE pieces of data at once — a single fixed
 ## 4. GPU Microarchitecture
 
 ```
-+-----------------------------------------------------------------------------+
++------------------------------------------------------------------------------+
 |                                    GPU                                       |
-| +-------------------+  +-------------------+          +-------------------+ |
-| | SIMT Core Cluster  |  | SIMT Core Cluster  |          | SIMT Core Cluster  | |
-| | +--------+--------+|  | +--------+--------+|   ...    | +--------+--------+| |
-| | |  SIMT  |  SIMT  ||  | |  SIMT  |  SIMT  ||          | |  SIMT  |  SIMT  || |
-| | |  Core  |  Core  ||  | |  Core  |  Core  ||          | |  Core  |  Core  || |
-| | +--------+--------+|  | +--------+--------+|          | +--------+--------+| |
-| +-------------------+  +-------------------+          +-------------------+ |
+| +-------------------+  +-------------------+          +--------------------+ |
+| | SIMT Core Cluster  | | SIMT Core Cluster  |          | SIMT Core Cluster  ||
+| | +--------+--------+| | +--------+--------+|   ...    | +--------+--------+||
+| | |  SIMT  |  SIMT  || | |  SIMT  |  SIMT  ||          | |  SIMT  |  SIMT  |||
+| | |  Core  |  Core  || | |  Core  |  Core  ||          | |  Core  |  Core  |||
+| | +--------+--------+| | +--------+--------+|          | +--------+--------+||
+| +-------------------+  +-------------------+          +-------------------+  |
 +---------------------------------+-------------------------------------------+
 |                     Interconnection Network                                  |
-+------------+------------------+--------------------------+-----------------+
-| Memory     |    Memory        |          ...              |    Memory       |
-| Partition  |    Partition     |                            |    Partition   |
-+------------+------------------+--------------------------+-----------------+
-| GDDR3/GDDR5|    GDDR3/GDDR5   |     Off-chip DRAM          |   GDDR3/GDDR5  |
-+------------+------------------+--------------------------+-----------------+
++------------+------------------+--------------------------+-------------------+
+| Memory     |    Memory        |          ...              |    Memory        |
+| Partition  |    Partition     |                            |    Partition    |
++------------+------------------+--------------------------+-------------------+
+| GDDR3/GDDR5|    GDDR3/GDDR5   |     Off-chip DRAM          |   GDDR3/GDDR5   |
++------------+------------------+--------------------------+-------------------+
 ```
 GDDR = **G**raphics **D**ual-**D**ata **R**ate — the type of high-bandwidth off-chip memory used on discrete GPUs.
 
@@ -158,22 +158,22 @@ GDDR = **G**raphics **D**ual-**D**ata **R**ate — the type of high-bandwidth of
 
 **Chip-level layout:**
 ```
-+---------------------------------------------------------------------+
++----------------------------------------------------------------------+
 |DRAM|H|                                                          |DRAM|
-|I/F |o|      [SM] [SM] [SM] [SM] [SM] [SM] [SM] [SM]              |I/F |
+|I/F |o|      [SM] [SM] [SM] [SM] [SM] [SM] [SM] [SM]             |I/F |
 |    |s|                                                          |    |
 |    |t|------------------------------------------------------    |    |
 |DRAM|I|                        L2 Cache                          |DRAM|
 |I/F |/|------------------------------------------------------    |I/F |
 |    |F|                                                          |    |
-|    |G|      [SM] [SM] [SM] [SM] [SM] [SM] [SM] [SM]              |    |
+|    |G|      [SM] [SM] [SM] [SM] [SM] [SM] [SM] [SM]             |    |
 |DRAM|i|                                                          |DRAM|
 |I/F |g|                                                          |I/F |
 |    |a|                                                          |    |
 |    |T|                                                          |    |
 |DRAM|h|                                                          |DRAM|
 |I/F |d|                                                          |I/F |
-+---------------------------------------------------------------------+
++----------------------------------------------------------------------+
    HOST I/F = Host Interface   |   GigaThread = kernel/block dispatch engine
 ```
 
@@ -196,11 +196,11 @@ GDDR = **G**raphics **D**ual-**D**ata **R**ate — the type of high-bandwidth of
 | Core   | Core   | LD/ST  | SFU    |
 | Core   | Core   | LD/ST  |        |
 +--------+--------+--------+--------+
-|                  Interconnect Network                                    |
+|                  Interconnect Network                                     |
 +---------------------------------------------------------------------------+
-|              64 KB Shared Memory / L1 Cache (configurable)               |
+|              64 KB Shared Memory / L1 Cache (configurable)                |
 +---------------------------------------------------------------------------+
-|                            Uniform Cache                                 |
+|                            Uniform Cache                                  |
 +---------------------------------------------------------------------------+
 
   ONE CUDA Core internally:
@@ -262,13 +262,13 @@ STEP 6:  Device supports 32 warps/SM.
 **Visual pipeline (logical -> hardware -> execution):**
 ```
  Logical view          Hardware view           Execution
-+--------------+     +----------------+     +--------------------+
++--------------+     +----------------+     +---------------------+
 | Thread Block |     |  32 threads    |     |    CONTROL LOGIC    |
 |  (wavy line  | --> |  32 threads    | --> |  [core][core]...    |
 |   pattern)   |     |  32 threads    |     |  [core][core]...    |
 |              |     |  32 threads    |     |  [core][core]...    |
 |              |     |  32 threads    |     |     Multiprocessor  |
-+--------------+     +----------------+     +--------------------+
++--------------+     +----------------+     +---------------------+
 ```
 
 **Why this matters:** occupancy is the single most-tested "does the student actually understand scheduling" question in this course — every number in the 6-step derivation above (256, 4, 8, 1024, 32, 32) has to be checked against a DIFFERENT hardware limit at each step, and the smallest limiting factor wins.
@@ -333,8 +333,8 @@ LATENCY  ...      v   v   v   v   v   v   v   v   v
               +----------------+-----------------+
                                v
               +-------------------------------------+
-              |               Global                 |
-              |   Constant            Texture         |
+              |               Global                |
+              |   Constant            Texture       |
               +-------------------------------------+
                                ^
                         +-------------+
@@ -369,13 +369,13 @@ STEP 5: Results are moved back to device memory and transferred back to the host
 ```
 ```
    Host (CPU)                                   Device (GPU)
-+-------------+   (1) Copy to GPU mem      +-------------------------+
-|             | -------------------------> |                         |
++-------------+   (1) Copy to GPU mem      +--------------------------+
+|             | -------------------------> |                          |
 | Host Memory |   (2) Launch kernel        |     Device Memory        |
 |             | -------------------------> |  (accessed via memory    |
-|             |                             |    hierarchy by many     |
-|             |   (3) Results copied back   |    concurrent threads)   |
-|             | <------------------------- |                         |
+|             |                            |    hierarchy by many     |
+|             |   (3) Results copied back  |    concurrent threads)   |
+|             | <------------------------- |                          |
 +-------------+                             +-------------------------+
 ```
 This is the SAME 3-step "Simple Processing Flow" from Lecture 01/02's slides, just spelled out into its full 5-numbered form: **copy in → launch → compute in parallel → access memory hierarchy → copy out.**
@@ -418,20 +418,20 @@ threadIdx.x = 0,1,2,3, 0,1,2,3     (resets to 0 at the start of EACH block)
 **The full grid/block/thread picture:**
 ```
 Host                    Device
-+--------+     +-----------------------------------+
++--------+     +-------------------------------------+
 |Kernel 1|---->| Grid 1                              |
-+--------+     |  Block(0,0) Block(0,1) Block(0,2)  |
-               |  Block(1,0) Block(1,1) Block(1,2)  |
-               +-----------------------------------+
-+--------+     +-----------------------------------+
++--------+     |  Block(0,0) Block(0,1) Block(0,2)   |
+               |  Block(1,0) Block(1,1) Block(1,2)   |
+               +-------------------------------------+
++--------+     +-------------------------------------+
 |Kernel 2|---->| Grid 2  (empty in this example)     |
-+--------+     +-----------------------------------+
++--------+     +-------------------------------------+
 
   Zoomed into Block(1,1):
-  +--------------------------------------------+
+  +-------------------------------------------------+
   | Thread(0,0) Thread(0,1) Thread(0,2) Thread(0,3) |
   | Thread(1,0) Thread(1,1) Thread(1,2) Thread(1,3) |
-  +--------------------------------------------+
+  +-------------------------------------------------+
 ```
 
 [🔝 Back to Top](#-lecture-02--cuda-programming-model-simt--fermi-architecture-theory)
