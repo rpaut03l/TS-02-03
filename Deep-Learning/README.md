@@ -28,7 +28,7 @@ TS-02-03/
     │       ├── README.md
     │       └── dl_lecture01_param_counter.py
     │
-    ├── Lecture-02-Neural-Networks/             <- same 5-piece skeleton (pending)
+    ├── Lecture-02-Neural-Networks/             
     ├── Lecture-03-Convolutional-Neural-Networks/
     ├── Lecture-04-Recurrent-Neural-Networks/
     ├── Lecture-05-LSTM/
