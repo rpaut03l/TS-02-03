@@ -47,7 +47,7 @@ A = { ∅, Apple, Orange, Pear, AA, OO, PP, AO, AP, OP }  →  10 total actions
 
 ```
                                 YOU (root, decide slot 1)
-              ┌──────────┬──────────┬──────────┬─────────┐
+              ┌──────────┬──────────┬──────────┬
             Stop        Apple      Orange      Pear
            (leaf)      (decide     (decide    (decide
              v=0        slot 2)     slot 2)    slot 2)
@@ -89,13 +89,13 @@ max(0, 30, 20, 25, −5, 40, 50, 50, −5, 45, 55, −22.5) = 55
 ## 🧠 Mnemonic & Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════════════╗
-║  "SAME-KIND RULE CHANGES ONLY HIT SAME-KIND PAIRS"                ║
-║  When a rule specifically targets "the second X of the same       ║
+╔════════════════════════════════════════════════════════════════════╗
+║  "SAME-KIND RULE CHANGES ONLY HIT SAME-KIND PAIRS"                 ║
+║  When a rule specifically targets "the second X of the same        ║
 ║  kind," only the AA/OO/PP-style entries move — mixed pairs         ║
 ║  (AO/AP/OP) are mathematically untouched. Recompute ONLY what      ║
 ║  the rule actually changes, then re-scan the whole table for max.  ║
-╚══════════════════════════════════════════════════════════════╝
+╚════════════════════════════════════════════════════════════════════╝
 ```
 
 **Exam-relevant takeaway:** this is the direct Chapter 1 counterpart to Lecture 02's "Odds don't flip you — Outcomes do" lesson — here it's "a targeted rule change doesn't flip you, it flips only the specific options it targets," and the ripple effect (AA collapsing promotes AP to the top) is exactly the kind of second-order reasoning exams test.
