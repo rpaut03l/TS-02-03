@@ -56,7 +56,7 @@ Camry ≻ Impreza ≻ Corolla ≻ Civic ≻ LeSabre
 
 ```
                                 YOU (root)
-        ┌──────────┬──────────┬──────────┬──────────┬──────────┐
+        ┌──────────┬──────────┬──────────┬──────────┬
       Camry      Impreza    Corolla     Civic     LeSabre
      (leaf)      (leaf)     (leaf)      (leaf)      (leaf)
       u=5          u=4        u=3         u=2          u=1
@@ -80,14 +80,14 @@ or even unevenly spaced numbers like `u = (50, 49, 10, 9, 1)` — as long as `Ca
 ## 🧠 Mnemonic & Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════════════╗
-║  "CHECK EVERY ADJACENT GAP AGAINST ITS THRESHOLD"                 ║
-║  For tier-jump thresholds: prefer higher tier UNLESS                ║
+╔══════════════════════════════════════════════════════════════════════╗
+║  "CHECK EVERY ADJACENT GAP AGAINST ITS THRESHOLD"                    ║
+║  For tier-jump thresholds: prefer higher tier UNLESS                 ║
 ║  lower tier is cheaper by MORE than the threshold amount.            ║
 ║  Transitivity then extends any surviving adjacent chain end-to-end.  ║
-║                                                                     ║
+║                                                                      ║
 ║  Utility numbers are NEVER unique — only ORDER matters.              ║
-╚══════════════════════════════════════════════════════════════════╝
+╚══════════════════════════════════════════════════════════════════════╝
 ```
 
 **Exam-relevant takeaway:** this exercise is the practical version of Lecture 01 §4's "⚠️ what this theorem does NOT say" warning — a representing utility function is never the *only* valid one, and exams love testing whether you understand that relabeling numbers (while preserving order) changes nothing about the rational choice.
