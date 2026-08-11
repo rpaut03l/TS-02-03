@@ -113,14 +113,14 @@ v(c)
 ## 🧠 Mnemonic & Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════════════╗
+╔══════════════════════════════════════════════════════════════════╗
 ║  "ALWAYS CHECK THE CAP AFTER SOLVING v'(c)=0"                    ║
-║  1. Simplify v(c), take v'(c), set to 0, solve for c*.            ║
-║  2. Check v''(c)<0 to confirm a maximum, not a minimum.            ║
-║  3. Compare c* against any hard boundary/cap.                      ║
-║  4. If c* > cap: check v'(cap) — if still positive, the TRUE       ║
-║     optimum is the CAP itself (a corner solution), not c*.          ║
-╚══════════════════════════════════════════════════════════════╝
+║  1. Simplify v(c), take v'(c), set to 0, solve for c*.           ║
+║  2. Check v''(c)<0 to confirm a maximum, not a minimum.          ║
+║  3. Compare c* against any hard boundary/cap.                    ║
+║  4. If c* > cap: check v'(cap) — if still positive, the TRUE     ║
+║     optimum is the CAP itself (a corner solution), not c*.       ║
+╚══════════════════════════════════════════════════════════════════╝
 ```
 
 **Exam-relevant takeaway:** this is the single most commonly missed step in continuous-optimization exam problems — always sanity-check your calculus answer against any stated constraint. An unconstrained maximum that falls outside the legal/physical range is not the real answer; the real answer becomes whichever boundary the constraint pushes you against, provided the function is still improving in that direction.
