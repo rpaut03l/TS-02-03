@@ -79,12 +79,12 @@ max(3, 1, 2, −2, 2, 3) = 3  →  TWO leaves tie:
 ## 🧠 Mnemonic & Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════╗
-║  "ALPHABET IN, DISTANCE OUT"                            ║
-║  Assign payoffs from your preference order FIRST,       ║
+╔══════════════════════════════════════════════════════════╗
+║  "ALPHABET IN, DISTANCE OUT"                             ║
+║  Assign payoffs from your preference order FIRST,        ║
 ║  then subtract cost from the LEAF, never the branch.     ║
 ║  Watch for TIES when cost differences match payoff gaps. ║
-╚══════════════════════════════════════════════════════╝
+╚══════════════════════════════════════════════════════════╝
 ```
 
 **Exam-relevant takeaway:** this is the textbook example of Lecture 02 §6's exam trap — "a close second exam trap ... costs affect `v(a)`, not any probability." Costs are always subtracted directly from the leaf value, and always check whether the cost gap between two branches exactly matches (or exceeds) the payoff gap, since that's exactly when ties or flips occur.
