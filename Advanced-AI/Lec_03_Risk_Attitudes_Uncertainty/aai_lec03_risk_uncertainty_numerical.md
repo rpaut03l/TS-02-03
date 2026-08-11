@@ -293,22 +293,22 @@ E[u(X)|F_PVR] = 3.5   <   E[u(X)|F_Inox] = 4.0
 ## 5. Formula Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
+╔════════════════════════════════════════════════════════════════════╗
 ║  FORMULAS — COPY THESE DOWN BEFORE THE EXAM                        ║
-╠══════════════════════════════════════════════════════════════════╣
+╠════════════════════════════════════════════════════════════════════╣
 ║  Risk Neutral:  E[u(X)|Fₐ] = u(E[X|Fₐ])                            ║
 ║  Risk Averse:   E[u(X)|Fₐ] ≤ u(E[X|Fₐ])                            ║
 ║  Risk Loving:   E[u(X)|Fₐ] ≥ u(E[X|Fₐ])                            ║
-║                                                                     ║
+║                                                                    ║
 ║  St. Petersburg general term: 2^(k-1) · (1/2)^k = 1/2  (always!)   ║
 ║  Geometric series:      Σ_{k=1}^∞ r^k   = r/(1-r)                  ║
 ║  Weighted geometric:    Σ_{k=1}^∞ k·r^k = r/(1-r)²                 ║
-║                                                                     ║
-║  Certainty equivalent:  u(CE) = E[u(X)]  →  solve for CE            ║
-║                                                                     ║
-║  Rational choice under uncertainty:                                 ║
+║                                                                    ║
+║  Certainty equivalent:  u(CE) = E[u(X)]  →  solve for CE           ║
+║                                                                    ║
+║  Rational choice under uncertainty:                                ║
 ║    choose a* with E[u(X)|F_{a*}] ≥ E[u(X)|Fₐ]  for all a ∈ A       ║
-╚══════════════════════════════════════════════════════════════════╝
+╚════════════════════════════════════════════════════════════════════╝
 ```
 
 [↑ Back to Top](#-advanced-ai--lec-03-risk-attitudes--rational-choice-under-uncertainty--numerical)
