@@ -30,7 +30,7 @@ b=2: 0.25c ≤ 0.25 → c ≤ 1   → c = 0,1            (2 options)
 ```
                               YOU (root: how many bananas?)
               ┌──────────────────┬──────────────────┐
-            b=0                 b=1                 b=2
+            b=0                 b=1                b=2
        (how many candy?)   (how many candy?)   (how many candy?)
       ┌─┬─┬─┬─┬─┐          ┌─┬─┬─┬─┐            ┌─┬─┐
     c=0..5 (6 leaves)   c=0..3 (4 leaves)      c=0..1 (2 leaves)
@@ -91,13 +91,13 @@ c=2: 0.60 − 0.60 = 0.00
 ## 🧠 Mnemonic & Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════════╗
+╔══════════════════════════════════════════════════════════════╗
 ║  "SPEND UNTIL NET GOES NEGATIVE"                             ║
-║  With diminishing returns, keep buying an item only while     ║
-║  its NEXT unit's payoff exceeds its price. The moment the      ║
-║  next unit's marginal payoff < price, STOP — even with          ║
-║  money left over. Leftover cash still counts as value!         ║
-╚══════════════════════════════════════════════════════════╝
+║  With diminishing returns, keep buying an item only while    ║
+║  its NEXT unit's payoff exceeds its price. The moment the    ║
+║  next unit's marginal payoff < price, STOP — even with       ║
+║  money left over. Leftover cash still counts as value!       ║
+╚══════════════════════════════════════════════════════════════╝
 ```
 
 **Exam-relevant takeaway:** whenever a problem says "you value money," always add back leftover budget as its own payoff term — forgetting this is the #1 way to wrongly conclude you should always spend everything.
