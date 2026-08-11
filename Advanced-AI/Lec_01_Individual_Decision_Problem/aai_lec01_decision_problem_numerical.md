@@ -177,22 +177,22 @@ max(v(order_pizza), v(order_burger), v(order_salad)) = max(3, 1, 1) = 3
 ## 4. Formula Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
+╔═══════════════════════════════════════════════════════════════════╗
 ║  FORMULAS — COPY THESE DOWN BEFORE THE EXAM                       ║
-╠══════════════════════════════════════════════════════════════════╣
-║  Weak:      x ≿ y                                                  ║
-║  Strict:    x ≻ y  ⟺  x ≿ y ∧ ¬(y ≿ x)                            ║
-║  Indiff:    x ∼ y  ⟺  x ≿ y ∧ y ≿ x                                ║
-║                                                                    ║
-║  Completeness:  ∀ x,y ∈ X:  x ≿ y  or  y ≿ x                       ║
-║  Transitivity:  ∀ x,y,z ∈ X:  x ≿ y ∧ y ≿ z  ⟹  x ≿ z              ║
-║                                                                    ║
-║  Representation:      u(x) ≥ u(y)  ⟺  x ≿ y                       ║
+╠═══════════════════════════════════════════════════════════════════╣
+║  Weak:      x ≿ y                                                 ║
+║  Strict:    x ≻ y  ⟺  x ≿ y ∧ ¬(y ≿ x)                           ║
+║  Indiff:    x ∼ y  ⟺  x ≿ y ∧ y ≿ x                              ║
+║                                                                   ║
+║  Completeness:  ∀ x,y ∈ X:  x ≿ y  or  y ≿ x                      ║
+║  Transitivity:  ∀ x,y,z ∈ X:  x ≿ y ∧ y ≿ z  ⟹  x ≿ z            ║
+║                                                                   ║
+║  Representation:      u(x) ≥ u(y)  ⟺  x ≿ y                      ║
 ║  Tied outcomes MUST get the SAME u-value                          ║
-║                                                                    ║
-║  Value of an action:  v(a) = u(x*(a))                              ║
-║  Rational choice:     choose a* with v(a*) ≥ v(a)  ∀ a ∈ A         ║
-╚══════════════════════════════════════════════════════════════════╝
+║                                                                   ║
+║  Value of an action:  v(a) = u(x*(a))                             ║
+║  Rational choice:     choose a* with v(a*) ≥ v(a)  ∀ a ∈ A        ║
+╚═══════════════════════════════════════════════════════════════════╝
 ```
 
 [↑ Back to Top](#-advanced-ai--lec-01-individual-rational-decision-paradigm--numerical)
