@@ -37,18 +37,18 @@ Every exercise in this folder is the same core skill from [Lecture 01](../Lec_01
 ## 🧠 The Three Solution Patterns Used Across This Chapter
 
 ```
-┌────────────────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────────────┐
 │  PATTERN 1 — SHORT DISCRETE LIST (1.1, 1.2, 1.6)                 │
 │  List every option by hand, compute v(a) for each, pick max.     │
-│                                                                   │
+│                                                                  │
 │  PATTERN 2 — BUDGET-CONSTRAINED COMBINATIONS (1.3, 1.5)          │
 │  List every combination that fits the budget, compute total      │
 │  value (or use a "net value per item" shortcut), pick max.       │
-│                                                                   │
+│                                                                  │
 │  PATTERN 3 — CONTINUOUS ACTION SET (1.4, 1.7)                    │
 │  a is any real number in a range. Take v'(a), set to 0, solve    │
 │  for a*, confirm v''(a) < 0 (a maximum), check a* fits any cap.  │
-└────────────────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────────────────┘
 ```
 
 Recognizing which pattern a problem uses is 80% of solving it correctly — the rest is careful arithmetic.
