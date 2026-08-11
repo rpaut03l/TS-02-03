@@ -49,11 +49,11 @@ u(Home-packed meal)        = 6
 ### Step 6 — Draw the decision tree
 
 ```
-                         YOU (root)
+                      YOU (root)
               ┌──────────┼──────────┐
-        Sandwich shop  Salad bar   Pack lunch
-           (leaf)       (leaf)      (leaf)
-            u=8           u=5         u=6
+        Sandwich shop  Salad bar  Pack lunch
+           (leaf)       (leaf)     (leaf)
+            u=8          u=5        u=6
 ```
 A flat, single-level tree — one decision, three branches, three leaves. No sequential structure needed since this is a one-shot choice.
 
@@ -74,12 +74,12 @@ Swap in your own regularly-faced decision using the same seven steps: name it pr
 ## 🧠 Mnemonic & Cheat Sheet
 
 ```
-╔════════════════════════════════════════════════════╗
+╔══════════════════════════════════════════════════════╗
 ║  "LIST, LIST, LATER" — the three-step discipline     ║
-║  1. LIST actions A                                    ║
+║  1. LIST actions A                                   ║
 ║  2. LIST outcomes X  (separately, even if similar!)  ║
-║  3. Assign preference/payoff LATER, never upfront     ║
-╚════════════════════════════════════════════════════╝
+║  3. Assign preference/payoff LATER, never upfront    ║
+╚══════════════════════════════════════════════════════╝
 ```
 
 **Exam-relevant takeaway:** this exercise is really testing whether you understand that `A`, `X`, and `≿` are three genuinely separate objects in the decision-problem definition (Lecture 01 §1), not three names for the same thing.
