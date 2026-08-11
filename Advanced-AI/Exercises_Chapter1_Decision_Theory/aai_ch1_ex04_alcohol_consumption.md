@@ -86,13 +86,13 @@ v(a)
 ## 🧠 Mnemonic & Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════════╗
+╔═══════════════════════════════════════════════════════════════╗
 ║  "DERIVE, ZERO, CHECK CONCAVE, BOUND BY EXTREMES"             ║
-║  1. v'(a) = θ − 8a           (derive)                        ║
-║  2. θ−8a=0 → a*=θ/8          (zero)                          ║
+║  1. v'(a) = θ − 8a           (derive)                         ║
+║  2. θ−8a=0 → a*=θ/8          (zero)                           ║
 ║  3. v''(a)=−8<0 → confirmed max (check concave)               ║
 ║  4. Plug in θ_min, θ_max for population-wide bounds (extremes)║
-╚══════════════════════════════════════════════════════════╝
+╚═══════════════════════════════════════════════════════════════╝
 ```
 
 **Exam-relevant takeaway:** whenever a payoff is quadratic (`v(a) = pa² + qa + r` or, equivalently written, `θa − 4a²`), the optimum is always at `a* = −q/(2p)` — here that shortcut gives `a* = −θ/(2×(−4)) = θ/8`, matching the derivative method exactly. Both routes always agree for quadratics.
