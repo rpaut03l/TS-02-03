@@ -177,25 +177,31 @@ max(v(order_pizza), v(order_burger), v(order_salad)) = max(3, 1, 1) = 3
 ## 4. Formula Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
-║  FORMULAS — COPY THESE DOWN BEFORE THE EXAM                      ║
-╠══════════════════════════════════════════════════════════════════╣
-║  Weak:      x ≿ y                                                ║
-║  Strict:    x ≻ y  ⟺  x ≿ y ∧ ¬(y ≿ x)                          ║
-║  Indiff:    x ∼ y  ⟺  x ≿ y ∧ y ≿ x                             ║
-║                                                                  ║
-║  Completeness:  ∀ x,y ∈ X:  x ≿ y  or  y ≿ x                     ║
-║  Transitivity:  ∀ x,y,z ∈ X:  x ≿ y ∧ y ≿ z  ⟹  x ≿ z           ║
-║                                                                  ║
-║  Representation:      u(x) ≥ u(y)  ⟺  x ≿ y                     ║
-║  Tied outcomes MUST get the SAME u-value                         ║
-║                                                                  ║
-║  Value of an action:  v(a) = u(x*(a))                            ║
-║  Rational choice:     choose a* with v(a*) ≥ v(a)  ∀ a ∈ A       ║
-╚══════════════════════════════════════════════════════════════════╝
+╔═══════════════════════════════════════════════════════════════════╗
+║  FORMULAS — COPY THESE DOWN BEFORE THE EXAM                       ║
+╠═══════════════════════════════════════════════════════════════════╣
+║  Weak:      x ≿ y                                                 ║
+║  Strict:    x ≻ y  ⟺  x ≿ y ∧ ¬(y ≿ x)                           ║
+║  Indiff:    x ∼ y  ⟺  x ≿ y ∧ y ≿ x                              ║
+║                                                                   ║
+║  Completeness:  ∀ x,y ∈ X:  x ≿ y  or  y ≿ x                      ║
+║  Transitivity:  ∀ x,y,z ∈ X:  x ≿ y ∧ y ≿ z  ⟹  x ≿ z            ║
+║                                                                   ║
+║  Representation:      u(x) ≥ u(y)  ⟺  x ≿ y                      ║
+║  Tied outcomes MUST get the SAME u-value                          ║
+║                                                                   ║
+║  Value of an action:  v(a) = u(x*(a))                             ║
+║  Rational choice:     choose a* with v(a*) ≥ v(a)  ∀ a ∈ A        ║
+╚═══════════════════════════════════════════════════════════════════╝
 ```
 
 [↑ Back to Top](#-advanced-ai--lec-01-individual-rational-decision-paradigm--numerical)
+
+---
+
+## 📝 Summary
+
+Every worked example in this file exists to turn Lecture 01's abstract symbols into something you can actually compute by hand. Checking rationality (§1) is really just two habits: scan every pair of outcomes to confirm none are left unranked (completeness), and chase any chain of "beats-or-ties" comparisons to make sure it never loops back on itself (transitivity) — and when it does loop, that's precisely the money-pump trap the theory is designed to catch. Building a representing utility function (§2) turned out to be almost mechanical once you know the trick: find the best and worst outcomes, group anything tied together into the same "class," and count upward from worst to best — with the one sharp warning that tied outcomes must always receive the exact same number, never two different ones. The u-vs-v example (§3) showed why Lecture 01 insists on keeping actions and outcomes as separate objects — an action's *name* can be misleading about what it actually delivers once real-world substitutions happen, and only `v(a) = u(x*(a))` tracks the truth. Keep this file bookmarked as your formula reference; nearly every calculation in the Chapter 1 exercises folder — especially Exercise 1.5's car-preference thresholds and Exercise 1.1's payoff assignments — leans directly on the exact same two techniques practiced here.
 
 ---
 

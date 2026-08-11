@@ -205,6 +205,12 @@ Choose `a* ∈ A` such that `v(a*) ≥ v(a)` for all `a ∈ A`.
 
 ---
 
+## 📝 Summary
+
+The whole point of practicing this material through short questions instead of long lectures is that decision theory reveals its cracks in small, sneaky places — a single un-ranked pair breaking completeness, a single mis-numbered tie breaking a utility representation, a single mismatched action-to-outcome mapping breaking the rational choice rule. Working through these drills should have left you with three reflexes that will carry through the rest of the course: first, whenever you see a preference relation, immediately check every pair for completeness and every three-outcome chain for transitivity before trusting it's rational. Second, whenever you build a utility function by hand, sort worst-to-best into indifference classes first, and never let two tied outcomes drift apart in value. Third, always separate what an action is *called* from what it actually *produces* — the mini task in §4 was designed specifically to make you build your own action-to-outcome map and notice how easily the two can diverge. If any of these three reflexes still feel shaky, that's exactly the gap Exercise 1.1 through 1.7 in the Chapter 1 Exercises folder were built to close, using real numbers and real scenarios instead of toy symbols.
+
+---
+
 > **← Back:** [🧮 NUMERICAL](aai_lec01_decision_problem_numerical.md) · [📖 THEORY](aai_lec01_decision_problem_theory.md) · [🏠 Lec 01 README](README.md)
 >
 > **Onward:** [Lecture 02 — Decision Trees, Risk & Lotteries →](../Lec_02_Decision_Trees_Risk_Lotteries/README.md)

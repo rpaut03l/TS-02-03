@@ -29,7 +29,7 @@
 ### Part (1) — Draw the tree, no payoffs yet
 
 ```
-                                    YOU  (root node)
+                                YOU  (root node)
                      ┌───────────────┴───────────────┐
                 Go to Inox                       Go to PVR
                 (action)                          (action)
@@ -63,7 +63,7 @@ Aliens, Blade Runner, Casablanca, Dr. Strangelove, Gone with the Wind, The Matri
 **Step 3: attach these payoffs to the leaves.**
 
 ```
-                                    YOU
+                                YOU
                      ┌───────────────┴───────────────┐
                 Go to Inox                       Go to PVR
           ┌─────────┼─────────┐            ┌──────────┼──────────┐
@@ -329,6 +329,12 @@ E[u|s] = (10 × 0.50) + (0 × 0.50) = 5.0
 ```
 
 [↑ Back to Top](#-advanced-ai--lec-02-decision-trees-risk--lotteries--numerical)
+
+---
+
+## 📝 Summary
+
+Every calculation in this file is built to make one thing second nature: expected utility is nothing more than "multiply each outcome's goodness by its likelihood, then add." The movie-theatre decision tree showed this rule applied to a real, multi-branch choice — and its walking-cost twist proved something worth remembering forever: adding a cost to two options can turn a clear winner into a tie, simply by shrinking the exact gap that separated them. The lottery comparisons (§2 and §3) walked through the same expected-value formula three times with slightly different numbers, and the third pass delivered this file's most important lesson: swapping just one payoff value, while keeping every probability untouched, was enough to completely flip which gamble a rational person should prefer. The compound-lottery reduction confirmed that stacking randomness in layers never actually creates anything new mathematically — multiply along each path, group by final outcome, and you get back an ordinary simple lottery you already know how to evaluate. Keep this file's formula box close whenever you tackle a Chapter 1 exercise involving trees or budgets — Exercise 1.2's theater problem and Exercise 1.6's fruit-tree problem are both direct descendants of the exact movie-tree method worked out in §1 here.
 
 ---
 

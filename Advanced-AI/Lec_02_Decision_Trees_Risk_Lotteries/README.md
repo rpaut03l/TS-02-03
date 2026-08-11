@@ -2,7 +2,7 @@
 
 ### *Decision Trees · Nature · Simple & Compound Lotteries · Expected Utility*
 
-> **Nav:** [← Advanced AI](../README.md) | [⬅️ Prev: Lec 01](../Lec_01_Individual_Decision_Problem/README.md) | **Lec 02**
+> **Nav:** [← Advanced AI](../README.md) | [⬅️ Prev: Lec 01](../Lec_01_Individual_Decision_Problem/README.md) | **Lec 02** | [Lec 03 ➡️](../Lec_03_Risk_Attitudes_Uncertainty/README.md)
 
 ---
 
@@ -53,6 +53,7 @@ This is the last stop before real *game theory* — once you can rank one person
 
 ### 🧠 From this same repo (TS-02-03)
 - **[Lecture 01 — Individual Rational Decision Paradigm](../Lec_01_Individual_Decision_Problem/README.md)** — the direct prerequisite: this lecture's `u`, `v`, and decision-tree leaves all come straight from Lec 01's definitions. If any notation here feels unfamiliar, that's where it's introduced.
+- **[Lecture 03 — Risk Attitudes & Rational Choice Under Uncertainty](../Lec_03_Risk_Attitudes_Uncertainty/README.md)** — the direct continuation: takes this lecture's expected utility formula and asks *why* a rational person might still prefer a sure thing over a gamble with the exact same expected value.
 - **[Advanced AI subject README](../README.md)** — full topic roadmap for this track (strategic games, Nash equilibrium, etc. still to come).
 
 ### 📘 From the companion Trimester-1 repo (TS-01)
@@ -62,6 +63,17 @@ This is the last stop before real *game theory* — once you can rank one person
 
 ### 📖 Course textbook reference
 This lecture's material (decision trees, risk, lotteries, expected utility) follows the standard "decision theory under uncertainty" section that typically follows the deterministic-choice chapter in game-theory textbooks (e.g., Tadelis, *Game Theory: An Introduction*, Ch. 1, later sections). Treat this folder as an ELI5-annotated, fully-worked companion — use the textbook for formal proofs (e.g. the full Expected Utility Theorem / von Neumann–Morgenstern axioms) and extra exercises, this folder for intuition and step-by-step numeric practice.
+
+### 🎯 Where these concepts appear in the Chapter 1 Exercises
+- **[Exercise 1.2](../Exercises_Chapter1_Decision_Theory/aai_ch1_ex02_going_to_movies.md)** — the exact same decision-tree structure as §1's movie-theatre example, renamed and re-solved
+- **[Exercise 1.6](../Exercises_Chapter1_Decision_Theory/aai_ch1_ex06_fruit_trees.md)** — a combinatorial decision tree using the same node/branch/leaf convention from §1
+- Note: none of the Chapter 1 exercises involve actual randomness/lotteries — §2 through §5 (Nature, simple/compound lotteries, expected utility) are pure preparation for Lecture 03 and beyond
+
+---
+
+## 📝 Summary
+
+Lecture 02 is where "what should I choose" grows a second dimension: not just *which* action is best, but best *on average*, once luck gets involved. Decision trees gave you a way to literally see multi-step choices laid out node by node, and the movie-theatre walkthrough proved that adding real costs to a tree can quietly turn a clear favorite into a tie. Simple lotteries pinned down exactly what "randomness" means mathematically — a spinner of probabilities for a short list of outcomes, or a smooth cumulative curve for a continuous range — and compound lotteries showed that even multi-layered randomness always collapses back into one of those two familiar shapes. The lecture's centerpiece, expected utility, is deceptively simple (multiply goodness by likelihood, add it all up) but hides a sharp lesson: identical odds can still produce opposite rational choices if even one payoff number changes. By the end, Lecture 01's clean "pick the biggest number" rule got its first real upgrade — from certain payoffs to *expected* payoffs — setting up exactly the question Lecture 03 asks next: given two options with the same expected payoff, would a rational person really be indifferent between them?
 
 ---
 

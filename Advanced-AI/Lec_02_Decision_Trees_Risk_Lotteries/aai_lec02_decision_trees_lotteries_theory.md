@@ -66,10 +66,10 @@ This is exactly [Lecture 01](../Lec_01_Individual_Decision_Problem/README.md)'s 
 Two movie theatres near your home: **Inox** (closer) and **PVR** (farther). Each shows 3 different films. Your decision tree:
 
 ```
-                          YOU (root)
-                 ┌──────────────┴──────────────┐
+                           YOU (root)
+                 ┌──────────────┴────────────┐
             Go to Inox                    Go to PVR
-           ┌──────┼──────┐             ┌──────┼──────┐
+          ┌──────┼──────┐             ┌──────┼──────┐
       Casablanca  GWTW  Dr.S       Matrix  BladeRunner Aliens
         LEAF      LEAF  LEAF        LEAF      LEAF     LEAF
 ```
@@ -123,9 +123,9 @@ For every a ∈ A, if p|ₐ ∈ Δ(X), then:
 
         ┌─────────────┐
         │   p=0.75    │  → outcome 10
-        │   ┌───┐     │
+        │   ┌────┐    │
         │   │0.25│    │  → outcome 0
-        └───┴───┴─────┘
+        └───┴────┴────┘
    0.75 + 0.25 = 1.00  ✓ valid lottery
 ```
 
@@ -259,12 +259,12 @@ E[u(X)| Fₐ] = ∫  u(x) dFₐ(x)
 This is the continuous cousin of the same idea: instead of summing over a finite list of outcomes, you integrate over the whole continuous range, weighted by the CDF.
 
 ```
-┌────────────────────────────────────────────────────────────┐
-│  EXPECTED UTILITY — the ONE idea behind both formulas      │
-├────────────────────────────────────────────────────────────┤
-│  discrete:    Σ  (how good) × (how likely)                 │
-│  continuous:  ∫  (how good) × (how likely, as a density)   │
-└────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────┐
+│  EXPECTED UTILITY — the ONE idea behind both formulas    │
+├──────────────────────────────────────────────────────────┤
+│  discrete:    Σ  (how good) × (how likely)               │
+│  continuous:  ∫  (how good) × (how likely, as a density) │
+└──────────────────────────────────────────────────────────┘
 ```
 
 > 🍼 **Kid version:** If a scratch card has a 75% chance of ₹10 and a 25% chance of ₹0, your "fair expectation" isn't ₹10 or ₹0 — it's `0.75×10 + 0.25×0 = ₹7.5`. Expected utility is exactly this idea, just with "how good" (`u`) instead of raw cash, so it also works when outcomes aren't money.
@@ -318,6 +318,12 @@ Full worked numeric comparisons (including a famous case where **changing just O
 7. **A close second exam trap** — forgetting that a walking-cost / effort-cost style penalty in a decision tree must be subtracted from the LEAF payoff, not from the branch probability. Costs affect `v(a)`, not `Δ(X)`.
 
 [↑ Back to Top](#-advanced-ai--lec-02-decision-trees-risk--lotteries--theory)
+
+---
+
+## 📝 Summary
+
+This lecture takes Lecture 01's perfectly certain world and cracks it open: from here on, an action doesn't have to guarantee a single outcome — it can trigger a gamble, decided by an imaginary dice-rolling "Nature." Decision trees give you a literal picture of multi-step choices, with nodes marking where you decide, branches marking the action taken, and leaves marking the final payoff of an entire chain of decisions. Simple lotteries formalize the randomness itself, whether outcomes come from a short discrete list (`p|ₐ`, with probabilities that must be non-negative and sum to exactly 1) or a continuous range (`Fₐ`, a cumulative distribution function with its own four validity rules). Compound lotteries stack that randomness in layers — a lottery whose own prizes are further lotteries — but the lecture proves you can always flatten any compound lottery back down into an equivalent simple one by multiplying probabilities along each path and adding up paths that land on the same final outcome. All of this exists to support one closing formula: expected utility, `E[u(X)|Fₐ]`, which averages "how good" against "how likely" and lets you compare risky options using the exact same "pick the biggest number" instinct from Lecture 01. The single sharpest lesson: two lotteries with identical odds can still flip their ranking the moment even one payoff number changes — probabilities alone never tell the whole story.
 
 ---
 
