@@ -235,8 +235,8 @@ Choose a* ∈ A   if and only if   E[u(X)|F_{a*}] ≥ E[u(X)|Fₐ]   for all a �
 ├───────────────────────────────────────────────────────────────────┤
 │  v(a) = u(x*(a))             │  v(a) = E[u(X)|Fₐ]                 │
 │  "the ONE payoff you get"    │  "the AVERAGE payoff you'd get"    │
-│                               │                                   │
-│  Pick a* with                 │  Pick a* with                     │
+│                              │                                    │
+│  Pick a* with                │  Pick a* with                      │
 │  v(a*) ≥ v(a)  ∀ a ∈ A       │  E[u(X)|F_{a*}] ≥ E[u(X)|Fₐ]  ∀ a  │
 └───────────────────────────────────────────────────────────────────┘
 ```
