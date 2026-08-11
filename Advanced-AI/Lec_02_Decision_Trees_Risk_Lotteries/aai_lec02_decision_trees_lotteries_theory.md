@@ -36,13 +36,13 @@ A decision tree is just a **map of "if I go this way, then that way, I end up he
 ### Anatomy of a Decision Tree
 
 ```
-┌───────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────┐
 │  DECISION TREE PARTS                                       │
-├───────────────────────────────────────────────────────────┤
+├────────────────────────────────────────────────────────────┤
 │  Node    →  a point where the individual RESIDES / decides │
 │  Branch  →  an ACTION taken by the individual (an edge)    │
 │  Leaf    →  the PAYOFF of the full sequence of actions     │
-└───────────────────────────────────────────────────────────┘
+└────────────────────────────────────────────────────────────┘
 ```
 
 Textual (ASCII) skeleton:
@@ -66,10 +66,10 @@ This is exactly [Lecture 01](../Lec_01_Individual_Decision_Problem/README.md)'s 
 Two movie theatres near your home: **Inox** (closer) and **PVR** (farther). Each shows 3 different films. Your decision tree:
 
 ```
-                          YOU (root)
-                 ┌──────────────┴──────────────┐
+                           YOU (root)
+                 ┌──────────────┴────────────┐
             Go to Inox                    Go to PVR
-           ┌──────┼──────┐             ┌──────┼──────┐
+          ┌──────┼──────┐             ┌──────┼──────┐
       Casablanca  GWTW  Dr.S       Matrix  BladeRunner Aliens
         LEAF      LEAF  LEAF        LEAF      LEAF     LEAF
 ```
@@ -123,9 +123,9 @@ For every a ∈ A, if p|ₐ ∈ Δ(X), then:
 
         ┌─────────────┐
         │   p=0.75    │  → outcome 10
-        │   ┌───┐     │
+        │   ┌────┐    │
         │   │0.25│    │  → outcome 0
-        └───┴───┴─────┘
+        └───┴────┴────┘
    0.75 + 0.25 = 1.00  ✓ valid lottery
 ```
 
@@ -260,10 +260,10 @@ This is the continuous cousin of the same idea: instead of summing over a finite
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│  EXPECTED UTILITY — the ONE idea behind both formulas      │
+│  EXPECTED UTILITY — the ONE idea behind both formulas    │
 ├──────────────────────────────────────────────────────────┤
-│  discrete:    Σ  (how good) × (how likely)                │
-│  continuous:  ∫  (how good) × (how likely, as a density)  │
+│  discrete:    Σ  (how good) × (how likely)               │
+│  continuous:  ∫  (how good) × (how likely, as a density) │
 └──────────────────────────────────────────────────────────┘
 ```
 
@@ -286,9 +286,9 @@ Full worked numeric comparisons (including a famous case where **changing just O
 ## 6. Cheat Sheet & Exam Hacks
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
-║  ADVANCED AI — LEC 02 ONE-LINERS                                  ║
-╠══════════════════════════════════════════════════════════════════╣
+╔════════════════════════════════════════════════════════════════════╗
+║  ADVANCED AI — LEC 02 ONE-LINERS                                   ║
+╠════════════════════════════════════════════════════════════════════╣
 ║  Decision tree: Node=decide | Branch=action | Leaf=payoff          ║
 ║                                                                    ║
 ║  Simple lottery (discrete): p|ₐ=(p(x₁|a),...,p(xₙ|a)) ∈ Δ(X)       ║
@@ -297,14 +297,14 @@ Full worked numeric comparisons (including a famous case where **changing just O
 ║  Simple lottery (continuous): Fₐ(x) = Pr(X ≤ x|a) ∈ Δ(X)           ║
 ║    rules: Fₐ(-∞)=0, Fₐ(+∞)=1, non-decreasing, right-continuous     ║
 ║                                                                    ║
-║  Compound lottery = a lottery whose PRIZES are lotteries            ║
+║  Compound lottery = a lottery whose PRIZES are lotteries           ║
 ║  (collapses to a simple lottery via chain rule + total probability)║
 ║                                                                    ║
 ║  EXPECTED UTILITY:                                                 ║
-║    discrete:    E[u(X)|p|ₐ] = Σᵢ u(xᵢ)·p(xᵢ|a)                    ║
-║    continuous:  E[u(X)|Fₐ]  = ∫ u(x) dFₐ(x)                       ║
-║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                               ║
-╚══════════════════════════════════════════════════════════════════╝
+║    discrete:    E[u(X)|p|ₐ] = Σᵢ u(xᵢ)·p(xᵢ|a)                     ║
+║    continuous:  E[u(X)|Fₐ]  = ∫ u(x) dFₐ(x)                        ║
+║  Prefer g over s  ⟺  E[u|g] ≥ E[u|s]                              ║
+╚════════════════════════════════════════════════════════════════════╝
 ```
 
 ### ⚡ Exam Red Flags
