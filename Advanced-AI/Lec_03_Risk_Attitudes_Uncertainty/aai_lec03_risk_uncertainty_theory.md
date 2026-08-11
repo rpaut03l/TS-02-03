@@ -44,16 +44,16 @@ These two quantities answer subtly different questions:
 ### The Three Formal Definitions
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
+┌───────────────────────────────────────────────────────────────────┐
 │  RISK NEUTRAL:   E[u(X)|Fₐ]  =  u(E[X|Fₐ])                        │
 │      "Averaging first or applying u first gives the SAME number." │
-│                                                                    │
+│                                                                   │
 │  RISK AVERSE:    E[u(X)|Fₐ]  ≤  u(E[X|Fₐ])                        │
 │      "The gamble feels WORSE than its own guaranteed average."    │
-│                                                                    │
+│                                                                   │
 │  RISK LOVING:    E[u(X)|Fₐ]  ≥  u(E[X|Fₐ])                        │
 │      "The gamble feels BETTER than its own guaranteed average."   │
-└──────────────────────────────────────────────────────────────────┘
+└───────────────────────────────────────────────────────────────────┘
 ```
 
 > 🍼 **Kid version:** Offer a coin flip between ₹0 and ₹4 (average = ₹2) versus a guaranteed ₹2. A **risk-neutral** person doesn't care which one they get — they're exactly indifferent. A **risk-averse** person picks the guaranteed ₹2 every time, because losing feels worse than winning feels good, even though both options pay the same on average. A **risk-loving** person actually prefers the coin flip — the thrill/upside of possibly getting more outweighs the risk of getting less.
@@ -74,14 +74,14 @@ Draw any curve on paper connecting two dots. Now draw a straight line (a "chord"
 ### The Geometry
 
 ```
-   u(x)                                     u(x)
-    |        ___----●  u(x̄)                  |                    ●  u(x̄)
-    |    ___/                                 |                 __/
-    |  _/         ← CONCAVE curve             |             ___/
+   u(x)                                       u(x)
+    |        ___----●  u(x̄)                    |                    ●  u(x̄)
+    |    ___/                                  |                 __/
+    |  _/         ← CONCAVE curve              |             ___/
     | /  ●  ← midpoint of the CHORD            |          __/
     |/   ↑ this is E[u(X)]                     |      ___/
     ●    (sits BELOW the curve)                |  ___/
-    |    ↑ u(E[X]) sits ON the curve            | ●  ← CONVEX curve
+    |    ↑ u(E[X]) sits ON the curve           | ●  ← CONVEX curve
     +------------------------- x               +------------------------- x
     RISK AVERSE: chord dips below the curve    RISK LOVING: chord sits above the curve
 ```
@@ -122,7 +122,7 @@ P(first Tail on toss k) = (1/2)^(k-1) × (1/2) = (1/2)^k
                  ┌───┴───┐
               Tail       Head → toss again
              ($1, p=1/2)      ┌───┴───┐
-                            Tail       Head → toss again
+                            Tail      Head → toss again
                           ($2, p=1/4)      ┌───┴───┐
                                         Tail       Head → ...
                                       ($4, p=1/8)
@@ -184,11 +184,11 @@ E[u(X)] = Σ_{k=1}^∞ (2^{k-1})² · (1/2)^k = Σ_{k=1}^∞ 2^{k-2} = 0.5 + 1 +
 Still infinite — because a convex function rewards big rare payoffs *even more* than raw dollars do, which only accelerates the same runaway problem.
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
+╔═══════════════════════════════════════════════════════════════════╗
 ║  u(x) = x   (linear, risk-neutral)   →  E[u(X)] = ∞   (paradox)   ║
 ║  u(x) = x²  (convex, risk-loving)    →  E[u(X)] = ∞   (worse!)    ║
 ║  u(x) = ln(x) (concave, risk-averse) →  E[u(X)] = ln(2) → CE = $2 ║
-╚══════════════════════════════════════════════════════════════════╝
+╚═══════════════════════════════════════════════════════════════════╝
 ```
 
 **Lesson:** resolving the St. Petersburg paradox specifically requires a **concave** utility function strong enough to counteract exponential payoff growth — not just "any" nonlinear function.
@@ -208,15 +208,15 @@ This closes the loop all the way back to Lec 01. Back then, a rational individua
 Compared to Lec 01's four "must-knows," there's exactly **one new requirement**:
 
 ```
-┌──────────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────────┐
 │  RATIONAL CHOICE ASSUMPTION (under uncertainty)                │
-├──────────────────────────────────────────────────────────────┤
+├────────────────────────────────────────────────────────────────┤
 │  1. Knows all actions A                    (same as Lec 01)    │
 │  2. Knows all outcomes X                   (same as Lec 01)    │
 │  3. 🆕 Knows which lottery Fₐ Nature uses,                     │
 │        for EVERY possible action a                             │
 │  4. Knows their own payoff function u over X (same as Lec 01)  │
-└──────────────────────────────────────────────────────────────┘
+└────────────────────────────────────────────────────────────────┘
 ```
 The individual must know exactly *which* lottery each action triggers — not merely that some randomness is involved, but the full `Fₐ` (or `p|ₐ`) for every single `a ∈ A`.
 
@@ -230,15 +230,15 @@ Choose a* ∈ A   if and only if   E[u(X)|F_{a*}] ≥ E[u(X)|Fₐ]   for all a �
 ### Side-by-Side with the Certainty Version (Lec 01)
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
+┌───────────────────────────────────────────────────────────────────┐
 │  NO UNCERTAINTY (Lec 01)     │  WITH UNCERTAINTY (this lecture)   │
-├─────────────────────────────────────────────────────────────────┤
+├───────────────────────────────────────────────────────────────────┤
 │  v(a) = u(x*(a))             │  v(a) = E[u(X)|Fₐ]                 │
 │  "the ONE payoff you get"    │  "the AVERAGE payoff you'd get"    │
-│                               │                                    │
-│  Pick a* with                 │  Pick a* with                      │
+│                               │                                   │
+│  Pick a* with                 │  Pick a* with                     │
 │  v(a*) ≥ v(a)  ∀ a ∈ A       │  E[u(X)|F_{a*}] ≥ E[u(X)|Fₐ]  ∀ a  │
-└─────────────────────────────────────────────────────────────────┘
+└───────────────────────────────────────────────────────────────────┘
 ```
 
 Literally the same "pick the biggest number, compared across every option" rule from Lec 01 — the only thing that changed is *how you compute the number you're maximizing.*
@@ -252,25 +252,25 @@ Literally the same "pick the biggest number, compared across every option" rule 
 ## 6. Cheat Sheet & Exam Hacks
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
+╔════════════════════════════════════════════════════════════════════╗
 ║  ADVANCED AI — LEC 03 ONE-LINERS                                   ║
-╠══════════════════════════════════════════════════════════════════╣
-║  Risk Neutral:  E[u(X)|Fₐ] = u(E[X|Fₐ])   → u is LINEAR             ║
-║  Risk Averse:   E[u(X)|Fₐ] ≤ u(E[X|Fₐ])   → u is CONCAVE             ║
-║  Risk Loving:   E[u(X)|Fₐ] ≥ u(E[X|Fₐ])   → u is CONVEX              ║
-║                                                                     ║
-║  Jensen's Inequality: chord vs curve — concave→chord below curve,   ║
-║                        convex→chord above curve                     ║
-║                                                                     ║
-║  St. Petersburg game: payoff 2^(k-1) at toss k, prob (1/2)^k        ║
-║  E[X] with u(x)=x    → ∞          (the paradox)                     ║
-║  E[u(X)] with u=ln(x) → ln(2)     → certainty equivalent = $2        ║
-║  E[u(X)] with u=x²    → ∞          (convex makes it WORSE)           ║
-║                                                                     ║
-║  Rational choice under uncertainty:                                 ║
-║    Pick a* with E[u(X)|F_{a*}] ≥ E[u(X)|Fₐ]  for all a ∈ A          ║
-║    (new "must-know": Fₐ for every action a)                         ║
-╚══════════════════════════════════════════════════════════════════╝
+╠════════════════════════════════════════════════════════════════════╣
+║  Risk Neutral:  E[u(X)|Fₐ] = u(E[X|Fₐ])   → u is LINEAR            ║
+║  Risk Averse:   E[u(X)|Fₐ] ≤ u(E[X|Fₐ])   → u is CONCAVE           ║
+║  Risk Loving:   E[u(X)|Fₐ] ≥ u(E[X|Fₐ])   → u is CONVEX            ║
+║                                                                    ║
+║  Jensen's Inequality: chord vs curve — concave→chord below curve,  ║
+║                        convex→chord above curve                    ║
+║                                                                    ║
+║  St. Petersburg game: payoff 2^(k-1) at toss k, prob (1/2)^k       ║
+║  E[X] with u(x)=x    → ∞          (the paradox)                    ║
+║  E[u(X)] with u=ln(x) → ln(2)     → certainty equivalent = $2      ║
+║  E[u(X)] with u=x²    → ∞          (convex makes it WORSE)         ║
+║                                                                    ║
+║  Rational choice under uncertainty:                                ║
+║    Pick a* with E[u(X)|F_{a*}] ≥ E[u(X)|Fₐ]  for all a ∈ A         ║
+║    (new "must-know": Fₐ for every action a)                        ║
+╚════════════════════════════════════════════════════════════════════╝
 ```
 
 ### ⚡ Exam Red Flags
