@@ -56,6 +56,17 @@ This is the bedrock of the whole Advanced AI course. Before you can reason about
 ### 📖 Course textbook reference
 This lecture's material (individual decision problems, rational preferences, utility representation) follows the standard opening section of most game-theory textbooks (e.g., Tadelis, *Game Theory: An Introduction*, Ch. 1) before those texts move on to risk and then strategic (multi-player) games. Treat this folder as an ELI5-annotated, fully-worked companion — use the textbook for formal proofs and extra exercises, this folder for intuition and step-by-step numeric practice.
 
+### 🎯 Where these concepts appear in the Chapter 1 Exercises
+- **[Exercise 1.1](../Exercises_Chapter1_Decision_Theory/aai_ch1_ex01_your_decision.md)** — directly practices §1's `(A, X)` formalization
+- **[Exercise 1.5](../Exercises_Chapter1_Decision_Theory/aai_ch1_ex05_buying_a_car.md)** — builds a preference relation by hand (§2–§3) and demonstrates §4's utility non-uniqueness
+- Every exercise in the folder uses §5's `v(a) = u(x*(a))` maximization rule as its final decision step
+
+---
+
+## 📝 Summary
+
+Lecture 01 is the foundation the entire Advanced AI course is poured on top of. It takes the everyday, fuzzy idea of "making a good decision" and turns it into a precise, three-part object — actions, outcomes, and preferences — and then asks exactly what has to be true about your preferences for a mathematician to call you "rational": complete (no un-ranked pairs) and transitive (no contradictory loops). The lecture's biggest single result, the Utility Representation Theorem, is a genuine gift — it means you almost never have to work with clunky preference symbols directly, since any rational preference over a finite set can be replaced by ordinary numbers that behave exactly the same way. Everything closes with the Rational Choice Assumption, a checklist of four things a decision-maker must know, and the payoff-maximizing choice rule that follows from it. This lecture assumes a world with zero uncertainty — every action leads to exactly one guaranteed outcome — which is precisely the assumption Lecture 02 removes next, and precisely the toolkit the Chapter 1 Exercises folder puts to work across seven different real-feeling scenarios.
+
 ---
 
 > *Advanced AI · Lec 01 · github.com/rpaut03l/TS-02-03*

@@ -249,6 +249,12 @@ Subtracted from the leaf payoff (i.e., it affects `v(a)`), not applied to any pr
 
 ---
 
+## 📝 Summary
+
+If one habit should stick from this practice set, it's this: whenever a problem hands you a lottery, resist the urge to just eyeball the odds — actually multiply out `E[u(X)] = Σ u(xᵢ)·p(xᵢ|a)` every single time, because the preference-flip drills proved just how easily intuition gets fooled once even one payoff value shifts. The decision-tree drills reinforced that adding a real-world cost always subtracts from the leaf's payoff, never from any probability — mixing those two up is one of the most common mistakes at this stage. The compound-lottery drill showed the reduction technique holds up on a completely fresh set of numbers, not just the worked example: multiply along each path, sum matching outcomes, and you always land back on a valid simple lottery whose probabilities still sum to exactly 1. The open-ended mini project pushed you to build your own lottery from scratch and prove the reduction technique yourself, which is the real test of whether the mechanics have actually sunk in versus just being copied from an example. Carry these same instincts directly into Exercise 1.3's diminishing-returns budgeting and Exercise 1.7's continuous-spending optimization in the Chapter 1 Exercises folder — both lean on the exact "maximize the right quantity, watch for corner cases" mindset built here.
+
+---
+
 > **← Back:** [🧮 NUMERICAL](aai_lec02_decision_trees_lotteries_numerical.md) · [📖 THEORY](aai_lec02_decision_trees_lotteries_theory.md) · [🏠 Lec 02 README](README.md) · [⬅️ Lecture 01](../Lec_01_Individual_Decision_Problem/README.md)
 >
 > *Advanced AI · Lec 02 · github.com/rpaut03l/TS-02-03*
