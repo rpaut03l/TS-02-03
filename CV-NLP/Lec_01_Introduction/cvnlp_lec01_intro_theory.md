@@ -32,8 +32,47 @@ Say it as a chant: *"Bio feeds CV, history builds CV, then image, then video."* 
 
 ---
 
+## 🗺️ The Whole Lecture, At a Glance
+
+```mermaid
+flowchart TD
+    START[Start: a blank slate that has never seen a photograph] --> P1[PILLAR 1: Why does vision even matter] --> P2[PILLAR 2: How did we get here] --> P3[PILLAR 3: What IS an image mathematically] --> P4[PILLAR 4: What IS a video mathematically] --> DONE[A mind that now understands images and video as data]
+
+    style START fill:#fef3c7,stroke:#d97706,color:#1e293b
+    style P1 fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style P2 fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style P3 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style P4 fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style DONE fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: The whole lecture at a glance — four pillars building from raw pixels all the way to a complete understanding of images and video as data. Every section below zooms into one part of this map.*
+
+---
+
 ## 1. What is Computer Vision
 
+```mermaid
+flowchart TD
+    CV[Computer Vision] --> BIO[Biology: retina, optic nerve, visual cortex]
+    CV --> PHY[Physics: light, lenses, camera sensors]
+    CV --> PSY[Psychology: how humans perceive faces and depth]
+    CV --> MATH[Mathematics: linear algebra, calculus, probability]
+    CV --> CS[Computer Science: algorithms and systems]
+    CV --> ENG[Engineering: robotics acting in the world]
+    CV --> NLP[Speech and NLP: describing what is seen]
+
+    style CV fill:#fef3c7,stroke:#d97706,color:#1e293b
+    style BIO fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style PHY fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style PSY fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style MATH fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style CS fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style ENG fill:#fed7aa,stroke:#ea580c,color:#1e293b
+    style NLP fill:#fecaca,stroke:#dc2626,color:#1e293b
+```
+
+*Visual: Computer Vision's interdisciplinary roots — the field draws on biology, physics, psychology, math, computer science, engineering, and speech/NLP all at once.*
 ### The Starting Picture
 
 Think of a toddler standing at the window on a rainy morning. She doesn't just see "gray blur outside" — within seconds her brain sorts that blur into a car, a puddle, a dog running past, and a decision ("that dog looks fun, I want to go outside"). Nobody handed her a rulebook. Her eyes captured light, her brain organized that light into shapes, matched those shapes to things she'd seen before, and built a plan of action — all before she even said a word about it.
@@ -74,6 +113,21 @@ Picture it like a school science-fair project where nobody is allowed to work al
 
 ### The Nested-Circles Family Tree: AI, ML, DL, CNN
 
+```mermaid
+flowchart LR
+    AI[Artificial Intelligence: any smart-looking behavior] --> ML[Machine Learning: learns from data]
+    ML --> DL[Deep Learning: many-layered neural networks]
+    DL --> CNN[CNN: slides filters across pixel grids]
+    DL -.-> RNN[Transformers and RNNs: also Deep Learning, NOT CNNs]
+
+    style AI fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style ML fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style DL fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style CNN fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style RNN fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+```
+
+*Visual: The AI contains ML contains DL contains CNN nesting — every CNN is Deep Learning, but Transformers and RNNs are Deep Learning too, without being CNNs.*
 A second diagram in the deck shows four ovals stacked inside one another, largest to smallest:
 
 ```
@@ -132,6 +186,17 @@ Computer Vision is the field that teaches machines to turn raw pixels into under
 
 ## 2. History of CV — Biological & Ancient Roots
 
+```mermaid
+flowchart LR
+    A[Biological vision: octopus, fly, chameleon, human] --> B[Camera Obscura 1545: humans build an artificial eye]
+    B --> C[Neuroscience 1997-1998: brain has specialist face and place circuits]
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style B fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+```
+
+*Visual: CV's history in three jumps — biological vision came first, humans built an artificial eye next, and modern neuroscience later proved the brain runs specialized vision circuits.*
 ### Nature Solved This First
 
 Long before anyone wrote a line of code, evolution had already solved "seeing" — more than once, independently, in wildly different animals. The lecture opens its history section with four close-up photos: an octopus's rubbery, suction-cupped eye; a fly's compound eye made of thousands of tiny lenses; a chameleon's independently swiveling eye; and a human baby's wide, curious eyes.
@@ -198,6 +263,19 @@ This section establishes that Computer Vision did not start with computers at al
 
 ## 3. Marr's Computational Vision Model
 
+```mermaid
+flowchart LR
+    A[Input Image: raw pixel intensities, nothing understood yet] -->|find edges and blobs| B[Primal Sketch: zero-crossings, blobs, edges, boundaries]
+    B -->|add depth, but only from THIS viewpoint| C[2.5-D Sketch: viewer-centered depth and surface orientation]
+    C -->|generalize beyond this one viewpoint| D[3-D Model: object-centered, true from ANY angle]
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style D fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: Marr's four-stage pipeline — Input Image, Primal Sketch, 2-1/2-D Sketch, and 3-D Model, moving from raw pixels to a complete, viewpoint-independent understanding.*
 ### The Core Idea, Told Simply
 
 Hand someone a single, slightly blurry photograph of an orange basketball resting on a wooden court and ask them, "What is this, exactly, and how is it positioned in three-dimensional space?" Nobody — human or machine — can leap from "a grid of colored dots" straight to "it is a sphere resting flat on a floor" in one single mental jump. There has to be a sequence of smaller, well-defined steps in between. In the 1970s, a scientist named David Marr was the first person to write down, formally and rigorously, exactly what those in-between steps are and why each one is necessary. His book, simply titled *Vision*, opens with a line the lecture quotes directly:
@@ -315,6 +393,31 @@ David Marr's 1970s Computational Vision model breaks the "impossible-seeming" le
 
 ## 4. Classical Feature Detectors — SIFT & HOG
 
+```mermaid
+flowchart LR
+    A[Classical Feature Detectors] --> B[SIFT: sparse keypoints]
+    A --> C[HOG: dense gradient grid]
+    B --> B1[Scale-space representation]
+    B --> B2[Assigned keypoint orientation]
+    B1 --> B3[Survives rotation and zoom]
+    B2 --> B3
+    C --> C1[Gradient magnitude per pixel]
+    C --> C2[Gradient orientation per pixel]
+    C1 --> C3[Best for silhouette shapes]
+    C2 --> C3
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style B1 fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style B2 fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style B3 fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style C1 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style C2 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style C3 fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: SIFT hunts for sparse, distinctive keypoints that survive rotation and zoom; HOG scans a dense grid of gradients, best suited to silhouette shapes.*
 ### Setting the Scene
 
 Long before neural networks could "learn" what an interesting corner or a human silhouette looked like from millions of examples, engineers had to sit down and hand-design mathematical recipes that reliably found useful structure in any photograph — no matter how it was rotated, zoomed in or out, or lit. Two of these hand-crafted recipes, SIFT and HOG, are important enough that the lecture spends multiple slides and multiple instructor Q&A rounds on each of them.
@@ -414,6 +517,23 @@ SIFT and HOG are two of the most influential hand-crafted feature detectors of t
 
 ## 5. Structure from Motion & Segmentation
 
+```mermaid
+flowchart TD
+    A[Collect overlapping photos of a scene] --> B[Detect features in each photo]
+    B --> C[Match same feature across photos]
+    C --> D[Estimate camera position and angle per photo]
+    D --> E[Triangulate matched points]
+    E --> F[3D point cloud reconstruction]
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style B fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style D fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style E fill:#fed7aa,stroke:#ea580c,color:#1e293b
+    style F fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: Structure from Motion — matching features across photos and triangulating them into a 3D point cloud, the same trick your own two eyes use for depth perception.*
 ### Two Eyes Are Better Than One
 
 Close one eye and try to judge exactly how far away your coffee mug is on the desk — it's noticeably harder than doing the same thing with both eyes open. Open both eyes again, and it becomes almost effortless, because your brain automatically compares the two slightly different views from your two eyes and triangulates distance from that difference. Structure from Motion (SfM) borrows this exact trick, except instead of two fixed eyes, it uses many photographs of the same scene taken from different positions — or a single moving camera capturing many frames over time.
@@ -444,6 +564,25 @@ Imagine photographing a marble statue from ten completely different angles as yo
 
 ### Semantic Segmentation vs. Instance Segmentation
 
+```mermaid
+flowchart LR
+    A[Input photo with several chairs] --> B[Semantic Segmentation]
+    A --> C[Instance Segmentation]
+    B --> B1[All chairs same color]
+    B1 --> B2[Cannot count individual chairs]
+    C --> C1[Each chair unique color]
+    C1 --> C2[Can count individual chairs]
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style B1 fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style B2 fill:#fecaca,stroke:#dc2626,color:#1e293b
+    style C1 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style C2 fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: Semantic segmentation paints all objects of a class the same color; instance segmentation gives each individual object its own color, enabling a count.*
 This pairing is one of the single most commonly confused ideas in all of Computer Vision, and the lecture deliberately drills it with a direct side-by-side visual comparison: a photo of a dining table surrounded by several chairs.
 
 ```
@@ -489,6 +628,27 @@ Structure from Motion recovers full 3D scene geometry from nothing but a collect
 
 ## 6. The ImageNet Era — AlexNet to ViT
 
+```mermaid
+flowchart LR
+    A[Caltech-101 2004: 101 categories] --> B[PASCAL VOC 2009: bounding boxes]
+    B --> C[ImageNet 2009: 22000 categories 15M images]
+    C --> D[ILSVRC yearly challenge: 1000 classes]
+    D --> E[2012 AlexNet: error drops 28 percent to 16 percent]
+    E --> F[GoogLeNet and VGG 2014]
+    F --> G[ResNet 2015: beats human error]
+    G --> H[Vision Transformer 2021]
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style D fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style E fill:#fecaca,stroke:#dc2626,color:#1e293b
+    style F fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style G fill:#fed7aa,stroke:#ea580c,color:#1e293b
+    style H fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: The decade that changed Computer Vision — bigger datasets and bigger architectures collide at AlexNet in 2012, then keep climbing all the way to Vision Transformers.*
 ### The Collision That Changed Everything
 
 For decades, CV researchers had no choice but to hand-design features like SIFT and HOG — clever, genuinely useful, but fundamentally limited by human creativity and intuition. Then, around 2012, three separate ingredients finally collided at the same moment: a massive, carefully labeled dataset (ImageNet), an old but data-hungry algorithm family (deep Convolutional Neural Networks), and, for the first time, fast enough hardware (GPUs) to actually train those networks at scale. This section tells the "before versus after" story of that collision.
@@ -568,6 +728,30 @@ The 2012-2017 window is the single most important stretch of years in modern Com
 
 ## 7. CLIP & DALL-E — Vision Meets Language
 
+```mermaid
+flowchart TD
+    A[Step 1: Contrastive pre-training] --> A1[Text Encoder makes T1...TN]
+    A --> A2[Image Encoder makes I1...IN]
+    A1 --> A3[Matching pairs get HIGH similarity]
+    A2 --> A3
+    A3 --> B[Step 2: Build zero-shot classifier from labels]
+    B --> B1[Wrap class names as a photo of a X]
+    B1 --> C[Step 3: Zero-shot prediction]
+    C --> C1[New image compared against all label embeddings]
+    C1 --> C2[Highest similarity wins]
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style A1 fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style A2 fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style A3 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style B fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style B1 fill:#fed7aa,stroke:#ea580c,color:#1e293b
+    style C fill:#fecaca,stroke:#dc2626,color:#1e293b
+    style C1 fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style C2 fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: CLIP's three-step pipeline — contrastive pre-training, building a zero-shot classifier from label text, then predicting on a brand-new photo.*
 ### The Missing Piece
 
 Every single model discussed so far in this lecture — AlexNet, VGG, GoogLeNet, ResNet — only ever knew a small, fixed list of category names decided in advance ("this photo is one of exactly these 1,000 ImageNet classes, and nothing else"). CLIP and DALL-E are the models that finally broke that restriction, by connecting images with completely free-form natural language instead of a rigid, pre-decided class list. This is the literal bridge between the "CV" half and the "NLP" half of this whole course's name, and it's worth pausing on, because everything after this point in the course builds on this bridge.
@@ -619,6 +803,22 @@ The lecture shows a cosine-similarity heatmap comparing 7 captions (for example,
 
 ### DALL-E — Creating Brand-New Images from Text
 
+```mermaid
+flowchart LR
+    A[Text plus pool of images] --> B[CLIP: finds best match]
+    B --> B1[Discriminative task]
+    C[Text alone] --> D[DALL-E: creates new image]
+    D --> D1[Generative task]
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style B1 fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style C fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style D fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style D1 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+```
+
+*Visual: CLIP matches text against an existing pool of images (discriminative); DALL-E creates a brand-new image from text alone (generative).*
 Where CLIP works in the direction of **text -> find the best-matching image out of a pool that already exists**, DALL-E runs in the exact opposite direction: **text -> generate a completely brand-new image from nothing but the description.** The lecture shows several genuinely playful example prompts, each producing multiple distinct AI-generated candidate images: *"an illustration of a baby daikon radish in a tutu walking a dog,"* *"an armchair in the shape of an avocado,"* and *"a stained glass window with an image of a blue strawberry."* None of these described objects exist as real photographs anywhere in the world — DALL-E has to genuinely invent a plausible-looking image purely from the text description.
 
 ### Mnemonic
@@ -643,6 +843,26 @@ Before any fancy CNN, CLIP, or DALL-E can even begin to run, an image first has 
 
 ### Color Models
 
+```mermaid
+flowchart LR
+    A[Color Models] --> B[RGB: Red Green Blue]
+    A --> C[HSL: Hue Saturation Lightness]
+    A --> D[CMYK: Cyan Magenta Yellow Black]
+    B --> B1[Additive: screens, adds light to white]
+    C --> C1[Used for editing and color filtering]
+    D --> D1[Subtractive: printing, adds ink to black]
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#fecaca,stroke:#dc2626,color:#1e293b
+    style C fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style D fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style B1 fill:#fee2e2,stroke:#dc2626,color:#1e293b
+    style C1 fill:#f0fdf4,stroke:#16a34a,color:#1e293b
+    style D1 fill:#eff6ff,stroke:#2563eb,color:#1e293b
+```
+
+*Visual: RGB and CMYK are literal opposites — RGB adds light to reach white, CMYK adds ink to reach black.*
+
 ```
 +------------------------------------------------------------+
 | RGB -- Red, Green, Blue                                    |
@@ -666,6 +886,26 @@ Before any fancy CNN, CLIP, or DALL-E can even begin to run, an image first has 
 **The single most important exam point here:** RGB and CMYK are literal *opposites* in mechanism. RGB is **additive** — a screen starts pitch black, and *adding* red, green, and blue light together gets you all the way up to white; more light equals brighter. CMYK is **subtractive** — a sheet of paper starts white, and *adding* cyan, magenta, and yellow ink absorbs more and more of the light bouncing off the page, dragging the result toward black; more ink equals darker. Screens shine light directly at your eyes (so they add light to get brighter), while printed pages only reflect whatever light isn't absorbed by the ink (so they subtract light to get darker) — the physical setup is genuinely opposite, not just a different naming convention.
 
 ### JPEG Compression — The Full Five-Step Pipeline
+
+```mermaid
+flowchart LR
+    A[Raw Image RGB] --> B[1. Color Transform: RGB to YCbCr]
+    B --> C[2. Downsampling: shrink COLOR channels]
+    C --> D[3. DCT: 8x8 blocks to frequency space]
+    D --> E[4. Quantization: drop barely-visible high frequencies]
+    E --> F[5. Encoding: Huffman coding]
+    F --> G[Compressed JPEG bitstream]
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style D fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style E fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style F fill:#fed7aa,stroke:#ea580c,color:#1e293b
+    style G fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: The five-step JPEG pipeline — color transform, downsampling, DCT, quantization, and entropy encoding.*
 
 ```
 Raw Image Data
@@ -725,6 +965,20 @@ Picture a printed newspaper photo under a magnifying glass: you'd notice immedia
 
 ### Video Compression — I-Frames, P-Frames, and B-Frames
 
+```mermaid
+flowchart LR
+    A[I-Frame: self-contained, full photo] --> B[P-Frame: uses only the past frame]
+    B --> C[B-Frame: uses past AND future frames]
+    C --> D[Better compression but adds delay and memory cost]
+
+    style A fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style B fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style D fill:#fecaca,stroke:#dc2626,color:#1e293b
+```
+
+*Visual: I-frames are self-contained; P-frames use only the past; B-frames use both past and future, at the cost of added delay.*
+
 ```
 +------------------------------------------------------------+
 | FRAME TYPES IN VIDEO COMPRESSION                           |
@@ -756,6 +1010,24 @@ Think of an I-frame as a complete photograph pinned to a corkboard. A P-frame is
 
 ### Brightness, Contrast, and Histograms
 
+```mermaid
+flowchart TD
+    A[Raw pixel grid] --> B[Brightness: average of all pixel values]
+    A --> C[Histogram: count of pixels per intensity]
+    B --> D[Contrast: spread of values around the average]
+    C --> D
+    D --> E[Narrow histogram equals low contrast]
+    D --> F[Wide histogram equals high contrast]
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style D fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style E fill:#fecaca,stroke:#dc2626,color:#1e293b
+    style F fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: Brightness is the average of all pixels, contrast is the spread around that average, and the histogram is the full distribution both are computed from.*
 **Brightness** of a grayscale image is defined as the **average intensity** across every single pixel:
 
 ```
@@ -804,6 +1076,29 @@ Reading this chart, "10 pixels have the intensity value i = 2" is found simply b
 
 ### Image Enhancement Techniques
 
+```mermaid
+flowchart TD
+    A[Image Enhancement Toolkit] --> B[Log Transform]
+    A --> C[Gray-Level Slicing]
+    A --> D[Spatial Filtering]
+    B --> B1[Compresses high dynamic range]
+    C --> C1[Highlights one intensity band, rest to constant]
+    D --> D1[Low-pass: smooths noise]
+    D --> D2[Median: removes salt and pepper noise]
+    D --> D3[Sharpen: boosts local edges]
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style D fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style B1 fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style C1 fill:#fed7aa,stroke:#ea580c,color:#1e293b
+    style D1 fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style D2 fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style D3 fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: Three separate enhancement tools for three separate jobs — compressing dynamic range, isolating one tonal band, and cleaning up or sharpening local pixels.*
 **1. Histogram Equalization** — deliberately spreads out an image's pixel intensities so that the image uses the *entire* available dynamic range (0-255, for a standard 8-bit image), pushing the histogram shape as close as possible to a flat, uniform distribution. The whole goal is automatic, algorithmic contrast enhancement, with no manual tweaking required.
 
 **2. Log Transform** — for compressing an image with a genuinely huge dynamic range down into something that can actually be displayed or printed normally:
@@ -888,6 +1183,25 @@ A single image is one frozen instant in time. A video is thousands of these froz
 
 ### Optical Flow
 
+```mermaid
+flowchart LR
+    A[Two consecutive video frames] --> B[Optical Flow: per-pixel motion vector]
+    B --> C[Magnitude equals square root of u squared plus v squared]
+    B --> D[HOF: histogram of flow direction]
+    B --> E[MBH: gradient of the flow field itself]
+    D --> F[Captures motion direction for actions]
+    E --> G[Captures motion boundaries]
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style D fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style E fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style F fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style G fill:#fed7aa,stroke:#ea580c,color:#1e293b
+```
+
+*Visual: Optical flow gives every pixel a motion vector; HOF captures which way things move, MBH captures where motion changes sharply.*
 **Definition:** Optical flow is the **pattern of apparent motion** of objects, surfaces, and edges within a visual scene, produced by the relative motion between an observer (the camera) and the scene itself. In practice, it tells us how things in a video are moving by directly comparing one frame against the very next one.
 
 ```
@@ -931,6 +1245,28 @@ MBH computes the gradient **of the optical flow field itself**, rather than the 
 **Worked intuition, straight from the lecture:** imagine training a system on 100 different videos, each one showing a different person walking. Every single video produces its own MBH-x and MBH-y descriptor. Averaging all 100 of these descriptors together produces a typical "walking" MBH pattern — something like *"usually, there's strong motion concentrated at the legs, and a smaller amount of motion at the arms."* When a brand-new test video arrives later, the system simply computes that video's own MBH descriptor and checks: *"does this new pattern resemble the average walking pattern I've already learned?"* — this simple template-comparison idea is the entire essence of classical, pre-deep-learning action recognition.
 
 ### The Classical Action-Recognition Pipeline: Bag-of-Space-Time-Features Plus SVM
+
+```mermaid
+flowchart TD
+    A[Raw Video] --> B[1. Find space-time interest points: where motion happens]
+    B --> C[2. Extract space-time patches around them]
+    C --> D[3. Describe each patch: HOG shape / HOF motion / MBH motion boundary]
+    D --> E[4. Cluster into a dictionary of visual words]
+    E --> F[5. Build one Histogram of Visual Words for the whole video]
+    F --> G[6. SVM Classifier]
+    G --> H[Predicted Action: walking / running]
+
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style D fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style E fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style F fill:#fed7aa,stroke:#ea580c,color:#1e293b
+    style G fill:#fecaca,stroke:#dc2626,color:#1e293b
+    style H fill:#dcfce7,stroke:#16a34a,color:#1e293b
+```
+
+*Visual: The classical Bag-of-Space-Time-Features plus SVM pipeline, from interest points all the way to a predicted action label.*
 
 ```
 +------------------------------------------------------------+
