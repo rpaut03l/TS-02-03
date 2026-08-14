@@ -471,7 +471,7 @@ Picture laying two "before" and "after" transparent photo overlays exactly on to
 | 23 | Contrast formula (as given)? | Change in Luminance / Average Luminance |
 | 24 | What does a histogram show? | Distribution of pixel intensities (statistical only, no location info) |
 | 25 | Narrow central histogram peak = ? | Low contrast |
-| 26 | Log transform formula? | s = c times log(1+|r|) |
+| 26 | Log transform formula? | s = c times log(1 + abs(r)) |
 | 27 | Log transform best suited for? | High-dynamic-range images (astronomical, medical, satellite) |
 | 28 | Gray-level slicing: what happens outside [A,B]? | Set to a constant (often 0/dark) |
 | 29 | Low-pass filter kernel weights? | 1/9 times all-ones 3x3 |

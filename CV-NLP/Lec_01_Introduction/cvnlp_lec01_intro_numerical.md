@@ -160,15 +160,14 @@ Since the total spread (230) is more than double the average brightness (107.5),
 +------------------------------------------------------------+
 | QUICK CONTRAST-VALUE INTUITION                             |
 +------------------------------------------------------------+
-| Contrast well below 1  -> pixel values cluster TIGHTLY     |
-|   around                                                   |
-| the average (LOW contrast, flat look)                      |
-| Contrast around 1      -> spread is roughly equal to the   |
-| average (moderate contrast)                                |
-| Contrast well above 1  -> pixel values are widely          |
-|   scattered                                                |
-| relative to the average (HIGH contrast)                    |
-+------------------------------------------------------------+```
+| Contrast well below 1 -> pixel values cluster              |
+| TIGHTLY around the average (LOW contrast, flat look)       |
+| Contrast around 1 -> spread is roughly equal to            |
+| the average (moderate contrast)                            |
+| Contrast well above 1 -> pixel values are widely           |
+| scattered relative to the average (HIGH contrast)          |
++------------------------------------------------------------+
+```
 
 ### A Note on Definitions
 
@@ -515,12 +514,12 @@ Average ~= 68.3
 +------------------------------------------------------------+
 | SAME NOISY PATCH, TWO DIFFERENT FILTERS                    |
 +------------------------------------------------------------+
-| Low-pass (average) output:  ~68.3   <- dragged toward the  |
-| outlier                                                    |
-| Median filter output:        50     <- completely          |
-|   UNAFFECTED                                               |
-| by the outlier                                             |
-+------------------------------------------------------------+```
+| Low-pass (average) output: ~68.3  <- dragged               |
+| toward the outlier                                         |
+| Median filter output: 50  <- completely                    |
+| UNAFFECTED by the outlier                                  |
++------------------------------------------------------------+
+```
 
 This numeric comparison is exactly the theory statement made concrete: *"unlike average, median doesn't get affected by extreme values, so it preserves edges better."* The median filter output stayed rock-solid at exactly 50 despite the huge outlier, while the plain average filter jumped noticeably up to about 68.3.
 
@@ -691,17 +690,16 @@ Magnitude_B = sqrt((-5)^2 + 0^2) = sqrt(25 + 0) = sqrt(25) = 5
 
 ```
 +------------------------------------------------------------+
-| MAGNITUDE ALONE CANNOT TELL THESE TWO MOTIONS APART        |
+| MAGNITUDE ALONE CANNOT TELL THESE MOTIONS APART            |
 +------------------------------------------------------------+
-| Person A: (u,v) = (5, 0)   -> Magnitude = 5                |
-| Person B: (u,v) = (-5, 0)  -> Magnitude = 5   <-           |
-|   IDENTICAL!                                               |
-| Squaring a negative number always makes it positive, so    |
-|   the                                                      |
-| sign (direction) information is completely LOST once you   |
-|   compute                                                  |
-| the magnitude alone.                                       |
-+------------------------------------------------------------+```
+| Person A: (u,v) = (5, 0)  -> Magnitude = 5                 |
+| Person B: (u,v) = (-5, 0) -> Magnitude = 5                 |
+| <- IDENTICAL!                                              |
+| Squaring a negative number always makes it                 |
+| positive, so the sign (direction) information is           |
+| completely LOST once you compute the magnitude alone.      |
++------------------------------------------------------------+
+```
 
 **The key numeric insight:** the magnitude (speed) is exactly identical for both people (5, since squaring a negative number removes its sign entirely) — but the *direction* they're walking is genuinely opposite (0 degrees versus 180 degrees). This directly explains why the theory file states that HOF descriptors differ for opposite-direction walking: raw magnitude alone genuinely cannot distinguish the two motions, but the direction-binned histogram (HOF) absolutely can, because it separately tracks *which way* each flow vector points, not merely *how fast* it moves.
 
@@ -783,15 +781,13 @@ Reduction factor = 307,200 / 76,800 = 4
 +------------------------------------------------------------+
 | CHROMA DATA, BEFORE AND AFTER 4:2:0 DOWNSAMPLING           |
 +------------------------------------------------------------+
-| Before (full res, both channels):  614,400 samples         |
-| After  (4:2:0, both channels):     153,600 samples         |
-| Savings:                           614,400 - 153,600 =     |
-|   460,800                                                  |
-| samples saved, PURELY from                                 |
-| downsampling, before DCT,                                  |
-| quantization, or entropy coding                            |
-| have even begun                                            |
-+------------------------------------------------------------+```
+| Before (full res, both channels): 614,400 samples          |
+| After  (4:2:0, both channels):    153,600 samples          |
+| Savings: 614,400 - 153,600 = 460,800 samples saved,        |
+| PURELY from downsampling, before DCT, quantization,        |
+| or entropy coding have even begun                          |
++------------------------------------------------------------+
+```
 
 ### Summary
 
@@ -837,16 +833,15 @@ Relative improvement ~= 38.46%
 
 ```
 +------------------------------------------------------------+
-| ABSOLUTE DROP vs RELATIVE IMPROVEMENT -- NOT THE SAME      |
-| NUMBER!                                                    |
+| ABSOLUTE DROP vs RELATIVE IMPROVEMENT                      |
 +------------------------------------------------------------+
-| Absolute drop:        0.26 - 0.16 = 0.10  (10 percentage   |
-|   points)                                                  |
+| Absolute drop: 0.26 - 0.16 = 0.10 (10 percentage points)   |
 | Relative improvement: (0.10 / 0.26) x 100 ~= 38.46%        |
-| These measure genuinely different things -- always state   |
-|   which                                                    |
-| one you are reporting, especially in an exam answer!       |
-+------------------------------------------------------------+```
+| These measure genuinely different things -- always         |
+| state which one you are reporting, especially in           |
+| an exam answer!                                            |
++------------------------------------------------------------+
+```
 
 ### Worked Example — Total Error Reduction from 2010 to 2017
 
@@ -879,14 +874,14 @@ Ratio ~= 12.17
 
 ```
 +------------------------------------------------------------+
-| THREE WAYS TO DESCRIBE THE SAME 2010 -> 2017 IMPROVEMENT   |
+| THREE WAYS TO DESCRIBE THE SAME 2010->2017 IMPROVEMENT     |
 +------------------------------------------------------------+
-| Absolute drop:          25.7 percentage points             |
-| Relative improvement:   roughly 92%                        |
-| "Times fewer mistakes": roughly 12x fewer errors, on a     |
-|   relative                                                 |
-| basis                                                      |
-+------------------------------------------------------------+```
+| Absolute drop: 25.7 percentage points                      |
+| Relative improvement: roughly 92%                          |
+| "Times fewer mistakes": roughly 12x fewer errors,          |
+| on a relative basis                                        |
++------------------------------------------------------------+
+```
 
 ### Summary
 
@@ -956,7 +951,8 @@ Comparing error rates across years requires deliberately choosing (and clearly s
 | ((old - new) / old) x 100                                  |
 | -> this is NOT the same number as the                      |
 | plain absolute percentage-point drop!                      |
-+------------------------------------------------------------+```
++------------------------------------------------------------+
+```
 
 ### Exam Red Flags
 
