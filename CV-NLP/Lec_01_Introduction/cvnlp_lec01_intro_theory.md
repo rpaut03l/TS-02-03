@@ -45,26 +45,31 @@ That entire chain — light in, understanding out — is exactly the job descrip
 The lecture's opening diagram places **Computer Vision** as a blue circle at the center of a wheel, with spokes reaching out to Biology, Psychology, Physics, Computer Science, Mathematics, and Engineering. This is not decoration — it's a warning to every new CV student: if you only study algorithms, you will hit a wall, because CV problems are fundamentally borrowed problems.
 
 ```
-+-----------------------------------------------------------------+
-|                 WHY COMPUTER VISION IS A TEAM SPORT              |
-+-----------------------------------------------------------------+
-|  BIOLOGY      -> how a real retina/optic nerve/visual cortex     |
-|                   actually turns light into signals               |
-|  PHYSICS      -> how light bends through a lens, how a camera     |
-|                   sensor captures photons as numbers               |
-|  PSYCHOLOGY   -> how humans perceive faces, depth, motion,        |
-|                   illusions -- the "correct" answer a CV system    |
-|                   should aim to match                              |
-|  MATHEMATICS  -> linear algebra (images ARE matrices), calculus    |
-|                   (gradients), probability (uncertainty)           |
-|  COMPUTER SCI -> the actual algorithms, data structures, and       |
-|                   systems that run all of the above at scale       |
-|  ENGINEERING  -> robotics needs vision to physically act in the    |
-|                   world (grab the cup, avoid the wall)             |
-|  SPEECH / NLP -> once you've SEEN something, you often need to     |
-|                   describe it or answer questions about it too      |
-+-----------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| WHY COMPUTER VISION IS A TEAM SPORT                        |
++------------------------------------------------------------+
+| BIOLOGY      -> how a real retina/optic nerve/visual       |
+|   cortex                                                   |
+| actually turns light into signals                          |
+| PHYSICS      -> how light bends through a lens, how a      |
+|   camera                                                   |
+| sensor captures photons as numbers                         |
+| PSYCHOLOGY   -> how humans perceive faces, depth, motion,  |
+| illusions -- the "correct" answer a CV system              |
+| should aim to match                                        |
+| MATHEMATICS  -> linear algebra (images ARE matrices),      |
+|   calculus                                                 |
+| (gradients), probability (uncertainty)                     |
+| COMPUTER SCI -> the actual algorithms, data structures,    |
+|   and                                                      |
+| systems that run all of the above at scale                 |
+| ENGINEERING  -> robotics needs vision to physically act in |
+|   the                                                      |
+| world (grab the cup, avoid the wall)                       |
+| SPEECH / NLP -> once you've SEEN something, you often need |
+|   to                                                       |
+| describe it or answer questions about it too               |
++------------------------------------------------------------+```
 
 Picture it like a school science-fair project where nobody is allowed to work alone: the biology kid explains how the eye actually behaves, the physics kid explains how a camera lens bends light onto a sensor, the math kid supplies the counting and pattern rules, and the computer-science kid is the one who finally types the code that stitches it all together. Remove any one teammate and the "seeing machine" simply won't work as well.
 
@@ -73,18 +78,14 @@ Picture it like a school science-fair project where nobody is allowed to work al
 A second diagram in the deck shows four ovals stacked inside one another, largest to smallest:
 
 ```
-+-----------------------------------------------------------------+
-|  Artificial Intelligence (AI)                                    |
-|  +---------------------------------------------------------+    |
-|  |  Machine Learning (ML)                                    |   |
-|  |  +---------------------------------------------------+    |   |
-|  |  |  Deep Learning (DL)                                 |   |   |
-|  |  |  +-----------------------------------------------+  |   |   |
-|  |  |  |  Convolutional Neural Network (CNN)             | |   |   |
-|  |  |  +-----------------------------------------------+  |   |   |
-|  |  +---------------------------------------------------+    |   |
-|  +---------------------------------------------------------+    |
-+-----------------------------------------------------------------+
++------------------------------------------------------------+
+| Artificial Intelligence (AI)                                |
+|   contains -> Machine Learning (ML)                         |
+|     contains -> Deep Learning (DL)                          |
+|       contains -> Convolutional Neural Network (CNN)        |
++------------------------------------------------------------+
+   Read bottom-up: every CNN is DL, every DL model is ML,
+   every ML model is AI -- but NEVER the reverse.
 ```
 
 Think of it exactly like those Russian nesting dolls (matryoshka). The biggest, outermost doll is Artificial Intelligence — anything at all where a machine behaves in a way that looks "smart" (even old-school chess programs with hand-written rules count as AI, no learning required). Crack that doll open and you find Machine Learning — a smaller doll containing only the AI systems that *learn patterns from data* instead of following hand-written rules. Crack that one open and you find Deep Learning — an even smaller doll containing only the ML systems built from many-layered neural networks. Crack that one open, finally, and you find CNN — the smallest doll, containing only the Deep Learning systems built specifically to slide small filters across grids of pixels.
@@ -96,22 +97,20 @@ Every doll fits inside the one before it, but never the other way — you cannot
 Right beside the nested-circles diagram, the deck lists the concrete jobs Computer Vision is hired to do:
 
 ```
-+-----------------------------------------------------------------+
-|  COMPUTER VISION -- THE JOB MENU                                  |
-+-----------------------------------------------------------------+
-|  - Object Detection          (find AND locate objects)            |
-|  - Object Classification     (name the single main object)        |
-|  - Scene Understanding       (describe the whole environment)      |
-|  - Semantic Scene Segmentation (color every pixel by class)         |
-|  - 3D Reconstruction         (rebuild the world in three dimensions)|
-|  - Object Tracking           (follow an object across video frames) |
-|  - Human Pose Estimation     (find joint positions -- elbow, knee)  |
-|  - Activity Recognition      (identify what action is happening)     |
-|  - Visual Question Answering  (answer natural-language questions      |
-|    (VQA)                       about an image)                        |
-|  - ... (and the list keeps growing every year)                        |
-+-----------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| COMPUTER VISION -- THE JOB MENU                            |
++------------------------------------------------------------+
+| - Object Detection (find AND locate objects)               |
+| - Object Classification (name the main object)             |
+| - Scene Understanding (describe environment)               |
+| - Semantic Scene Segmentation (color pixels)               |
+| - 3D Reconstruction (rebuild world in 3D)                  |
+| - Object Tracking (follow object across frames)            |
+| - Human Pose Estimation (find joint positions)             |
+| - Activity Recognition (identify actions)                  |
+| - Visual Question Answering / VQA                          |
+| - ...(the list keeps growing every year)                   |
++------------------------------------------------------------+```
 
 ### Why Vision Is Called AI's "Entrance Hall"
 
@@ -138,36 +137,38 @@ Computer Vision is the field that teaches machines to turn raw pixels into under
 Long before anyone wrote a line of code, evolution had already solved "seeing" — more than once, independently, in wildly different animals. The lecture opens its history section with four close-up photos: an octopus's rubbery, suction-cupped eye; a fly's compound eye made of thousands of tiny lenses; a chameleon's independently swiveling eye; and a human baby's wide, curious eyes.
 
 ```
-+-----------------------------------------------------------------+
-|  FOUR DIFFERENT "CAMERAS" NATURE INVENTED                        |
-+-----------------------------------------------------------------+
-|  Octopus   -> soft-bodied camera eye, no blind spot               |
-|  Fly       -> compound eye, thousands of tiny lenses, wide field   |
-|  Chameleon -> two eyes that swivel INDEPENDENTLY of each other     |
-|  Human baby -> forward-facing pair, built for depth + faces        |
-+-----------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| FOUR DIFFERENT "CAMERAS" NATURE INVENTED                   |
++------------------------------------------------------------+
+| Octopus   -> soft-bodied camera eye, no blind spot         |
+| Fly       -> compound eye, thousands of tiny lenses, wide  |
+|   field                                                    |
+| Chameleon -> two eyes that swivel INDEPENDENTLY of each    |
+|   other                                                    |
+| Human baby -> forward-facing pair, built for depth + faces |
++------------------------------------------------------------+```
 
 Picture a room full of different inventors, none of whom ever met each other, all separately arriving at "hey, a hole that lets light in and something behind it to catch that light is a really good idea." That is what biologists call convergent evolution, and for a CV student it's the single strongest hint in the whole lecture that vision isn't some rare accident — it is such a valuable skill that life reinvented it again and again, in bodies that share almost nothing else in common.
 
 ### Ancient Humans Build Their Own Eye: The Camera Obscura
 
 ```
-+-----------------------------------------------------------------+
-|  TIMELINE: HUMANS BUILD AN ARTIFICIAL "EYE"                      |
-+-----------------------------------------------------------------+
-|  16th century AD -> Leonardo da Vinci sketches pinhole optics,     |
-|                      showing light rays crossing through a          |
-|                      single small opening                            |
-|  1545            -> Gemma Frisius publishes a camera obscura         |
-|                      diagram, using a small hole in a dark room to    |
-|                      safely observe a solar eclipse                   |
-|  18th century     -> "Camera Obscura" is formalized in encyclopedias, |
-|                      described as a box or tent with a tiny hole      |
-|                      that projects an upside-down image of the        |
-|                      outside world onto the opposite wall             |
-+-----------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| TIMELINE: HUMANS BUILD AN ARTIFICIAL "EYE"                 |
++------------------------------------------------------------+
+| 16th century AD -> Leonardo da Vinci sketches              |
+| pinhole optics, showing light rays crossing                |
+| through a single small opening                             |
+|                                                            |
+| 1545 -> Gemma Frisius publishes a camera                   |
+| obscura diagram, using a small hole in a dark              |
+| room to safely observe a solar eclipse                     |
+|                                                            |
+| 18th century -> "Camera Obscura" is formalized             |
+| in encyclopedias, described as a box or tent               |
+| with a tiny hole that projects an upside-down              |
+| image of the outside world onto the wall                   |
++------------------------------------------------------------+```
 
 Here is the trick, explained the way you'd explain it to someone who has never seen a camera: take a completely dark shoebox, and poke one tiny pinhole in one side. Light from outside — say, a tree in the sunshine — travels in straight lines. Only the rays that happen to line up with that tiny hole make it inside the box, and because light travels in straight lines, the ray from the *top* of the tree ends up hitting the *bottom* of the opposite wall, and the ray from the *bottom* of the tree ends up hitting the *top*. The result: a real, projected, but upside-down picture of the tree appears on the inside wall of your shoebox — with absolutely no lenses, no electronics, nothing but a hole and darkness. That is the camera obscura, and it is the direct ancestor of every digital camera used to capture the training photos that modern CV models learn from.
 
@@ -205,21 +206,40 @@ That sentence is the whole philosophy in one breath: seeing is not some mystical
 ### The Four Stages — The Single Most Important Diagram in This Lecture
 
 ```
-+-------------+     +----------------+     +---------------+     +------------------+
-| Input Image |  -> | Primal Sketch  |  -> | 2-and-half-D  |  -> | 3-D Model        |
-|             |     |                |     | Sketch        |     | Representation   |
-|-------------|     |----------------|     |---------------|     |------------------|
-| Perceived   |     | Zero crossings,|     | Local surface |     | 3D models        |
-| intensities |     | blobs, edges,  |     | orientation   |     | hierarchically   |
-| (raw light  |     | bars, ends,    |     | and depth     |     | organized in     |
-| values,     |     | virtual lines, |     | discontinuit- |     | terms of surface |
-| nothing     |     | groups, curves,|     | ies -- BUT    |     | and volumetric   |
-| understood  |     | boundaries     |     | only relative |     | primitives --    |
-| yet)        |     |                |     | to the VIEWER |     | valid from ANY   |
-|             |     |                |     |               |     | viewpoint        |
-+-------------+     +----------------+     +---------------+     +------------------+
-        "Stages of Visual Representation" -- David Marr, 1970s
-```
++------------------------------------------------------------+
+| STAGE 1: Input Image                                       |
++------------------------------------------------------------+
+| Perceived intensities (raw light values,                   |
+| nothing understood yet)                                    |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| STAGE 2: Primal Sketch                                     |
++------------------------------------------------------------+
+| Zero crossings, blobs, edges, bars, ends,                  |
+| virtual lines, groups, curves, boundaries                  |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| STAGE 3: 2-and-a-half-D Sketch                             |
++------------------------------------------------------------+
+| Local surface orientation and depth                        |
+| discontinuities -- BUT only relative to                    |
+| the VIEWER's current position                              |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| STAGE 4: 3-D Model Representation                          |
++------------------------------------------------------------+
+| 3D models hierarchically organized in terms                |
+| of surface and volumetric primitives --                    |
+| valid from ANY viewpoint                                   |
++------------------------------------------------------------+
+
+     "Stages of Visual Representation" -- David Marr, 1970s```
 
 | Stage | What it captures | Basketball example, told as a story |
 |---|---|---|
@@ -233,17 +253,23 @@ That sentence is the whole philosophy in one breath: seeing is not some mystical
 This is the single most frequently misunderstood idea in the whole lecture, so slow down here. The 2-1/2-D sketch is **viewer-centered**: it only encodes what is visible right now, from exactly where the camera or eye is standing. The full 3-D model is **object-centered**: it represents the object's complete shape as a standalone fact about the object itself, true from every angle, whether or not anyone is currently looking at it from that angle.
 
 ```
-+-------------------------------------------------------------+
-|   2-1/2-D SKETCH                    3-D MODEL                 |
-|   ---------------                   ----------                |
-|   Viewer-centered                   Object-centered            |
-|   "What I can see right now,        "What the object actually  |
-|    from where I'm standing"          IS, valid from any angle" |
-|                                                                 |
-|   Has SOME depth info, but only     Has FULL volumetric shape, |
-|   relative to my current viewpoint  independent of viewpoint    |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| 2-1/2-D SKETCH  (viewer-centered)                          |
++------------------------------------------------------------+
+| "What I can see right now, from where                      |
+| I'm standing"                                              |
+| Has SOME depth info, but only relative                     |
+| to my current viewpoint                                    |
++------------------------------------------------------------+
+
++------------------------------------------------------------+
+| 3-D MODEL  (object-centered)                               |
++------------------------------------------------------------+
+| "What the object actually IS, valid                        |
+| from any angle"                                            |
+| Has FULL volumetric shape, independent                     |
+| of viewpoint                                               |
++------------------------------------------------------------+```
 
 Picture standing in front of a beach ball. You can absolutely tell that the near side curves toward you — your eyes give you that much "depth" information for free. But you have zero direct evidence about what the far side of the ball looks like right now; you're only guessing, based on prior life experience, that "balls are round all the way around." That guess-based, viewpoint-independent, complete mental model ("it's a full sphere, front and back") is the 3-D Model stage. The raw, only-what-I-can-currently-see information ("the near side curves toward me") is the 2-1/2-D Sketch stage. They sound similar, but one is a snapshot from your current spot, and the other is a complete fact about the object that doesn't care where you're standing.
 
@@ -252,15 +278,16 @@ Picture standing in front of a beach ball. You can absolutely tell that the near
 A single 2D photograph is **ambiguous and incomplete** on its own. The exact same physical object can produce wildly different-looking photographs depending on lighting, distance, camera angle, background clutter, or partial occlusion (something blocking part of the view). Because of this ambiguity, the visual system cannot safely leap directly from "raw pixels" to "it's a chair" — it has to build up confidence in stages:
 
 ```
-+-------------------------------------------------------------+
-|  WHAT EACH LAYER OF INFORMATION ACTUALLY TELLS YOU             |
-+-------------------------------------------------------------+
-|  Pixels  ->  tell us WHAT IS VISIBLE (raw brightness values)   |
-|  Edges   ->  tell us WHERE structures BEGIN and END             |
-|  Depth   ->  tells us HOW those structures are ARRANGED,         |
-|              relative to the viewer                              |
-|  3D model -> tells us WHAT the object actually IS                |
-+-------------------------------------------------------------+
++------------------------------------------------------------+
+| WHAT EACH LAYER OF INFORMATION ACTUALLY TELLS YOU          |
++------------------------------------------------------------+
+| Pixels  ->  tell us WHAT IS VISIBLE (raw brightness        |
+|   values)                                                  |
+| Edges   ->  tell us WHERE structures BEGIN and END         |
+| Depth   ->  tells us HOW those structures are ARRANGED,    |
+| relative to the viewer                                     |
+| 3D model -> tells us WHAT the object actually IS           |
++------------------------------------------------------------+
 ```
 
 Think of assembling a jigsaw puzzle in a dim room. First you find the pieces with a straight edge (that's the Primal Sketch — just finding the boundaries). Then you notice which pieces seem to sit slightly "in front" of others based on how the shadows fall (that's the 2-1/2-D Sketch — depth relative to how the light is currently falling on the table, i.e., your current viewpoint). Only once you've assembled everything into the complete picture do you finally recognize "oh, this is a puzzle of a lighthouse" (that's the 3-D Model — the complete, viewpoint-independent understanding). Skipping straight from "loose puzzle pieces" to "it's a lighthouse" without the middle steps simply isn't possible, for a human doing a jigsaw or for a vision algorithm processing a photograph.
@@ -292,19 +319,20 @@ Long before neural networks could "learn" what an interesting corner or a human 
 **What it is, in the lecture's own words:** SIFT is a classic feature detection algorithm designed to detect and describe local features that are **robust to scale, rotation, and some viewpoint changes**.
 
 ```
-+-------------------------------------------------------------+
-|  SIFT -- WHAT MAKES A KEYPOINT COUNT AS "GOOD"?                |
-+-------------------------------------------------------------+
-|  [check] Distinctive          -- stands out from its neighbors  |
-|  [check] Stable under scale   -- still found when photo is       |
-|                                   zoomed in or out                |
-|  [check] Stable under rotation -- still found when photo is       |
-|                                   rotated/tilted                   |
-|  [check] Reliable under lighting/viewpoint changes                |
-|  -> Corners and blobs with unique, non-repeating texture           |
-|     patterns work best -- easy to localize AND easy to re-match     |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| SIFT -- WHAT MAKES A KEYPOINT COUNT AS "GOOD"?             |
++------------------------------------------------------------+
+| [check] Distinctive          -- stands out from its        |
+|   neighbors                                                |
+| [check] Stable under scale   -- still found when photo is  |
+| zoomed in or out                                           |
+| [check] Stable under rotation -- still found when photo is |
+| rotated/tilted                                             |
+| [check] Reliable under lighting/viewpoint changes          |
+| -> Corners and blobs with unique, non-repeating texture    |
+| patterns work best -- easy to localize AND easy to re-     |
+|   match                                                    |
++------------------------------------------------------------+```
 
 **Why SIFT survives being rotated or zoomed:** SIFT constructs a **scale-space representation** — the image is deliberately blurred and shrunk repeatedly, building a whole stack ("pyramid") of increasingly zoomed-out, increasingly blurry versions of the same photo, and keypoints are detected as points that remain "extreme" (a local maximum or minimum) across this whole stack. On top of that, SIFT **assigns its own personal compass-orientation to every single keypoint**, based on the direction of the strongest local gradient. Because the final descriptor for that keypoint is always computed *relative to* its own assigned scale and orientation, rotating or resizing the entire input photo doesn't confuse the algorithm — the same physical keypoints simply get re-detected, just tagged with a different scale level or compass reading, and the actual descriptor numbers stay effectively the same.
 
@@ -317,38 +345,42 @@ Picture giving every single distinctive corner in a photograph its own tiny pers
 - **Gradient orientation** — the compass direction in which that brightness change is pointing.
 
 ```
-+-------------------------------------------------------------+
-|  HOG PIPELINE (the lecture's own labeled images, a through g)  |
-+-------------------------------------------------------------+
-|  (a) Average human silhouette   -- a fuzzy heatmap-style        |
-|      template built from many training photos                  |
-|  (b) Sample HOG cells/blocks    -- coarse gradient structure     |
-|      visible even at low, pixel-level resolution                 |
-|  (c) Original input image       -- a real photo of a person       |
-|      standing, at plain pixel level                               |
-|  (d) Real-world test photo      -- same person, photographed       |
-|      normally                                                      |
-|  (e) HOG descriptor overlay     -- every cell now carries its       |
-|      own little gradient-orientation histogram                      |
-|  (f) Highlighted match regions  -- areas where the extracted          |
-|      HOG features line up with the human-shaped template               |
-|  (g) Positive detections        -- the final "yes, a person is          |
-|      here" bounding boxes                                                 |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| HOG PIPELINE (the lecture's own labeled images, a through  |
+| g)                                                         |
++------------------------------------------------------------+
+| (a) Average human silhouette   -- a fuzzy heatmap-style    |
+| template built from many training photos                   |
+| (b) Sample HOG cells/blocks    -- coarse gradient          |
+|   structure                                                |
+| visible even at low, pixel-level resolution                |
+| (c) Original input image       -- a real photo of a person |
+| standing, at plain pixel level                             |
+| (d) Real-world test photo      -- same person,             |
+|   photographed                                             |
+| normally                                                   |
+| (e) HOG descriptor overlay     -- every cell now carries   |
+|   its                                                      |
+| own little gradient-orientation histogram                  |
+| (f) Highlighted match regions  -- areas where the          |
+|   extracted                                                |
+| HOG features line up with the human-shaped template        |
+| (g) Positive detections        -- the final "yes, a person |
+|   is                                                       |
+| here" bounding boxes                                       |
++------------------------------------------------------------+```
 
 HOG deliberately looks at an image in small, fixed-size blocks, and for each block asks two simple questions: where are the edges, and which way do they point? A standing human silhouette has a remarkably *consistent* edge pattern even when the person's clothing, skin tone, or lighting changes completely from photo to photo:
 
 ```
-+-------------------------------------------------------------+
-|  WHY A HUMAN SILHOUETTE'S EDGE PATTERN STAYS CONSISTENT         |
-+-------------------------------------------------------------+
-|  Curved edges     -> around the head (skull/hair outline)        |
-|  Diagonal edges   -> around the shoulders                         |
-|  Vertical edges   -> running down along the torso and legs          |
-|  Separated edges  -> corresponding to the gap between the two legs   |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| WHY A HUMAN SILHOUETTE'S EDGE PATTERN STAYS CONSISTENT     |
++------------------------------------------------------------+
+| Curved edges    -> around the head/hair outline            |
+| Diagonal edges  -> around the shoulders                    |
+| Vertical edges  -> down along the torso and legs           |
+| Separated edges -> the gap between the two legs            |
++------------------------------------------------------------+```
 
 Because of this, HOG deliberately throws away exact pixel colors and intensities, and keeps only the *directions* in which brightness changes — which is precisely what makes it robust to different clothing colors, different lighting conditions, and small appearance changes, so long as the overall silhouette shape and edge arrangement stays roughly the same. Imagine tracing only the outline of a person with a pencil, ignoring every detail of their clothes or skin tone entirely — that pencil outline alone, and the direction each pencil stroke points, is essentially what HOG is built to capture and compare.
 
@@ -387,18 +419,21 @@ Close one eye and try to judge exactly how far away your coffee mug is on the de
 **Core idea, stated plainly:** SfM finds the **same physical points or features across multiple photographs**, and uses **triangulation** to compute where each of those points must sit in 3D space. By knowing (or estimating) each photo's camera position and viewing angle, the algorithm draws imaginary straight lines from each camera through the matched point in each photo, and calculates exactly where those lines must intersect in three-dimensional space.
 
 ```
-+-------------------------------------------------------------+
-|  STRUCTURE FROM MOTION -- STEP BY STEP RECIPE                    |
-+-------------------------------------------------------------+
-|  1. Collect many overlapping photos of the same scene            |
-|  2. Detect distinctive features in every photo (e.g. with SIFT)   |
-|  3. Match the SAME feature across as many photos as possible       |
-|  4. Estimate each photo's camera position AND orientation           |
-|  5. Triangulate every matched feature -> get its 3D coordinate       |
-|  6. Result: a sparse (or, with more work, dense) 3D point cloud       |
-|     reconstructing the original scene                                 |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| STRUCTURE FROM MOTION -- STEP BY STEP RECIPE               |
++------------------------------------------------------------+
+| 1. Collect many overlapping photos of the same scene       |
+| 2. Detect distinctive features in every photo (e.g. with   |
+|   SIFT)                                                    |
+| 3. Match the SAME feature across as many photos as         |
+|   possible                                                 |
+| 4. Estimate each photo's camera position AND orientation   |
+| 5. Triangulate every matched feature -> get its 3D         |
+|   coordinate                                               |
+| 6. Result: a sparse (or, with more work, dense) 3D point   |
+|   cloud                                                    |
+| reconstructing the original scene                          |
++------------------------------------------------------------+```
 
 Imagine photographing a marble statue from ten completely different angles as you walk slowly around it. Suppose you notice the exact same tiny crack in the marble appears in five of your ten photos. Because you (roughly) know where you were standing and which way your camera was pointing for each of those five shots, simple geometry — draw a line from each camera position through where that crack appears in that camera's photo — tells you precisely where that crack sits in real 3D space, at the point where all five lines cross. Now repeat this same trick for thousands of tiny distinctive points across the entire statue, and you have reconstructed the whole statue's 3D shape, purely from ordinary flat 2D photographs and some careful geometry — no laser scanner required. This directly answers the instructor's own in-class Q6 about how algorithms recover 3D structure "just from photos."
 
@@ -407,22 +442,22 @@ Imagine photographing a marble statue from ten completely different angles as yo
 This pairing is one of the single most commonly confused ideas in all of Computer Vision, and the lecture deliberately drills it with a direct side-by-side visual comparison: a photo of a dining table surrounded by several chairs.
 
 ```
-+-------------------------------------------------------------+
-|             SEMANTIC vs INSTANCE SEGMENTATION                   |
-+-------------------------------------------------------------+
-|  Input photo: a dining table with SEVERAL chairs around it        |
-|                                                                    |
-|  Semantic Segmentation output:                                    |
-|    ALL chairs get painted the exact SAME color.                    |
-|    -> The system knows WHAT is a chair, but NOT which               |
-|       individual chair is which.                                     |
-|                                                                       |
-|  Instance Segmentation output:                                       |
-|    Each INDIVIDUAL chair gets its OWN unique color.                   |
-|    -> The system knows WHAT is a chair, AND separates each chair       |
-|       as its own distinct, countable object.                           |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| SEMANTIC vs INSTANCE SEGMENTATION                          |
++------------------------------------------------------------+
+| Input photo: a dining table with SEVERAL chairs around it  |
+|                                                            |
+| Semantic Segmentation output:                              |
+| ALL chairs get painted the exact SAME color.               |
+| -> The system knows WHAT is a chair, but NOT which         |
+| individual chair is which.                                 |
+|                                                            |
+| Instance Segmentation output:                              |
+| Each INDIVIDUAL chair gets its OWN unique color.           |
+| -> The system knows WHAT is a chair, AND separates each    |
+|   chair                                                    |
+| as its own distinct, countable object.                     |
++------------------------------------------------------------+```
 
 | Question | Semantic Segmentation | Instance Segmentation |
 |---|---|---|
@@ -454,22 +489,21 @@ For decades, CV researchers had no choice but to hand-design features like SIFT 
 ### The Datasets That Made It Possible
 
 ```
-+-------------------------------------------------------------+
-|  DATASET TIMELINE -- EACH ONE BIGGER THAN THE LAST               |
-+-------------------------------------------------------------+
-|  Caltech-101 (Fei-Fei et al., 2004)                                |
-|      -> 101 object categories, an early, modest benchmark           |
-|  PASCAL VOC 2009 (Everingham et al., 2006-2012)                     |
-|      -> the Visual Object Classes Challenge, with careful             |
-|         annotated bounding boxes around objects                       |
-|  ImageNet (Deng et al., CVPR 2009)                                    |
-|      -> 22,000 categories, 15,000,000 images -- an enormous jump       |
-|         in both scale and label detail                                  |
-|  ILSVRC (Russakovsky et al., IJCV 2015)                                |
-|      -> the annual Image Classification Challenge, a curated             |
-|         SUBSET of ImageNet: 1,000 object classes, 1,431,167 images        |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| DATASET TIMELINE -- EACH ONE BIGGER THAN THE LAST          |
++------------------------------------------------------------+
+| Caltech-101 (Fei-Fei et al., 2004)                         |
+|   -> 101 object categories, an early benchmark             |
+| PASCAL VOC 2009 (Everingham et al., 2006-2012)             |
+|   -> Visual Object Classes Challenge, with                 |
+|      careful annotated bounding boxes                      |
+| ImageNet (Deng et al., CVPR 2009)                          |
+|   -> 22,000 categories, 15,000,000 images --               |
+|      an enormous jump in scale and label detail            |
+| ILSVRC (Russakovsky et al., IJCV 2015)                     |
+|   -> the annual Image Classification Challenge,            |
+|      a curated SUBSET: 1,000 classes, 1.43M imgs           |
++------------------------------------------------------------+```
 
 ### The Architecture Timeline (2010 -> 2015)
 
@@ -488,13 +522,16 @@ Picture a talented young chef who has had a genuinely great recipe sitting in a 
 ### The ImageNet Error-Rate Story, Told as a Timeline
 
 ```
-Top-5 error rate on the ImageNet Classification Task (illustrative shape,
-matching the lecture's own chart):
+Top-5 error rate on the ImageNet Classification Task
+(illustrative shape, matching the lecture's own chart):
 
-  2010: ~28%    2011: ~26%    2012: ~16%  <- the AlexNet "shock" year
-  2013: ~12%    2014: ~7%     2015: ~3.6%   2016: ~3.0%   2017: ~2.3%
-                                    (Human-level error is roughly 5%,
-                                     shown as a dashed reference line)
+  2010: ~28%   2011: ~26%
+  2012: ~16%   <- the AlexNet "shock" year
+  2013: ~12%   2014: ~7%
+  2015: ~3.6%  2016: ~3.0%   2017: ~2.3%
+
+  (Human-level error is roughly 5%,
+   shown as a dashed reference line)
 ```
 
 Before 2012, the very best models in the world were still wrong roughly one time out of every four attempts (26-28% error). In a single year, AlexNet very nearly cut that error rate in half. By around 2015, the leading models had already dropped their error rate below the typical human error rate on this specific, narrow benchmark task — an astonishing milestone that made international news at the time.
@@ -532,29 +569,38 @@ Every single model discussed so far in this lecture — AlexNet, VGG, GoogLeNet,
 **What it is, in OpenAI's own words (quoted in the lecture, Jan 5, 2021):** "We're introducing a neural network called CLIP which efficiently learns visual concepts from natural language supervision. CLIP can be applied to any visual classification benchmark by simply providing the names of the visual categories to be recognized" — a **zero-shot** capability directly comparable to what GPT-2 and GPT-3 had already shown for pure text, except now applied to images.
 
 ```
-+-------------------------------------------------------------+
-|  CLIP -- THE THREE-STEP PIPELINE                                 |
-+-------------------------------------------------------------+
-|  STEP 1: Contrastive pre-training                                 |
-|    Text Encoder(caption)  -> T1, T2, ..., TN                        |
-|    Image Encoder(photo)   -> I1, I2, ..., IN                         |
-|    Train so MATCHING (image, caption) pairs get a HIGH similarity     |
-|    score (Ii . Ti), and every MIS-matched pair gets a LOW score        |
-|    (Ii . Tj, where i is not equal to j) -- this trains against a        |
-|    big N-by-N grid of similarity scores, all at once                     |
-|                                                                            |
-|  STEP 2: Build a "zero-shot" classifier straight from label text            |
-|    Take plain class names: "plane", "car", "dog", "bird", ...                |
-|    Wrap each one in a simple template: "a photo of a {object}."               |
-|    Run every wrapped label through the Text Encoder -> T1 ... TN               |
-|                                                                                  |
-|  STEP 3: Zero-shot prediction on a brand-new photo                              |
-|    New test image -> Image Encoder -> I1                                         |
-|    Compute I1.T1, I1.T2, ..., I1.TN  (compare against every class)                |
-|    Pick whichever class's Tj gives the HIGHEST similarity score                    |
-|    -> "a photo of a dog." is predicted, with NO extra training needed at all!       |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| STEP 1: Contrastive pre-training                           |
++------------------------------------------------------------+
+| Text Encoder(caption) -> T1, T2, ..., TN                   |
+| Image Encoder(photo)  -> I1, I2, ..., IN                   |
+| Train so MATCHING (image,caption) pairs get                |
+| a HIGH score (Ii.Ti); every MIS-matched pair               |
+| gets a LOW score (Ii.Tj, i not equal j) --                 |
+| trains against a big N-by-N similarity grid                |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| STEP 2: Build zero-shot classifier from labels             |
++------------------------------------------------------------+
+| Take plain class names: plane, car, dog, bird              |
+| Wrap each in a template: "a photo of a X."                 |
+| Run every wrapped label through Text Encoder               |
+| -> T1 ... TN                                               |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| STEP 3: Zero-shot prediction on a new photo                |
++------------------------------------------------------------+
+| New test image -> Image Encoder -> I1                      |
+| Compute I1.T1, I1.T2, ..., I1.TN (compare                  |
+| against every class)                                       |
+| Pick whichever Tj gives the HIGHEST score                  |
+| -> "a photo of a dog" predicted, NO extra                  |
+| training needed at all!                                    |
++------------------------------------------------------------+```
 
 Picture teaching two very different students — one who only ever looks at pictures, and one who only ever reads sentences — to secretly agree on a shared "feeling" for every concept, such that when the picture-student sees a dog photo and the sentence-student reads "a photo of a dog," both of their private feelings end up landing in almost exactly the same spot on some enormous invisible map. Once both students have been trained to always agree like this, you can hand the picture-student a brand-new photo they've genuinely never seen before, whisper a list of candidate captions to the sentence-student, and simply ask, "which of these sentence-feelings is closest to what you're currently feeling about this new photo?" Whichever caption wins that comparison is CLIP's answer — and notice that nobody had to retrain either student specifically for this new photo or this new list of captions.
 
@@ -589,24 +635,23 @@ Before any fancy CNN, CLIP, or DALL-E can even begin to run, an image first has 
 ### Color Models
 
 ```
-+-------------------------------------------------------------+
-|  RGB -- Red, Green, Blue                                        |
-|         Used in: digital screens (monitors, cameras, TVs)         |
-|         ADDS light together -- combining all three at full           |
-|         strength produces WHITE                                       |
-|                                                                          |
-|  HSL -- Hue, Saturation, Lightness                                       |
-|         Used in: image editing, color filtering                           |
-|           Hue        = the TYPE of color (red, green, etc.)                 |
-|           Saturation = how PURE / intense that color is                      |
-|           Lightness  = how LIGHT or DARK the color appears overall             |
-|                                                                                   |
-|  CMYK -- Cyan, Magenta, Yellow, Black                                             |
-|          Used in: printing                                                          |
-|          ADDS ink together -- combining more ink ABSORBS more light,                  |
-|          moving toward BLACK                                                            |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| RGB -- Red, Green, Blue                                    |
+|   Used in: digital screens (monitors, cameras)             |
+|   ADDS light together -- all three at full                 |
+|   strength produces WHITE                                  |
+|                                                            |
+| HSL -- Hue, Saturation, Lightness                          |
+|   Used in: image editing, color filtering                  |
+|   Hue = the TYPE of color (red, green, etc.)               |
+|   Saturation = how PURE/intense the color is               |
+|   Lightness = how LIGHT or DARK it appears                 |
+|                                                            |
+| CMYK -- Cyan, Magenta, Yellow, Black                       |
+|   Used in: printing                                        |
+|   ADDS ink together -- more ink ABSORBS more               |
+|   light, moving toward BLACK                               |
++------------------------------------------------------------+```
 
 **The single most important exam point here:** RGB and CMYK are literal *opposites* in mechanism. RGB is **additive** — a screen starts pitch black, and *adding* red, green, and blue light together gets you all the way up to white; more light equals brighter. CMYK is **subtractive** — a sheet of paper starts white, and *adding* cyan, magenta, and yellow ink absorbs more and more of the light bouncing off the page, dragging the result toward black; more ink equals darker. Screens shine light directly at your eyes (so they add light to get brighter), while printed pages only reflect whatever light isn't absorbed by the ink (so they subtract light to get darker) — the physical setup is genuinely opposite, not just a different naming convention.
 
@@ -616,26 +661,50 @@ Before any fancy CNN, CLIP, or DALL-E can even begin to run, an image first has 
 Raw Image Data
       |
       v
-+--------------+   +---------------+   +-------------+   +----------------+   +-----------+
-| 1. Color     |-> | 2. Downsample |-> | 3. DCT       |-> | 4. Quantization |-> | 5.Encoding|
-|    Transform |   |               |   | (Discrete    |   |                 |   |           |
-|--------------|   |---------------|   |  Cosine      |   |-----------------|   |-----------|
-| RGB -> YCbCr |   | Reduce the    |   |  Transform)  |   | Reduce the      |   | Huffman   |
-| (separates   |   | RESOLUTION of |   |--------------|   | PRECISION of    |   | coding -> |
-| brightness   |   | just the      |   | Transforms   |   | frequencies     |   | final     |
-| from color)  |   | COLOR         |   | the image    |   | (high, barely-  |   | compressed|
-|              |   | channels --   |   | into         |   | visible         |   | bitstream |
-|              |   | we're more    |   | frequency    |   | frequencies are |   |           |
-|              |   | sensitive to  |   | space, using |   | often thrown    |   |           |
-|              |   | brightness    |   | 8x8-pixel    |   | away entirely)  |   |           |
-|              |   | than color)   |   | block DCT    |   |                 |   |           |
-|              |   |               |   | basis        |   |                 |   |           |
-|              |   |               |   | functions    |   |                 |   |           |
-+--------------+   +---------------+   +-------------+   +----------------+   +-----------+
-                                                                                     |
-                                                                                     v
-                                                                    JPEG-Compressed Image Data
-```
++------------------------------------------------------------+
+| 1. Color Transform                                         |
++------------------------------------------------------------+
+| RGB -> YCbCr (separates brightness                         |
+| from color)                                                |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| 2. Downsampling                                            |
++------------------------------------------------------------+
+| Reduce the RESOLUTION of just the COLOR                    |
+| channels -- we're more sensitive to                        |
+| brightness than color                                      |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| 3. DCT (Discrete Cosine Transform)                         |
++------------------------------------------------------------+
+| Transforms the image into frequency                        |
+| space, using 8x8-pixel block DCT basis                     |
+| functions                                                  |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| 4. Quantization                                            |
++------------------------------------------------------------+
+| Reduce the PRECISION of frequencies                        |
+| (high, barely-visible frequencies are                      |
+| often thrown away entirely)                                |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| 5. Encoding                                                |
++------------------------------------------------------------+
+| Huffman coding -> final compressed                         |
+| bitstream                                                  |
++------------------------------------------------------------+
+                             |
+                             v
+              JPEG-Compressed Image Data```
 
 **Decompression simply reverses every single step**, in the opposite order: Huffman decode, then de-quantize, then inverse-DCT, then upsample the color channels back to full resolution, then convert the color space back from YCbCr to RGB, finally producing the reconstructed raw image.
 
@@ -646,31 +715,28 @@ Picture a printed newspaper photo under a magnifying glass: you'd notice immedia
 ### Video Compression — I-Frames, P-Frames, and B-Frames
 
 ```
-+-------------------------------------------------------------+
-|  FRAME TYPES IN VIDEO COMPRESSION                                |
-+-------------------------------------------------------------+
-|  I-Frame (Intra, "keyframe")                                       |
-|    -> Completely self-contained -- doesn't rely on ANY other        |
-|       frame to be decoded                                            |
-|    -> Looks like a plain static photo (essentially a full,             |
-|       JPEG-like compressed frame, all on its own)                       |
-|                                                                            |
-|  P-Frame (Predicted)                                                        |
-|    -> Rendered using the PREVIOUS frame, storing only the                    |
-|       DIFFERENCES from it                                                     |
-|    -> Exploits the fact that "almost always, the current picture                |
-|       can be rendered using the previous frame plus small tweaks"                |
-|                                                                                     |
-|  B-Frame (Bi-predictive)                                                              |
-|    -> Refers to BOTH the past frame AND a future frame at the same                     |
-|       time, for even better compression                                                 |
-|    -> Trade-off: needs BOTH past and future frames already decoded                        |
-|       before it itself can be decoded -- this adds DELAY and needs                         |
-|       MORE memory -- not ideal for real-time apps like video calls                          |
-+-------------------------------------------------------------+
-
-  Example GOP (Group of Pictures) ordering:  B I B P B P B P B I
-```
++------------------------------------------------------------+
+| FRAME TYPES IN VIDEO COMPRESSION                           |
++------------------------------------------------------------+
+| I-Frame (Intra, "keyframe")                                |
+|   -> Completely self-contained, doesn't rely               |
+|      on any other frame to be decoded                      |
+|   -> Looks like a plain static photo (a full               |
+|      JPEG-like compressed frame, on its own)               |
+|                                                            |
+| P-Frame (Predicted)                                        |
+|   -> Rendered using the PREVIOUS frame, storing            |
+|      only the DIFFERENCES from it                          |
+|   -> Exploits that the current picture can                 |
+|      usually be rendered from the previous one             |
+|                                                            |
+| B-Frame (Bi-predictive)                                    |
+|   -> Refers to BOTH the past AND a future frame            |
+|      at once, for even better compression                  |
+|   -> Trade-off: needs BOTH frames already                  |
+|      decoded first -- adds DELAY and needs MORE            |
+|      memory -- not ideal for real-time video calls         |
++------------------------------------------------------------+```
 
 Codecs mentioned in the lecture that all use this same I/P/B frame skeleton include H.261, H.262, H.263, H.264, H.265, AV1, and WMV — every one of them shares the same basic encoder/decoder shape: **FDCT -> Quantizer -> Entropy Encoder -> Compressed Bitstream** on the way out, mirrored by **IDCT <- De-quantizer <- Entropy Decoder** on the way back in, both sides sharing the same Quantization Tables and Huffman Tables so the decoder knows exactly how to reverse what the encoder did.
 
@@ -702,15 +768,15 @@ The bigger the variation relative to the average, the higher the contrast. (The 
 
 ```
 h(i)
- 10 |                    #
-  9 |                    #           #
-  8 |                    #     #  #  #           #
-  7 |                    #     #  #  #        #  #
-  5 |        #           #     #  #  #     #  #  #
-  3 |        #           #     #  #  #     #  #  #
-  1 |        #           #     #  #  #     #  #  #  #
-  0 +--------+-----------+-----+--+--+-----+--+--+--+--> i (intensity)
-             1           2     3  4  5     6  7  8  9  ...
+10 |          #
+ 9 |          #     #
+ 8 |          #  #  #  #        #
+ 7 |          #  #  #  #     #  #
+ 5 |    #     #  #  #  #  #  #  #
+ 3 |    #     #  #  #  #  #  #  #
+ 1 |    #     #  #  #  #  #  #  #  #
+ 0 +----+-----+--+--+--+-----+--+--+--> i
+       1     2  3  4  5     6  7  8  9
 ```
 
 Reading this chart, "10 pixels have the intensity value i = 2" is found simply by reading straight up from position i=2 on the horizontal axis to the top of that bar.
@@ -749,28 +815,40 @@ s = c . log(1 + |r|)
 **4. Spatial Filtering** — applying a small filter, or "kernel," to a small local neighborhood of the image at a time, in order to enhance or suppress a specific local feature such as noise or edges.
 
 ```
-Low-Pass Filter (smoothing / general noise removal, e.g. spike or white noise):
-        +--------------+
-   1/9 *|  1   1   1   |     -> averages an entire 3x3 neighborhood together,
-        |  1   1   1   |        which removes high-frequency noise and makes
-        |  1   1   1   |        the whole image look smoother
-        +--------------+
++------------------------------------------------------------+
+| LOW-PASS FILTER (smoothing / noise removal)                |
++------------------------------------------------------------+
+|    1  | 1 1 1 |                                            |
+|    -  | 1 1 1 |                                            |
+|    9  | 1 1 1 |                                            |
+|                                                            |
+| Averages a 3x3 neighborhood together --                    |
+| removes high-frequency noise and makes                     |
+| the whole image look smoother.                             |
++------------------------------------------------------------+
 
-Median Filter (specifically for salt-and-pepper / impulse noise):
-   Replace each pixel with the MEDIAN of its neighboring pixel values
-   (this is NOT a simple fixed-weight multiply -- it's a nonlinear,
-    "sort everything and pick the middle one" operation).
-   -> Unlike a plain average, the median is genuinely NOT dragged
-      toward extreme outlier values, so it preserves sharp edges
-      much better than averaging does.
++------------------------------------------------------------+
+| MEDIAN FILTER (for salt-and-pepper noise)                  |
++------------------------------------------------------------+
+| Replace each pixel with the MEDIAN of its                  |
+| neighboring pixel values (a sort-and-pick-                 |
+| the-middle operation, NOT a weighted sum).                 |
+| Unlike averaging, the median is NOT dragged                |
+| by extreme outlier values, so it preserves                 |
+| sharp edges much better.                                   |
++------------------------------------------------------------+
 
-Sharpening Filter (highlight edges and fine local detail):
-        +-----------------+
-   1/9 *| -1   -1   -1    |     -> deliberately boosts the CENTER pixel's
-        | -1    8   -1    |        value relative to its neighbors,
-        | -1   -1   -1    |        which emphasizes local contrast and edges
-        +-----------------+
-```
++------------------------------------------------------------+
+| SHARPENING FILTER (highlight edges/detail)                 |
++------------------------------------------------------------+
+|    1  | -1 -1 -1 |                                         |
+|    -  | -1  8 -1 |                                         |
+|    9  | -1 -1 -1 |                                         |
+|                                                            |
+| Boosts the CENTER pixel relative to its                    |
+| neighbors, which emphasizes local                          |
+| contrast and edges.                                        |
++------------------------------------------------------------+```
 
 **Spatial Domain versus Frequency Domain enhancement:**
 - **Spatial Domain** enhancement means working directly on the raw pixels themselves, using small kernels like the ones shown above.
@@ -800,14 +878,14 @@ A single image is one frozen instant in time. A video is thousands of these froz
 **Definition:** Optical flow is the **pattern of apparent motion** of objects, surfaces, and edges within a visual scene, produced by the relative motion between an observer (the camera) and the scene itself. In practice, it tells us how things in a video are moving by directly comparing one frame against the very next one.
 
 ```
-   Frame at T=t              Frame at T=t+1             Optical Flow Output
-  +--------------+          +--------------+           +--------------------+
-  |  [car] at     |    ->    |  [car] slightly|   ->     |  colored blob:       |
-  |  position A   |          |  further        |         |  the COLOR encodes    |
-  |               |          |  forward         |         |  motion DIRECTION,      |
-  |               |          |                  |         |  the BRIGHTNESS encodes  |
-  |               |          |                  |         |  motion SPEED             |
-  +--------------+          +--------------+           +--------------------+
+  Frame T=t       Frame T=t+1      Flow Output
+  +------------+    +-----------------+    +----------------+
+  | [car] at   |    | [car] slightly  |    | colored blob:  |
+  | position A |    | further forward |    | COLOR = motion |
+  |            | -> |                 | -> | DIRECTION,     |
+  |            |    |                 |    | BRIGHTNESS =   |
+  |            |    |                 |    | motion SPEED   |
+  +------------+    +-----------------+    +----------------+
 ```
 
 Every single pixel in an optical flow field carries its own **flow vector**, made up of:
@@ -842,37 +920,53 @@ MBH computes the gradient **of the optical flow field itself**, rather than the 
 ### The Classical Action-Recognition Pipeline: Bag-of-Space-Time-Features Plus SVM
 
 ```
-+-------------------------------------------------------------+
-|  TRADITIONAL ACTION CLASSIFICATION PIPELINE                       |
-+-------------------------------------------------------------+
-|  1. Identify space-time interest points                             |
-|     (marked as red dots on the video, at exactly the spots where     |
-|      motion or appearance changes -- e.g. joints/limbs in motion)     |
-|                          |                                              |
-|                          v                                              |
-|  2. Extract a "collection of space-time patches" surrounding             |
-|     each interest point                                                    |
-|                          |                                                  |
-|                          v                                                  |
-|  3. Compute descriptors for every patch: HOG (appearance), HOF               |
-|     (motion), and/or MBH (motion boundary) -- this converts each               |
-|     raw patch into a compact numeric feature vector                             |
-|                          |                                                       |
-|                          v                                                       |
-|  4. Cluster similar feature vectors together into a "dictionary"                   |
-|     of visual words (exactly like clustering similar word meanings                  |
-|     together in NLP -- hence the deliberate name "Bag of [visual] Words")            |
-|                          |                                                            |
-|                          v                                                            |
-|  5. Build a single Histogram of Visual Words for the entire video                       |
-|     (simply counting how many patches fell into each visual-word                          |
-|      cluster, across the whole clip)                                                        |
-|                          |                                                                    |
-|                          v                                                                    |
-|  6. Feed that final histogram into an SVM Classifier -> get the                                 |
-|     predicted action label ("walking", "running", etc.)                                           |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| 1. Identify space-time interest points                     |
++------------------------------------------------------------+
+| (red dots on the video, at spots where                     |
+| motion or appearance changes -- e.g.                       |
+| joints/limbs in motion)                                    |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| 2. Extract space-time patches                              |
++------------------------------------------------------------+
+| surrounding each interest point                            |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| 3. Compute descriptors per patch                           |
++------------------------------------------------------------+
+| HOG (appearance), HOF (motion), and/or                     |
+| MBH (motion boundary) -- converts each                     |
+| raw patch into a numeric feature vector                    |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| 4. Cluster into a visual-word dictionary                   |
++------------------------------------------------------------+
+| (like clustering word meanings in NLP --                   |
+| hence "Bag of visual Words")                               |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| 5. Build one Histogram of Visual Words                     |
++------------------------------------------------------------+
+| for the entire video (count how many                       |
+| patches fell into each word-cluster)                       |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| 6. Feed histogram into an SVM Classifier                   |
++------------------------------------------------------------+
+| -> get the predicted action label                          |
+| ("walking", "running", etc.)                               |
++------------------------------------------------------------+```
 
 Imagine chopping an entire video into hundreds of tiny moving "stickers" (the space-time patches), briefly describing each individual sticker with just a handful of numbers (its HOG, HOF, or MBH descriptor), then sorting visually similar-looking stickers into a set of clearly labeled piles (the "visual words," much like sorting a giant bucket of Lego bricks by their exact shape), then simply counting how many stickers from this particular video landed in each labeled pile (the final histogram), and finally handing that entire count sheet over to a judge (the SVM classifier) whose only job is to decide, based purely on those counts, "this looks like a walking video" or "this looks like a running video."
 
@@ -901,60 +995,95 @@ Video Processing Foundations extend everything learned about static images into 
 ## 10. Cheat Sheet & Exam Hacks
 
 ```
-+=================================================================+
-|  CV-NLP -- LEC 01 ONE-LINERS                                    |
-+=================================================================+
-|  CV is interdisciplinary: Biology + Physics + Psychology +       |
-|  Math + CS + Engineering                                          |
-|  AI contains ML contains DL contains CNN                           |
-|  (every CNN is DL, but NOT every DL model is a CNN --                |
-|   Transformers/RNNs are DL too)                                        |
-|                                                                          |
-|  MARR'S MODEL:  Input Image -> Primal Sketch -> 2-1/2-D Sketch ->        |
-|                  3-D Model                                                |
-|  2-1/2-D = viewer-centered (only the visible surface)                      |
-|  3-D     = object-centered (the full shape, from any angle)                  |
-|                                                                                 |
-|  SIFT = scale + rotation invariant keypoints (via scale-space +                 |
-|         assigned orientation)                                                    |
-|  HOG  = per-pixel gradient magnitude + orientation, in a grid of                   |
-|         histograms                                                                  |
-|  HOG fails on: deformable objects, smooth/edge-less surfaces, clutter                |
-|                                                                                          |
-|  SfM = match features across many photos + triangulate -> 3D point cloud                 |
-|  Semantic Seg = SAME color per CLASS  |  Instance Seg = UNIQUE color                        |
-|                 per OBJECT (lets you count instances)                                         |
-|                                                                                                   |
-|  ImageNet: 22,000 classes / 15M images  |  ILSVRC: 1,000 classes / 1.43M                          |
-|  2012 = the AlexNet moment (error dropped roughly 28% -> 16%)                                       |
-|  Human-level error on this benchmark is roughly 5%                                                     |
-|  Architecture order: AlexNet (2012) -> GoogLeNet/VGG (2014) -> ResNet (2015)                             |
-|                                                                                                              |
-|  CLIP = matches text with image via contrastive learning (discriminative)                                     |
-|  DALL-E = generates a genuinely NEW image straight from text (generative)                                       |
-|                                                                                                                     |
-|  RGB = additive (light)  |  CMYK = subtractive (ink)  |  they are OPPOSITES                                          |
-|  JPEG pipeline: Color Transform -> Downsample -> DCT -> Quantize -> Encode (Huffman)                                    |
-|  I-frame = self-contained  |  P-frame = uses only the past  |  B-frame =                                                  |
-|  uses BOTH past and future (adds delay/memory cost -- bad for live calls)                                                   |
-|                                                                                                                                  |
-|  B(I) = (1/wh) times [sum of ALL pixel values]                                                                                     |
-|  Contrast = (Change in Luminance) / (Average Luminance)                                                                              |
-|  Log transform: s = c times log(1+|r|)  -> compresses HIGH dynamic range                                                               |
-|  Gray-level slicing: keep [A,B] bright, push everything else -> constant                                                                 |
-|  Low-pass kernel = (1/9) times all-ones 3x3  |  Sharpen kernel's center                                                                     |
-|  weight = 8, all 8 neighbors = -1  |  Median filter -> best against                                                                            |
-|  salt-and-pepper noise specifically                                                                                                              |
-|                                                                                                                                                       |
-|  Optical flow magnitude = sqrt(u^2 + v^2)                                                                                                              |
-|  HOF = motion-direction histogram (fails to distinguish two OPPOSITE-                                                                                    |
-|  direction versions of the SAME action)                                                                                                                    |
-|  MBH = gradient OF the optical flow field itself -> captures motion                                                                                          |
-|  BOUNDARIES specifically                                                                                                                                        |
-|  Classical action recognition pipeline: interest points -> patches ->                                                                                             |
-|  HOG/HOF/MBH descriptors -> Bag-of-Visual-Words histogram -> SVM classifier                                                                                          |
-+=================================================================+
-```
++------------------------------------------------------------+
+| PILLAR 1-2: CV BASICS & HISTORY                            |
++------------------------------------------------------------+
+| CV is interdisciplinary: Biology + Physics +               |
+| Psychology + Math + CS + Engineering                       |
+| AI contains ML contains DL contains CNN                    |
+| (every CNN is DL, but NOT every DL model is                |
+| a CNN -- Transformers/RNNs are DL too)                     |
+|                                                            |
+| MARR'S MODEL: Input Image -> Primal Sketch ->              |
+| 2-1/2-D Sketch -> 3-D Model                                |
+| 2-1/2-D = viewer-centered (visible surface                 |
+| only) | 3-D = object-centered (any angle)                  |
++------------------------------------------------------------+
+
++------------------------------------------------------------+
+| FEATURES, SFM & SEGMENTATION                               |
++------------------------------------------------------------+
+| SIFT = scale + rotation invariant keypoints                |
+| (via scale-space + assigned orientation)                   |
+| HOG = per-pixel gradient magnitude +                       |
+| orientation, in a grid of histograms                       |
+| HOG fails on: deformable objects, smooth/                  |
+| edge-less surfaces, clutter                                |
+|                                                            |
+| SfM = match features across photos +                       |
+| triangulate -> 3D point cloud                              |
+| Semantic Seg = SAME color per CLASS                        |
+| Instance Seg = UNIQUE color per OBJECT                     |
+| (lets you count instances)                                 |
++------------------------------------------------------------+
+
++------------------------------------------------------------+
+| IMAGENET ERA & CLIP/DALL-E                                 |
++------------------------------------------------------------+
+| ImageNet: 22,000 classes / 15M images                      |
+| ILSVRC: 1,000 classes / 1.43M images                       |
+| 2012 = AlexNet moment (error ~28% -> 16%)                  |
+| Human-level error on benchmark is ~5%                      |
+| Order: AlexNet(2012) -> GoogLeNet/VGG(2014)                |
+| -> ResNet(2015) -> ViT(2021)                               |
+|                                                            |
+| CLIP = matches text with image via                         |
+| contrastive learning (discriminative)                      |
+| DALL-E = generates a NEW image from text                   |
+| (generative)                                               |
++------------------------------------------------------------+
+
++------------------------------------------------------------+
+| IMAGE PROCESSING (COLOR, JPEG, VIDEO)                      |
++------------------------------------------------------------+
+| RGB = additive (light) | CMYK = subtractive                |
+| (ink) -- they are OPPOSITES                                |
+| JPEG: Color Transform -> Downsample -> DCT                 |
+| -> Quantize -> Encode (Huffman)                            |
+| I-frame = self-contained | P-frame = uses                  |
+| only the past | B-frame = past AND future                  |
+| (adds delay/memory cost -- bad for calls)                  |
++------------------------------------------------------------+
+
++------------------------------------------------------------+
+| BRIGHTNESS, CONTRAST & FILTER FORMULAS                     |
++------------------------------------------------------------+
+| B(I) = (1/wh) times [sum of ALL pixels]                    |
+| Contrast = Change in Luminance / Average                   |
+| Luminance                                                  |
+| Log transform: s = c times log(1+|r|) ->                   |
+| compresses HIGH dynamic range                              |
+| Gray-level slicing: keep [A,B] bright,                     |
+| push everything else -> constant                           |
+| Low-pass kernel = (1/9) times all-ones 3x3                 |
+| Sharpen center weight = 8, neighbors = -1                  |
+| Median filter -> best against salt-and-                    |
+| pepper noise specifically                                  |
++------------------------------------------------------------+
+
++------------------------------------------------------------+
+| VIDEO PROCESSING FORMULAS                                  |
++------------------------------------------------------------+
+| Optical flow magnitude = sqrt(u^2 + v^2)                   |
+| HOF = motion-direction histogram (fails to                 |
+| distinguish two OPPOSITE-direction versions                |
+| of the SAME action)                                        |
+| MBH = gradient OF the optical flow field                   |
+| itself -> captures motion BOUNDARIES                       |
+| Classical pipeline: interest points ->                     |
+| patches -> HOG/HOF/MBH descriptors ->                      |
+| Bag-of-Visual-Words histogram -> SVM                       |
++------------------------------------------------------------+```
 
 ### Exam Red Flags
 

@@ -384,30 +384,47 @@ Picture laying two "before" and "after" transparent photo overlays exactly on to
 **The Task:** Take any single photograph (a simple object on a plain background works best, e.g., a ball or a mug) and manually reconstruct all four stages of Marr's Computational Vision model as separate output images:
 
 ```
-+-------------------------------------------------------------+
-|  YOUR MINI-PIPELINE, STAGE BY STAGE                              |
-+-------------------------------------------------------------+
-|  Stage 1: Input Image                                              |
-|    -> load your photo, convert it to grayscale                       |
-|                                                                          |
-|  Stage 2: Primal Sketch                                                   |
-|    -> run an edge detector (Canny or Sobel) to approximate                  |
-|       "zero crossings, blobs, edges"                                          |
-|                                                                                   |
-|  Stage 3: 2-1/2-D Sketch                                                            |
-|    -> use a simple shading-based depth cue (brighter = closer,                        |
-|       for a single-light-source photo), OR a stereo pair if you                          |
-|       have two photos of the same object from slightly different                            |
-|       angles -- produce a ROUGH depth/orientation map (this stage is                            |
-|       intentionally the hardest and most open-ended; a coarse                                       |
-|       approximation is perfectly fine)                                                                 |
-|                                                                                                            |
-|  Stage 4: 3-D Model Representation                                                                          |
-|    -> write a short paragraph describing what a full,                                                          |
-|       object-centered 3D model of your chosen object would need                                                   |
-|       to capture that your 2-1/2-D sketch cannot (e.g., "the back                                                     |
-|       and underside of the mug, which no single photo shows")                                                            |
-+-------------------------------------------------------------+
++------------------------------------------------------------+
+| Stage 1: Input Image                                       |
++------------------------------------------------------------+
+| -> load your photo, convert it to                          |
+| grayscale                                                  |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| Stage 2: Primal Sketch                                     |
++------------------------------------------------------------+
+| -> run an edge detector (Canny or                          |
+| Sobel) to approximate "zero crossings,                     |
+| blobs, edges"                                              |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| Stage 3: 2-1/2-D Sketch                                    |
++------------------------------------------------------------+
+| -> use a simple shading-based depth cue                    |
+| (brighter = closer), OR a stereo pair                      |
+| if you have two photos from slightly                       |
+| different angles -- produce a ROUGH                        |
+| depth/orientation map (this stage is                       |
+| intentionally the hardest and most                         |
+| open-ended; a coarse approximation is                      |
+| perfectly fine)                                            |
++------------------------------------------------------------+
+                             |
+                             v
++------------------------------------------------------------+
+| Stage 4: 3-D Model Representation                          |
++------------------------------------------------------------+
+| -> write a short paragraph describing                      |
+| what a full, object-centered 3D model                      |
+| would need to capture that your                            |
+| 2-1/2-D sketch cannot (e.g. "the back                      |
+| and underside of the mug, which no                         |
+| single photo shows")                                       |
++------------------------------------------------------------+
 ```
 
 **Stretch goals (optional, but genuinely worthwhile for building intuition):**

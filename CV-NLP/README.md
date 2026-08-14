@@ -17,35 +17,26 @@ Teaching a machine to genuinely understand the world takes two separate superpow
 
 ```mermaid
 flowchart LR
-    subgraph CV["👁️ COMPUTER VISION"]
-        direction TB
-        A1[Raw Pixels] --> A2[Features & Edges]
-        A2 --> A3[Objects & Scenes]
-        A3 --> A4[3D Understanding]
-    end
+    A[Raw Pixels] --> B[Features and Edges]
+    B --> C[Objects and Scenes]
+    C --> D[3D Understanding]
+    D --> E[CLIP / Captioning / VQA]
+    F[Raw Words] --> G[Tokens and Embeddings]
+    G --> H[Meaning and Grammar]
+    H --> I[Generation and Reasoning]
+    I --> E
+    E --> J[A system that can SEE and TALK about what it sees]
 
-    subgraph BRIDGE["🌉 WHERE THEY MEET"]
-        direction TB
-        B1[CLIP: match image ↔ text]
-        B2[Captioning: image → text]
-        B3[VQA: image + question → answer]
-    end
-
-    subgraph NLP["💬 NATURAL LANGUAGE PROCESSING"]
-        direction TB
-        C1[Raw Words] --> C2[Tokens & Embeddings]
-        C2 --> C3[Meaning & Grammar]
-        C3 --> C4[Generation & Reasoning]
-    end
-
-    CV --> BRIDGE
-    NLP --> BRIDGE
-    BRIDGE --> D[🤖 A system that can both SEE and TALK about what it sees]
-
-    style CV fill:#dbeafe,stroke:#2563eb
-    style NLP fill:#fce7f3,stroke:#db2777
-    style BRIDGE fill:#fef3c7,stroke:#d97706
-    style D fill:#dcfce7,stroke:#16a34a
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style D fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style F fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style G fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style H fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style I fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style E fill:#fef3c7,stroke:#d97706,color:#1e293b
+    style J fill:#dcfce7,stroke:#16a34a,color:#1e293b
 ```
 
 Think of this the way a small child learns: first she notices shapes and colors around her (that's the Computer Vision arm — raw pixels slowly turning into recognized objects), separately she starts picking up sounds and words from the people around her (that's the NLP arm — raw sounds slowly turning into recognized meaning). At some point, and this is the magic moment, she connects the two: she looks at the family pet and says "dog" for the very first time. That single moment — vision and language locking together into one understanding — is exactly what CLIP, captioning, and VQA do computationally, and it's exactly why this track carries both halves in its name.
@@ -56,19 +47,22 @@ Think of this the way a small child learns: first she notices shapes and colors 
 
 ```mermaid
 flowchart TD
-    ROOT["📂 CV-NLP/"]
-    ROOT --> L1["📂 Lec_01_Introduction/<br/>What is CV · History · Marr's Model<br/>Image & Video Processing Foundations"]
-    ROOT --> L2["📂 Lec_02_.../<br/>🔭 planned"]
-    ROOT --> L3["📂 Lec_03_.../<br/>🔭 planned"]
-    L1 --> F1["README.md — lecture hub"]
-    L1 --> F2["theory.md — concepts, deep dive"]
-    L1 --> F3["numerical.md — worked formulas"]
-    L1 --> F4["practice.md — Q&amp;A, drills, mini project"]
+    ROOT[CV-NLP folder] --> L1[Lec_01_Introduction]
+    ROOT --> L2[Lec_02 - planned]
+    ROOT --> L3[Lec_03 - planned]
+    L1 --> F1[README.md - lecture hub]
+    L1 --> F2[theory.md - concepts deep dive]
+    L1 --> F3[numerical.md - worked formulas]
+    L1 --> F4[practice.md - Q and A, drills, mini project]
 
-    style ROOT fill:#f1f5f9,stroke:#334155
-    style L1 fill:#dbeafe,stroke:#2563eb
-    style L2 fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
-    style L3 fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
+    style ROOT fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style L1 fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style L2 fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    style L3 fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    style F1 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style F2 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style F3 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style F4 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
 ```
 
 | # | Lecture | Folder |
@@ -89,20 +83,21 @@ Each lecture folder always contains the same **trio** of files, plus a folder-le
 
 ```mermaid
 flowchart LR
-    A["1️⃣ Read theory.md<br/>top to bottom once"] --> B["2️⃣ Work numerical.md<br/>with pen &amp; paper"]
-    B --> C["3️⃣ Attempt practice.md<br/>BEFORE checking answers"]
-    C --> D{"Confident on<br/>every topic?"}
-    D -- "No" --> E["Re-read the weak<br/>topic in theory.md"]
+    A[Read theory.md top to bottom once] --> B[Work numerical.md with pen and paper]
+    B --> C[Attempt practice.md BEFORE checking answers]
+    C --> D{Confident on every topic}
+    D -->|No| E[Re-read the weak topic in theory.md]
     E --> C
-    D -- "Yes" --> F["4️⃣ Final pass:<br/>Cheat Sheet + Exam Hacks<br/>the night before"]
-    F --> G(("✅ Exam Ready"))
+    D -->|Yes| F[Final pass: Cheat Sheet plus Exam Hacks]
+    F --> G[Exam Ready]
 
-    style A fill:#dbeafe,stroke:#2563eb
-    style B fill:#fef9c3,stroke:#ca8a04
-    style C fill:#fce7f3,stroke:#db2777
-    style D fill:#fff7ed,stroke:#ea580c
-    style F fill:#e0e7ff,stroke:#4f46e5
-    style G fill:#dcfce7,stroke:#16a34a
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style B fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style D fill:#fff7ed,stroke:#ea580c,color:#1e293b
+    style E fill:#fecaca,stroke:#dc2626,color:#1e293b
+    style F fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style G fill:#dcfce7,stroke:#16a34a,color:#1e293b
 ```
 
 This loop is deliberately built the way any real skill gets learned — not by reading once and hoping it sticks, but by reading, then doing, then testing, then circling back to whatever didn't stick the first time. A useful comparison: nobody learns to ride a bicycle by reading an instruction manual once. You read the basics, you actually try pedaling (the numerical file), you fall over a few times and get back up (the practice file's self-check), and you circle back to whichever specific balance problem kept tripping you up, until eventually the whole thing feels automatic.
@@ -113,23 +108,22 @@ This loop is deliberately built the way any real skill gets learned — not by r
 
 ```mermaid
 flowchart TD
-    L1["✅ Lec 01 — Introduction<br/>History of CV · Marr's Model · SIFT/HOG<br/>ImageNet era · Segmentation · CLIP/DALL-E<br/>Image &amp; Video Processing Foundations"]
-    L1 --> CNN["🔭 CNNs for Vision<br/>image classification backbones"]
-    CNN --> DET["🔭 Object Detection deep dive<br/>R-CNN family, YOLO, DETR"]
-    DET --> SEG["🔭 Segmentation architectures<br/>semantic / instance / panoptic"]
-    SEG --> VIT["🔭 Vision Transformers (ViT)"]
-    VIT --> NLPF["🔭 NLP foundations<br/>tokenization, embeddings, sequence models"]
-    NLPF --> ATT["🔭 Transformers &amp; Attention<br/>for language"]
-    ATT --> VL["🔭 Vision-Language models<br/>captioning, VQA, CLIP deep dive"]
+    L1[Lec 01 - Introduction - DONE] --> CNN[CNNs for Vision - planned]
+    CNN --> DET[Object Detection deep dive - planned]
+    DET --> SEG[Segmentation architectures - planned]
+    SEG --> VIT[Vision Transformers - planned]
+    VIT --> NLPF[NLP foundations - planned]
+    NLPF --> ATT[Transformers and Attention - planned]
+    ATT --> VL[Vision-Language models - planned]
 
-    style L1 fill:#dcfce7,stroke:#16a34a
-    style CNN fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
-    style DET fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
-    style SEG fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
-    style VIT fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
-    style NLPF fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
-    style ATT fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
-    style VL fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
+    style L1 fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style CNN fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    style DET fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    style SEG fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    style VIT fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    style NLPF fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    style ATT fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    style VL fill:#f8fafc,stroke:#94a3b8,color:#1e293b
 ```
 
 More lecture folders will be added as the course progresses — new folders slot in as `Lec_02_...`, `Lec_03_...`, following the exact same trio pattern, and each new addition gets a fresh row in the contents table above plus a tick on this roadmap.

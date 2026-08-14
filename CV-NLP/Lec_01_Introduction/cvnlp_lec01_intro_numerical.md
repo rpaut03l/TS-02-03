@@ -99,9 +99,9 @@ B(I) = 107.5
 Picture the full brightness scale as a see-saw with pure black (0) sitting on the far left end and pure white (255) sitting on the far right end. The exact middle of that see-saw would be `255 / 2 = 127.5`. Our computed brightness of `107.5` sits a little to the LEFT of that exact middle point — meaning this particular 4x4 image leans very slightly darker than a perfectly balanced mid-gray image, even though it contains plenty of bright pixels (up to 240) mixed in with dark ones (as low as 10).
 
 ```
-   0                     107.5   127.5                    255
-   |----------------------|-------|-------------------------|
-  BLACK                 our B(I)  exact mid-gray          WHITE
+  0            107.5  127.5            255
+  |--------------|------|--------------|
+ BLACK        our B(I)  mid-gray      WHITE
 ```
 
 ### Summary
@@ -157,17 +157,18 @@ Contrast ~= 2.14
 Since the total spread (230) is more than double the average brightness (107.5), this tells us the image's pixel values are widely scattered relative to their own average, rather than tightly bunched close to it — a genuine hallmark of a fairly high-contrast image.
 
 ```
-+-------------------------------------------------------------+
-|  QUICK CONTRAST-VALUE INTUITION                                |
-+-------------------------------------------------------------+
-|  Contrast well below 1  -> pixel values cluster TIGHTLY around  |
-|                             the average (LOW contrast, flat look) |
-|  Contrast around 1      -> spread is roughly equal to the         |
-|                             average (moderate contrast)             |
-|  Contrast well above 1  -> pixel values are widely scattered         |
-|                             relative to the average (HIGH contrast)   |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| QUICK CONTRAST-VALUE INTUITION                             |
++------------------------------------------------------------+
+| Contrast well below 1  -> pixel values cluster TIGHTLY     |
+|   around                                                   |
+| the average (LOW contrast, flat look)                      |
+| Contrast around 1      -> spread is roughly equal to the   |
+| average (moderate contrast)                                |
+| Contrast well above 1  -> pixel values are widely          |
+|   scattered                                                |
+| relative to the average (HIGH contrast)                    |
++------------------------------------------------------------+```
 
 ### A Note on Definitions
 
@@ -208,24 +209,25 @@ Take a small 4x4 image, deliberately using only a few distinct intensity values 
 **Step 2 — Tally exactly how many times each value appears, one value at a time, so you never lose track.**
 
 ```
-Value 2:  appears at (Row1,Col1), (Row1,Col2), (Row2,Col1), (Row4,Col1)
-          -> count = 4
+Value 2: at (R1,C1), (R1,C2), (R2,C1),
+         (R4,C1) -> count = 4
 
-Value 5:  appears at (Row1,Col3), (Row2,Col2), (Row2,Col3), (Row4,Col2)
-          -> count = 4
+Value 5: at (R1,C3), (R2,C2), (R2,C3),
+         (R4,C2) -> count = 4
 
-Value 7:  appears at (Row1,Col4), (Row3,Col1), (Row4,Col3)
-          -> count = 3
+Value 7: at (R1,C4), (R3,C1), (R4,C3)
+         -> count = 3
 
-Value 9:  appears at (Row2,Col4), (Row3,Col2), (Row3,Col3), (Row3,Col4),
-          (Row4,Col4)
-          -> count = 5
+Value 9: at (R2,C4), (R3,C2), (R3,C3),
+         (R3,C4), (R4,C4) -> count = 5
 ```
 
 **Step 3 — Sanity-check by adding all four counts; the total must exactly equal the total pixel count (16), or a counting mistake was made somewhere.**
 
 ```
-4 + 4 + 3 + 5 = 16    CHECK: matches wh = 4 x 4 = 16, so the count is correct
+4 + 4 + 3 + 5 = 16
+CHECK: matches wh = 4 x 4 = 16,
+so the count is correct
 ```
 
 **Step 4 — Write out the finished histogram table, `h(i)`.**
@@ -321,7 +323,9 @@ s = 30.66 . log(1 + 4095)
 s = 30.66 . log(4096)
 log(4096) ~= 8.317
 s = 30.66 x 8.317
-s ~= 255.03    (rounds to 255, our chosen max -- exactly as designed in Step 1)
+s ~= 255.03
+(rounds to 255, our chosen max --
+exactly as designed in Step 1)
 ```
 
 **Step 3 — Line up the input/output pairs and compare the compression effect directly.**
@@ -338,12 +342,12 @@ s ~= 255.03    (rounds to 255, our chosen max -- exactly as designed in Step 1)
 
 ```
 Input axis (linear, un-squashed):
-  0 ----------- 255 --------------------------------------- 4095
-  |------255----|------------------3840--------------------|
+  0 ----- 255 ------------------- 4095
+  |--255--|---------3840---------|
 
 Output axis (after log compression):
-  0 -------- 170 ------- 255
-  |---170----|----85-----|
+  0 ---- 170 -- 255
+  |-170--|--85--|
 ```
 
 Notice how the huge 3840-wide gap on the input side got squeezed down into a much smaller 85-wide gap on the output side, while the modest 255-wide gap on the input side kept a comparatively generous 170-wide gap on the output side. That asymmetric squeezing is precisely why the log transform is the tool of choice whenever a handful of extreme, blindingly bright pixels would otherwise wash out all the useful, ordinary mid-tone detail.
@@ -367,7 +371,7 @@ Gray-level slicing works exactly like a bouncer standing at a club entrance with
 Take one row of ten pixels:
 
 ```
-r:   10    50    90    130    150    170    190    210    230    250
+r: 10  50  90  130  150  170  190  210  230  250
 ```
 
 We want to highlight the range `[A, B] = [120, 200]` — pushing pixels inside this range up to full brightness (`255`), and pushing everything else down to a flat `0`, exactly matching the technique description in the theory file.
@@ -375,29 +379,29 @@ We want to highlight the range `[A, B] = [120, 200]` — pushing pixels inside t
 **Step 1 — Check every single pixel against the range `[120, 200]`, one at a time, carefully.**
 
 ```
-r = 10   ->  10 < 120                    -> OUTSIDE the range  -> output = 0
-r = 50   ->  50 < 120                    -> OUTSIDE the range  -> output = 0
-r = 90   ->  90 < 120                    -> OUTSIDE the range  -> output = 0
-r = 130  ->  120 <= 130 <= 200            -> INSIDE the range   -> output = 255
-r = 150  ->  120 <= 150 <= 200            -> INSIDE the range   -> output = 255
-r = 170  ->  120 <= 170 <= 200            -> INSIDE the range   -> output = 255
-r = 190  ->  120 <= 190 <= 200            -> INSIDE the range   -> output = 255
-r = 210  ->  210 > 200                    -> OUTSIDE the range  -> output = 0
-r = 230  ->  230 > 200                    -> OUTSIDE the range  -> output = 0
-r = 250  ->  250 > 200                    -> OUTSIDE the range  -> output = 0
+r = 10  -> 10 < 120     -> OUTSIDE -> s = 0
+r = 50  -> 50 < 120     -> OUTSIDE -> s = 0
+r = 90  -> 90 < 120     -> OUTSIDE -> s = 0
+r = 130 -> 120<=130<=200 -> INSIDE -> s = 255
+r = 150 -> 120<=150<=200 -> INSIDE -> s = 255
+r = 170 -> 120<=170<=200 -> INSIDE -> s = 255
+r = 190 -> 120<=190<=200 -> INSIDE -> s = 255
+r = 210 -> 210 > 200    -> OUTSIDE -> s = 0
+r = 230 -> 230 > 200    -> OUTSIDE -> s = 0
+r = 250 -> 250 > 200    -> OUTSIDE -> s = 0
 ```
 
 **Step 2 — Write out the finished, sliced output row.**
 
 ```
-s:    0     0     0     255    255    255    255     0     0     0
+s:  0   0   0  255  255  255  255   0   0   0
 ```
 
 ```
-Input row  (r):  10   50   90  130  150  170  190  210  230  250
-                                 |----------INSIDE----------|
-Output row (s):   0    0    0  255  255  255  255    0    0    0
-                                 |----- LIT UP WHITE -------|
+Input  (r): 10  50  90 130 150 170 190 210 230 250
+                       |------INSIDE------|
+Output (s):  0   0   0 255 255 255 255  0   0   0
+                       |--LIT UP WHITE--|--|
 ```
 
 **Interpretation:** exactly the four pixels that fell inside `[120, 200]` "light up" and become pure white (255), while every single pixel outside that range goes fully dark (0) — this is gray-level slicing doing precisely its job, isolating and highlighting one specific tonal band while suppressing everything else.
@@ -500,22 +504,23 @@ Sort these nine values again: `10, 20, 30, 40, 50, 60, 70, 80, 255`. The middle 
 **Now compare this against what the low-pass average filter would have produced on this same noisy patch:**
 
 ```
-Sum = 10 + 20 + 30 + 40 + 50 + 60 + 70 + 80 + 255
+Sum = 10+20+30+40+50+60+70+80+255
 Sum = 615
 Average = 615 / 9
-Average ~= 68.3   (visibly dragged upward by that single outlier!)
+Average ~= 68.3
+(visibly dragged upward by that outlier!)
 ```
 
 ```
-+-------------------------------------------------------------+
-|  SAME NOISY PATCH, TWO DIFFERENT FILTERS                        |
-+-------------------------------------------------------------+
-|  Low-pass (average) output:  ~68.3   <- dragged toward the       |
-|                                          outlier                   |
-|  Median filter output:        50     <- completely UNAFFECTED       |
-|                                          by the outlier               |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| SAME NOISY PATCH, TWO DIFFERENT FILTERS                    |
++------------------------------------------------------------+
+| Low-pass (average) output:  ~68.3   <- dragged toward the  |
+| outlier                                                    |
+| Median filter output:        50     <- completely          |
+|   UNAFFECTED                                               |
+| by the outlier                                             |
++------------------------------------------------------------+```
 
 This numeric comparison is exactly the theory statement made concrete: *"unlike average, median doesn't get affected by extreme values, so it preserves edges better."* The median filter output stayed rock-solid at exactly 50 despite the huge outlier, while the plain average filter jumped noticeably up to about 68.3.
 
@@ -561,10 +566,11 @@ Bottom-right:  90 x (-1) = -90
 **Step 2 — Sum all nine of these weighted values together.**
 
 ```
-Sum = -10 - 20 - 30 - 40 + 400 - 60 - 70 - 80 - 90
+Sum = -10-20-30-40+400-60-70-80-90
 
-Group the negative terms together first (everything except the center):
-  -10 - 20 - 30 - 40 - 60 - 70 - 80 - 90 = -400
+Group the negative terms first
+(everything except the center):
+  -10-20-30-40-60-70-80-90 = -400
 
 Now add the center term back in:
   -400 + 400 = 0
@@ -634,15 +640,15 @@ Magnitude = sqrt(25) = 5
 
 ```
              v = 4
-        +-------------+
-        |            /|
-        |           / |
-        |  hyp =   /  |
-        |  5       /  |
-        |         /   |
-        |        /    |
-        |       /     |
-        +------+
+        +----------------+
+        |              / |
+        |             /  |
+        |    hyp =   /   |
+        |    5       /   |
+        |           /    |
+        |          /     |
+        |         /      |
+        +----------------+
           u = 3
 ```
 
@@ -684,16 +690,18 @@ Magnitude_B = sqrt((-5)^2 + 0^2) = sqrt(25 + 0) = sqrt(25) = 5
 ```
 
 ```
-+-------------------------------------------------------------+
-|  MAGNITUDE ALONE CANNOT TELL THESE TWO MOTIONS APART             |
-+-------------------------------------------------------------+
-|  Person A: (u,v) = (5, 0)   -> Magnitude = 5                     |
-|  Person B: (u,v) = (-5, 0)  -> Magnitude = 5   <- IDENTICAL!       |
-|  Squaring a negative number always makes it positive, so the        |
-|  sign (direction) information is completely LOST once you compute    |
-|  the magnitude alone.                                                  |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| MAGNITUDE ALONE CANNOT TELL THESE TWO MOTIONS APART        |
++------------------------------------------------------------+
+| Person A: (u,v) = (5, 0)   -> Magnitude = 5                |
+| Person B: (u,v) = (-5, 0)  -> Magnitude = 5   <-           |
+|   IDENTICAL!                                               |
+| Squaring a negative number always makes it positive, so    |
+|   the                                                      |
+| sign (direction) information is completely LOST once you   |
+|   compute                                                  |
+| the magnitude alone.                                       |
++------------------------------------------------------------+```
 
 **The key numeric insight:** the magnitude (speed) is exactly identical for both people (5, since squaring a negative number removes its sign entirely) — but the *direction* they're walking is genuinely opposite (0 degrees versus 180 degrees). This directly explains why the theory file states that HOF descriptors differ for opposite-direction walking: raw magnitude alone genuinely cannot distinguish the two motions, but the direction-binned histogram (HOF) absolutely can, because it separately tracks *which way* each flow vector points, not merely *how fast* it moves.
 
@@ -733,14 +741,15 @@ Total blocks = 80 x 60 = 4800 blocks
 **Answer: 4800 separate 8x8 DCT transforms** must be computed to JPEG-compress this single image, per color channel. (And, as you'll see in the next worked example, after chroma downsampling the two color channels typically need far fewer blocks than the luminance channel, since human eyes are much less sensitive to fine color detail than to fine brightness detail.)
 
 ```
-+-------------------------------------------------------------+
-|  640 x 480 IMAGE, CHOPPED INTO AN 80 x 60 GRID OF 8x8 BLOCKS      |
-+-------------------------------------------------------------+
-|  [] [] [] [] [] [] [] [] ... (80 blocks across this row)          |
-|  [] [] [] [] [] [] [] [] ...                                       |
-|  ... (60 rows of blocks, stacked vertically)                        |
-|  Total = 80 x 60 = 4800 individual 8x8 tiles                          |
-+-------------------------------------------------------------+
++------------------------------------------------------------+
+| 640 x 480 IMAGE, CHOPPED INTO AN 80 x 60 GRID OF 8x8       |
+| BLOCKS                                                     |
++------------------------------------------------------------+
+| [] [] [] [] [] [] [] [] ... (80 blocks across this row)    |
+| [] [] [] [] [] [] [] [] ...                                |
+| ... (60 rows of blocks, stacked vertically)                |
+| Total = 80 x 60 = 4800 individual 8x8 tiles                |
++------------------------------------------------------------+
 ```
 
 ### Worked Example — Chroma Downsampling Savings (the 4:2:0 Scheme)
@@ -749,14 +758,18 @@ A very common JPEG and video downsampling scheme, called "4:2:0," deliberately k
 
 **Step 1 — Work out the original chroma pixel count, assuming (for comparison) it started at the same full resolution as luminance.**
 ```
-640 x 480 = 307,200 samples (per chroma channel, if it were kept at full resolution)
+640 x 480 = 307,200 samples
+(per chroma channel, if kept at
+full resolution)
 ```
 
 **Step 2 — Work out the new chroma pixel count after 4:2:0 downsampling (half width AND half height).**
 ```
 New width  = 640 / 2 = 320
 New height = 480 / 2 = 240
-New chroma sample count = 320 x 240 = 76,800 samples (per chroma channel)
+New chroma sample count =
+  320 x 240 = 76,800 samples
+  (per chroma channel)
 ```
 
 **Step 3 — Compute exactly how much smaller the downsampled chroma data is, as a clean ratio.**
@@ -767,18 +780,18 @@ Reduction factor = 307,200 / 76,800 = 4
 **Answer: exactly 4 times fewer chroma samples per channel.** Since a color image has two separate chroma channels (Cb and Cr), the *combined* chroma data drops from `2 x 307,200 = 614,400` samples all the way down to `2 x 76,800 = 153,600` samples.
 
 ```
-+-------------------------------------------------------------+
-|  CHROMA DATA, BEFORE AND AFTER 4:2:0 DOWNSAMPLING                 |
-+-------------------------------------------------------------+
-|  Before (full res, both channels):  614,400 samples                |
-|  After  (4:2:0, both channels):     153,600 samples                 |
-|  Savings:                           614,400 - 153,600 = 460,800       |
-|                                      samples saved, PURELY from         |
-|                                      downsampling, before DCT,           |
-|                                      quantization, or entropy coding      |
-|                                      have even begun                       |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| CHROMA DATA, BEFORE AND AFTER 4:2:0 DOWNSAMPLING           |
++------------------------------------------------------------+
+| Before (full res, both channels):  614,400 samples         |
+| After  (4:2:0, both channels):     153,600 samples         |
+| Savings:                           614,400 - 153,600 =     |
+|   460,800                                                  |
+| samples saved, PURELY from                                 |
+| downsampling, before DCT,                                  |
+| quantization, or entropy coding                            |
+| have even begun                                            |
++------------------------------------------------------------+```
 
 ### Summary
 
@@ -823,15 +836,17 @@ Relative improvement ~= 38.46%
 **Answer: AlexNet cut the error rate by roughly 38.5% relative to the previous year's performance.** This "roughly 38.5% relative improvement" is the precise, numeric backing behind the theory file's description of this as "the huge jump."
 
 ```
-+-------------------------------------------------------------+
-|  ABSOLUTE DROP vs RELATIVE IMPROVEMENT -- NOT THE SAME NUMBER!    |
-+-------------------------------------------------------------+
-|  Absolute drop:        0.26 - 0.16 = 0.10  (10 percentage points)  |
-|  Relative improvement: (0.10 / 0.26) x 100 ~= 38.46%                 |
-|  These measure genuinely different things -- always state which       |
-|  one you are reporting, especially in an exam answer!                    |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| ABSOLUTE DROP vs RELATIVE IMPROVEMENT -- NOT THE SAME      |
+| NUMBER!                                                    |
++------------------------------------------------------------+
+| Absolute drop:        0.26 - 0.16 = 0.10  (10 percentage   |
+|   points)                                                  |
+| Relative improvement: (0.10 / 0.26) x 100 ~= 38.46%        |
+| These measure genuinely different things -- always state   |
+|   which                                                    |
+| one you are reporting, especially in an exam answer!       |
++------------------------------------------------------------+```
 
 ### Worked Example — Total Error Reduction from 2010 to 2017
 
@@ -863,15 +878,15 @@ Ratio ~= 12.17
 **Interpretation:** the 2017 model was, on a relative basis, wrong roughly **12 times less often** than the 2010 model on this exact same benchmark task, even though the images and the general difficulty of the classification problem stayed the same across both years. This particular "roughly 12 times fewer mistakes" framing is an especially strong, memorable "wow-fact" worth keeping in your back pocket for any viva or interview question about why 2012-2017 is widely called the deep learning revolution in Computer Vision.
 
 ```
-+-------------------------------------------------------------+
-|  THREE WAYS TO DESCRIBE THE SAME 2010 -> 2017 IMPROVEMENT         |
-+-------------------------------------------------------------+
-|  Absolute drop:          25.7 percentage points                    |
-|  Relative improvement:   roughly 92%                                 |
-|  "Times fewer mistakes": roughly 12x fewer errors, on a relative       |
-|                           basis                                          |
-+-------------------------------------------------------------+
-```
++------------------------------------------------------------+
+| THREE WAYS TO DESCRIBE THE SAME 2010 -> 2017 IMPROVEMENT   |
++------------------------------------------------------------+
+| Absolute drop:          25.7 percentage points             |
+| Relative improvement:   roughly 92%                        |
+| "Times fewer mistakes": roughly 12x fewer errors, on a     |
+|   relative                                                 |
+| basis                                                      |
++------------------------------------------------------------+```
 
 ### Summary
 
@@ -884,37 +899,64 @@ Comparing error rates across years requires deliberately choosing (and clearly s
 ## 10. Cheat Sheet & Exam Hacks
 
 ```
-+=================================================================+
-|  CV-NLP -- LEC 01 NUMERICAL QUICK-REFERENCE                       |
-+=================================================================+
-|  Brightness:  B(I) = (1/wh) x [sum of ALL pixel values]              |
-|    -> ALWAYS divide by the TOTAL pixel count (w times h), never       |
-|       by just w alone or just h alone                                   |
-|                                                                             |
-|  Contrast:  (max - min) / average    (one common, working definition)       |
-|                                                                                 |
-|  Log transform:  s = c . log(1+|r|)                                             |
-|    -> find c using:  c = 255 / log(1 + r_max)                                    |
-|    -> ALWAYS use (1 + r) inside the log, never log(r) alone                       |
-|       (this avoids log(0), which is undefined, whenever r = 0)                      |
-|                                                                                         |
-|  Gray-level slicing: inside [A,B] -> boost to 255; outside -> push to 0                  |
-|                                                                                              |
-|  Low-pass kernel: divide the SUM of the whole 3x3 patch by 9 (plain average)                  |
-|  Median filter: SORT all 9 values, take the 5th (exact middle) one                              |
-|  Sharpen kernel: (8 times center) MINUS (sum of all 8 neighbors), then divide by 9                |
-|                                                                                                        |
-|  Optical flow magnitude: sqrt(u^2 + v^2)  -- pure Pythagoras, always POSITIVE                          |
-|    -> direction (the actual angle) needs atan2(v,u) separately; magnitude                                |
-|       alone can NEVER tell two exactly-opposite-direction motions apart                                    |
-|                                                                                                                  |
-|  JPEG blocks needed = (width / 8) x (height / 8)                                                                  |
-|  4:2:0 downsampling -> chroma sample count drops by EXACTLY 4 times                                                 |
-|                                                                                                                          |
-|  Relative % improvement = ((old - new) / old) x 100                                                                       |
-|    -> this is NOT the same number as the plain absolute percentage-point drop!                                              |
-+=================================================================+
-```
++------------------------------------------------------------+
+| BRIGHTNESS & CONTRAST                                      |
++------------------------------------------------------------+
+| Brightness: B(I) = (1/wh) x [sum of ALL                    |
+| pixel values]                                              |
+| -> ALWAYS divide by TOTAL pixel count                      |
+| (w times h), never just w or just h                        |
+|                                                            |
+| Contrast: (max - min) / average                            |
+| (one common, working definition)                           |
++------------------------------------------------------------+
+
++------------------------------------------------------------+
+| LOG TRANSFORM                                              |
++------------------------------------------------------------+
+| s = c . log(1+|r|)                                         |
+| -> find c using: c = 255 / log(1+r_max)                    |
+| -> ALWAYS use (1+r) inside the log, never                  |
+| log(r) alone (avoids log(0), undefined                     |
+| whenever r = 0)                                            |
++------------------------------------------------------------+
+
++------------------------------------------------------------+
+| GRAY-SLICING & SPATIAL FILTERS                             |
++------------------------------------------------------------+
+| Gray-level slicing: inside [A,B] -> boost                  |
+| to 255; outside -> push to 0                               |
+|                                                            |
+| Low-pass kernel: divide SUM of the 3x3                     |
+| patch by 9 (plain average)                                 |
+| Median filter: SORT all 9 values, take                     |
+| the 5th (exact middle) one                                 |
+| Sharpen kernel: (8 times center) MINUS                     |
+| (sum of 8 neighbors), then divide by 9                     |
++------------------------------------------------------------+
+
++------------------------------------------------------------+
+| OPTICAL FLOW & JPEG MATH                                   |
++------------------------------------------------------------+
+| Optical flow magnitude: sqrt(u^2 + v^2)                    |
+| -- pure Pythagoras, always POSITIVE                        |
+| -> direction needs atan2(v,u) separately;                  |
+| magnitude alone can NEVER tell two                         |
+| opposite-direction motions apart                           |
+|                                                            |
+| JPEG blocks needed = (width/8) x (height/8)                |
+| 4:2:0 downsampling -> chroma sample count                  |
+| drops by EXACTLY 4 times                                   |
++------------------------------------------------------------+
+
++------------------------------------------------------------+
+| COMPARING IMPROVEMENTS                                     |
++------------------------------------------------------------+
+| Relative % improvement =                                   |
+| ((old - new) / old) x 100                                  |
+| -> this is NOT the same number as the                      |
+| plain absolute percentage-point drop!                      |
++------------------------------------------------------------+```
 
 ### Exam Red Flags
 

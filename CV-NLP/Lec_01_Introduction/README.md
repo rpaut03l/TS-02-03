@@ -15,54 +15,75 @@ Picture a completely blank-slate mind that has never seen a photograph before, a
 
 ```mermaid
 flowchart TD
-    START(("🎬 Start: a blank slate<br/>that has never seen<br/>a photograph")) --> P1
+    START[Start: a blank slate that has never seen a photograph] --> P1[PILLAR 1: Why does vision even matter] --> P2[PILLAR 2: How did we get here] --> P3[PILLAR 3: What IS an image mathematically] --> P4[PILLAR 4: What IS a video mathematically] --> DONE[A mind that now understands images and video as data]
 
-    subgraph P1["PILLAR 1 — Why does vision even matter?"]
-        direction TB
-        p1a["CV borrows from Biology,<br/>Physics, Psychology, Math"] --> p1b["AI ⊃ ML ⊃ DL ⊃ CNN<br/>nested family tree"]
-        p1b --> p1c["The job menu: detection,<br/>segmentation, pose, VQA..."]
-    end
-
-    P1 --> P2
-
-    subgraph P2["PILLAR 2 — How did we get here?"]
-        direction TB
-        p2a["Biology solved vision first<br/>(octopus, fly, human)"] --> p2b["Camera Obscura (1545)<br/>humans build an artificial eye"]
-        p2b --> p2c["Marr's Model:<br/>Image → Edges → 2½D → 3D"]
-        p2c --> p2d["SIFT &amp; HOG<br/>hand-crafted features"]
-        p2d --> p2e["2012: AlexNet + ImageNet<br/>+ GPUs collide"]
-        p2e --> p2f["2021: CLIP &amp; DALL-E<br/>connect vision + language"]
-    end
-
-    P2 --> P3
-
-    subgraph P3["PILLAR 3 — What IS an image, mathematically?"]
-        direction TB
-        p3a["Color models<br/>RGB / HSL / CMYK"] --> p3b["JPEG compression<br/>5-step pipeline"]
-        p3b --> p3c["Brightness, Contrast,<br/>Histograms"]
-        p3c --> p3d["Log transform, Gray-slicing,<br/>Spatial filters"]
-    end
-
-    P3 --> P4
-
-    subgraph P4["PILLAR 4 — What IS a video, mathematically?"]
-        direction TB
-        p4a["I / P / B frames"] --> p4b["Optical Flow<br/>(motion vectors)"]
-        p4b --> p4c["HOG/HOF/MBH<br/>motion descriptors"]
-        p4c --> p4d["Bag-of-Visual-Words<br/>+ SVM action recognition"]
-    end
-
-    P4 --> DONE(("🏁 A mind that now understands<br/>images AND video as data"))
-
-    style START fill:#fef3c7,stroke:#d97706
-    style DONE fill:#dcfce7,stroke:#16a34a
-    style P1 fill:#dbeafe,stroke:#2563eb
-    style P2 fill:#fce7f3,stroke:#db2777
-    style P3 fill:#fef9c3,stroke:#ca8a04
-    style P4 fill:#e0e7ff,stroke:#4f46e5
+    style START fill:#fef3c7,stroke:#d97706,color:#1e293b
+    style P1 fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style P2 fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style P3 fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style P4 fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style DONE fill:#dcfce7,stroke:#16a34a,color:#1e293b
 ```
 
-That single diagram IS Lecture 1. Everything below just zooms into each of the four boxes one at a time.
+That single diagram IS Lecture 1's skeleton. Each pillar below zooms into what's actually inside it.
+
+### Pillar 1 — Why Does Vision Even Matter
+
+```mermaid
+flowchart LR
+    A[CV borrows from Biology, Physics, Psychology, Math] --> B[AI contains ML contains DL contains CNN]
+    B --> C[The job menu: detection, segmentation, pose, VQA]
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#dbeafe,stroke:#2563eb,color:#1e293b
+```
+
+### Pillar 2 — How Did We Get Here
+
+```mermaid
+flowchart LR
+    A[Biology solved vision first: octopus, fly, human] --> B[Camera Obscura 1545: humans build an artificial eye]
+    B --> C[Marr's Model: Image to Edges to 2.5D to 3D]
+    C --> D[SIFT and HOG: hand-crafted features]
+    D --> E[2012: AlexNet plus ImageNet plus GPUs collide]
+    E --> F[2021: CLIP and DALL-E connect vision plus language]
+
+    style A fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style B fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style D fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style E fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style F fill:#fce7f3,stroke:#db2777,color:#1e293b
+```
+
+### Pillar 3 — What IS an Image, Mathematically
+
+```mermaid
+flowchart LR
+    A[Color models: RGB / HSL / CMYK] --> B[JPEG compression: 5-step pipeline]
+    B --> C[Brightness, Contrast, Histograms]
+    C --> D[Log transform, Gray-slicing, Spatial filters]
+
+    style A fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style B fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style C fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style D fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+```
+
+### Pillar 4 — What IS a Video, Mathematically
+
+```mermaid
+flowchart LR
+    A[I / P / B frames] --> B[Optical Flow: motion vectors]
+    B --> C[HOG / HOF / MBH: motion descriptors]
+    C --> D[Bag-of-Visual-Words plus SVM action recognition]
+
+    style A fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style B fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style C fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style D fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+```
 
 ---
 
@@ -82,14 +103,14 @@ The single most important diagram of the entire lecture — everything else buil
 
 ```mermaid
 flowchart LR
-    A["📷 Input Image<br/><i>raw pixel intensities,<br/>nothing understood yet</i>"] -->|"find edges/blobs"| B["✏️ Primal Sketch<br/><i>zero-crossings, blobs,<br/>edges, boundaries</i>"]
-    B -->|"add depth, but only<br/>from THIS viewpoint"| C["🌗 2½-D Sketch<br/><i>viewer-centered depth &amp;<br/>surface orientation</i>"]
-    C -->|"generalize beyond<br/>this one viewpoint"| D["🧊 3-D Model<br/><i>object-centered,<br/>true from ANY angle</i>"]
+    A[Input Image: raw pixel intensities, nothing understood yet] -->|find edges and blobs| B[Primal Sketch: zero-crossings, blobs, edges, boundaries]
+    B -->|add depth, but only from THIS viewpoint| C[2.5-D Sketch: viewer-centered depth and surface orientation]
+    C -->|generalize beyond this one viewpoint| D[3-D Model: object-centered, true from ANY angle]
 
-    style A fill:#f1f5f9,stroke:#334155
-    style B fill:#dbeafe,stroke:#2563eb
-    style C fill:#fef9c3,stroke:#ca8a04
-    style D fill:#dcfce7,stroke:#16a34a
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style D fill:#dcfce7,stroke:#16a34a,color:#1e293b
 ```
 
 Notice the labels on the arrows — each arrow is doing real work, not just connecting boxes. The jump from the 2½-D Sketch to the full 3-D Model is the single most commonly misunderstood step in exams: the 2½-D stage only knows what's visible from where the camera is currently standing, while the 3-D stage is a complete, angle-independent fact about the object. Full explanation, with the basketball example and the "why is it called 2½ and not 3" deep dive, lives in [THEORY, Section 3](cvnlp_lec01_intro_theory.md#3-marrs-computational-vision-model).
@@ -102,20 +123,20 @@ Every single image that ever gets stored, emailed, or fed into a model passes th
 
 ```mermaid
 flowchart LR
-    A["Raw Image<br/>(RGB)"] --> B["1. Color Transform<br/>RGB → YCbCr"]
-    B --> C["2. Downsampling<br/>shrink COLOR channels<br/>(eyes care less about color)"]
-    C --> D["3. DCT<br/>8×8 blocks →<br/>frequency space"]
-    D --> E["4. Quantization<br/>drop barely-visible<br/>high frequencies"]
-    E --> F["5. Encoding<br/>Huffman coding"]
-    F --> G["📦 Compressed<br/>JPEG bitstream"]
+    A[Raw Image RGB] --> B[1. Color Transform: RGB to YCbCr]
+    B --> C[2. Downsampling: shrink COLOR channels]
+    C --> D[3. DCT: 8x8 blocks to frequency space]
+    D --> E[4. Quantization: drop barely-visible high frequencies]
+    E --> F[5. Encoding: Huffman coding]
+    F --> G[Compressed JPEG bitstream]
 
-    style A fill:#f1f5f9,stroke:#334155
-    style B fill:#dbeafe,stroke:#2563eb
-    style C fill:#fef9c3,stroke:#ca8a04
-    style D fill:#fce7f3,stroke:#db2777
-    style E fill:#e0e7ff,stroke:#4f46e5
-    style F fill:#fed7aa,stroke:#ea580c
-    style G fill:#dcfce7,stroke:#16a34a
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style D fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style E fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style F fill:#fed7aa,stroke:#ea580c,color:#1e293b
+    style G fill:#dcfce7,stroke:#16a34a,color:#1e293b
 ```
 
 The trick worth remembering: Step 1 deliberately separates brightness from color specifically so Step 2 can afford to throw away far more color detail than brightness detail — because human eyes simply don't notice small color shifts the way they notice small brightness shifts. Full walkthrough, with the exact reasoning and the video-frame (I/P/B) extension of this same idea, lives in [THEORY, Section 8](cvnlp_lec01_intro_theory.md#8-image-processing-foundations).
@@ -128,22 +149,22 @@ Before deep learning, this six-step recipe was the standard way to teach a compu
 
 ```mermaid
 flowchart TD
-    A["🎥 Raw Video"] --> B["1. Find space-time<br/>interest points<br/><i>(where motion happens)</i>"]
-    B --> C["2. Extract space-time<br/>patches around them"]
-    C --> D["3. Describe each patch<br/>HOG (shape) / HOF (motion) /<br/>MBH (motion boundary)"]
-    D --> E["4. Cluster into a<br/>dictionary of<br/>'visual words'"]
-    E --> F["5. Build one Histogram<br/>of Visual Words<br/>for the whole video"]
-    F --> G["6. SVM Classifier"]
-    G --> H["🏃 Predicted Action:<br/>'walking' / 'running'"]
+    A[Raw Video] --> B[1. Find space-time interest points: where motion happens]
+    B --> C[2. Extract space-time patches around them]
+    C --> D[3. Describe each patch: HOG shape / HOF motion / MBH motion boundary]
+    D --> E[4. Cluster into a dictionary of visual words]
+    E --> F[5. Build one Histogram of Visual Words for the whole video]
+    F --> G[6. SVM Classifier]
+    G --> H[Predicted Action: walking / running]
 
-    style A fill:#f1f5f9,stroke:#334155
-    style B fill:#dbeafe,stroke:#2563eb
-    style C fill:#fef9c3,stroke:#ca8a04
-    style D fill:#fce7f3,stroke:#db2777
-    style E fill:#e0e7ff,stroke:#4f46e5
-    style F fill:#fed7aa,stroke:#ea580c
-    style G fill:#fecaca,stroke:#dc2626
-    style H fill:#dcfce7,stroke:#16a34a
+    style A fill:#f1f5f9,stroke:#334155,color:#1e293b
+    style B fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style C fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style D fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style E fill:#e0e7ff,stroke:#4f46e5,color:#1e293b
+    style F fill:#fed7aa,stroke:#ea580c,color:#1e293b
+    style G fill:#fecaca,stroke:#dc2626,color:#1e293b
+    style H fill:#dcfce7,stroke:#16a34a,color:#1e293b
 ```
 
 This is essentially "Bag-of-Words" borrowed straight from NLP and applied to chopped-up pieces of video — cluster similar-looking motion patches into named piles, count how many patches from this video landed in each pile, and hand that count sheet to a classifier. Full walkthrough lives in [THEORY, Section 9](cvnlp_lec01_intro_theory.md#9-video-processing-foundations).
@@ -154,14 +175,14 @@ This is essentially "Bag-of-Words" borrowed straight from NLP and applied to cho
 
 ```mermaid
 flowchart LR
-    A["Read theory.md<br/>top to bottom, once"] --> B["Redo every worked<br/>example in numerical.md<br/>on paper"]
-    B --> C["Attempt practice.md<br/>cold — no peeking"]
-    C --> D["Loop back to theory.md's<br/>Cheat Sheet before any quiz"]
+    A[Read theory.md top to bottom once] --> B[Redo every worked example in numerical.md on paper]
+    B --> C[Attempt practice.md cold, no peeking]
+    C --> D[Loop back to theory.md Cheat Sheet before any quiz]
 
-    style A fill:#dbeafe,stroke:#2563eb
-    style B fill:#fef9c3,stroke:#ca8a04
-    style C fill:#fce7f3,stroke:#db2777
-    style D fill:#dcfce7,stroke:#16a34a
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e293b
+    style B fill:#fef9c3,stroke:#ca8a04,color:#1e293b
+    style C fill:#fce7f3,stroke:#db2777,color:#1e293b
+    style D fill:#dcfce7,stroke:#16a34a,color:#1e293b
 ```
 
 1. **Read `theory.md` first**, without stopping to memorize — just get the full story straight, using the zoom-in diagrams above as your map of where you are at any given moment.
@@ -177,14 +198,14 @@ Lecture 1 is 100% foundation — there's no heavy hands-on numerical work here l
 
 ```mermaid
 flowchart LR
-    L1["Lec 01<br/>Foundations"] -.->|"builds toward"| CNN["Future:<br/>CNN Architectures"]
-    CNN -.->|"builds toward"| DET["Future:<br/>Object Detection"]
-    DET -.->|"builds toward"| VL["Future:<br/>Vision-Language Models"]
+    L1[Lec 01: Foundations] --> CNN[Future: CNN Architectures]
+    CNN --> DET[Future: Object Detection]
+    DET --> VL[Future: Vision-Language Models]
 
-    style L1 fill:#dcfce7,stroke:#16a34a
-    style CNN fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
-    style DET fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
-    style VL fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5
+    style L1 fill:#dcfce7,stroke:#16a34a,color:#1e293b
+    style CNN fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    style DET fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    style VL fill:#f8fafc,stroke:#94a3b8,color:#1e293b
 ```
 
 ---
