@@ -5,7 +5,6 @@
 > 🔗 **Repo:** [github.com/rpaut03l/TS-02-03](https://github.com/rpaut03l/TS-02-03) · CV-NLP Track
 >
 > **Instructor:** Divya Saxena (Assistant Professor, School of AI and Data Science, IIT Jodhpur) · Co-instructors: Sidharth Ranjan, Deeksha Varshney
-> **Schedule:** Friday 6:00–7:30 pm · Saturday 2:30–4:00 pm · Google Classroom code `uf5jyhal`
 >
 > **Style:** Every topic explained with a picture-first walkthrough, then the formal definitions, then fully worked numbers, then self-test practice. Same trio pattern used across this repo's Advanced-AI, MLOps, and GPU Programming tracks.
 
