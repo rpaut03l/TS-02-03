@@ -292,24 +292,24 @@ U(50, naive even split) = √50 + 0.8√50 ≈ 7.071 + 0.8(7.071) ≈ 7.071 + 5.
 ## 5. Formula Cheat Sheet
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
+╔════════════════════════════════════════════════════════════════════╗
 ║  FORMULAS — COPY THESE DOWN BEFORE THE EXAM                        ║
-╠══════════════════════════════════════════════════════════════════╣
+╠════════════════════════════════════════════════════════════════════╣
 ║  Backward induction: solve LAST node, collapse to a number,        ║
 ║  fold back one level, repeat until the root is reached.            ║
-║                                                                     ║
+║                                                                    ║
 ║  Discounting: a payoff X received 1 period later = δX today        ║
-║  Threshold: set E[option A] = E[option B], solve for δ              ║
-║                                                                     ║
-║  Value of Information:                                              ║
+║  Threshold: set E[option A] = E[option B], solve for δ             ║
+║                                                                    ║
+║  Value of Information:                                             ║
 ║    VOI = E[payoff WITH info] − E[best payoff WITHOUT info]  ≥ 0    ║
-║    WITHOUT info: ONE action applied to every state                  ║
-║    WITH info: BEST action chosen separately per state                ║
-║                                                                     ║
-║  Consumption Euler equation: u'(x₁) = δ·u'(K−x₁)                    ║
-║    δ = 1  →  x₁* = K/2  (perfectly smooth)                          ║
-║    δ < 1  →  x₁* > K/2  (front-load toward the present)             ║
-╚══════════════════════════════════════════════════════════════════╝
+║    WITHOUT info: ONE action applied to every state                 ║
+║    WITH info: BEST action chosen separately per state              ║
+║                                                                    ║
+║  Consumption Euler equation: u'(x₁) = δ·u'(K−x₁)                   ║
+║    δ = 1  →  x₁* = K/2  (perfectly smooth)                         ║
+║    δ < 1  →  x₁* > K/2  (front-load toward the present)            ║
+╚════════════════════════════════════════════════════════════════════╝
 ```
 
 [↑ Back to Top](#-advanced-ai--lec-04-decision-over-time--value-of-information--numerical)
