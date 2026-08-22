@@ -360,28 +360,28 @@ graph LR
 ## 6. Cheat Sheet & Exam Hacks
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
+╔════════════════════════════════════════════════════════════════════╗
 ║  ADVANCED AI — LEC 04 ONE-LINERS                                   ║
-╠══════════════════════════════════════════════════════════════════╣
+╠════════════════════════════════════════════════════════════════════╣
 ║  BACKWARD INDUCTION: solve the LAST decision first, collapse it    ║
 ║  into a number, fold the tree back one level, repeat to the root.  ║
-║                                                                     ║
+║                                                                    ║
 ║  The result isn't just a value — it's a full contingent STRATEGY   ║
 ║  ("do X if state A happens, do Y if state B happens").             ║
-║                                                                     ║
+║                                                                    ║
 ║  Discounting: payoff X received 1 period later = worth δX today.   ║
-║  δ ∈ (0,1); smaller δ = more impatient.                             ║
-║  Find threshold δ* by setting E[option 1] = E[option 2], solve δ.   ║
-║                                                                     ║
-║  VALUE OF INFORMATION:                                              ║
+║  δ ∈ (0,1); smaller δ = more impatient.                            ║
+║  Find threshold δ* by setting E[option 1] = E[option 2], solve δ.  ║
+║                                                                    ║
+║  VALUE OF INFORMATION:                                             ║
 ║    VOI = E[payoff WITH info] − E[payoff WITHOUT info]  ≥ 0 always  ║
-║    WITHOUT info: pick ONE action, apply it in every state.          ║
-║    WITH info: pick the BEST action separately IN EACH state.        ║
-║                                                                     ║
-║  CONSUMPTION EULER EQUATION:                                        ║
-║    u'(x₁) = δu'(K−x₁)                                               ║
+║    WITHOUT info: pick ONE action, apply it in every state.         ║
+║    WITH info: pick the BEST action separately IN EACH state.       ║
+║                                                                    ║
+║  CONSUMPTION EULER EQUATION:                                       ║
+║    u'(x₁) = δu'(K−x₁)                                              ║
 ║    δ=1 → x₁=K/2 (smooth). δ<1 → x₁>K/2 (front-load, impatient).    ║
-╚══════════════════════════════════════════════════════════════════╝
+╚════════════════════════════════════════════════════════════════════╝
 ```
 
 ### ⚡ Exam Red Flags
