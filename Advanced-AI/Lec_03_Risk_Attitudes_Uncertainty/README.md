@@ -2,7 +2,7 @@
 
 ### *Risk Neutral/Averse/Loving · Jensen's Inequality · The St. Petersburg Paradox · Rational Choice Under Uncertainty*
 
-> **Nav:** [← Advanced AI](../README.md) | [⬅️ Prev: Lec 02](../Lec_02_Decision_Trees_Risk_Lotteries/README.md) | **Lec 03**
+> **Nav:** [← Advanced AI](../README.md) | [⬅️ Prev: Lec 02](../Lec_02_Decision_Trees_Risk_Lotteries/README.md) | **Lec 03** | [Lec 04 ➡️](../Lec_04_Decision_Over_Time_Value_of_Information/README.md)
 
 ---
 
@@ -61,6 +61,9 @@ This lecture's material (risk attitudes, Jensen's Inequality, the St. Petersburg
 
 ### 🎯 Where these concepts appear in the Chapter 1 Exercises
 None of the Chapter 1 exercises (1.1–1.7) involve randomness or lotteries — they're all certainty-based decisions, so they draw on Lecture 01 and Lecture 02's tree-drawing convention rather than this lecture's risk-attitude machinery. This lecture's tools (risk attitudes, Jensen's Inequality, the St. Petersburg Paradox) become directly relevant once the course moves into later chapters involving genuine uncertainty and strategic games under risk.
+
+### ➡️ Where this lecture leads next
+**[Lecture 04 — Decision Over Time & Value of Information](../Lec_04_Decision_Over_Time_Value_of_Information/README.md)** reuses this lecture's concave-utility idea (`u''(·) < 0`) directly in its intertemporal consumption model — the same "diminishing returns" reasoning that explained risk aversion here also explains why consumption should be smoothed evenly across time.
 
 ---
 
